@@ -25,7 +25,6 @@ public class Main {
 		System.out.println("3. Ver cantidad de recetas");
 		System.out.println("4. Borrar receta");
 		System.out.println("5. Salir");
-                System.out.println("6. Cambiar ingrediente");
 	}
 	
 	private static void OpcionElegida(int opc){
