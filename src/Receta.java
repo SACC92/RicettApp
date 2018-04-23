@@ -17,13 +17,14 @@ public class Receta {
 		int opc=0;
 		Scanner leer = new Scanner(System.in);
                 
-		do{ IngresarIngredientes();						
+                IngresarIngredientes();
+		do{ 						
 			System.out.println("¿Quiere ingresar otro ingrediente?");
 			System.out.println("1.Si");
 			System.out.println("2.No");
                         System.out.println("");
 			opc = leer.nextInt();
-		}while(opc!=2);		
+		}while(opc!=1 && opc!=2);		
 	}	
 	
 	private void IngresarIngredientes(){
@@ -79,13 +80,14 @@ public class Receta {
 		int opc=0;
 		Scanner leer= new Scanner(System.in);
                 
-		do{	IngresarPaso();
+                IngresarPaso();
+		do{	
 			System.out.println("¿Quiere ingresar otro paso a seguir?");
 			System.out.println("1.Si");
 			System.out.println("2.No");
                         System.out.println("");
 			opc=leer.nextInt();
-		}while(opc!=2);
+		}while(opc!=1 && opc!=2);
 	}
 	private void IngresarPaso(){
 		Scanner leer = new Scanner(System.in);

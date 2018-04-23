@@ -6,19 +6,7 @@ public class Main {
 		ValidadorMenu();
 	}
 	
-	private static void ValidadorMenu(){
-		Texto();
-		Scanner leer = new Scanner(System.in);
-		int opc=0; 
-		do{
-			opc= leer.nextInt();
-			
-		}while(opc>5 || opc <1);
-		
-		OpcionElegida(opc);
-	}
-	
-	private static void Texto(){
+        private static void Texto(){
 		System.out.println("¿Qué desea hacer?");
 		System.out.println("1. Agregar receta");
 		System.out.println("2. Ver todas las recetas");
@@ -27,6 +15,20 @@ public class Main {
 		System.out.println("5. Salir");
 	}
 	
+        
+	private static void ValidadorMenu(){
+		Scanner leer = new Scanner(System.in);
+                int opc=0;
+		do{                
+                    Texto();
+                    opc = leer.nextInt();
+                    
+		}while(opc>5 || opc <1);
+		
+		OpcionElegida(opc);
+	}
+	
+
 	private static void OpcionElegida(int opc){
 		
 		Recetario recetario = new Recetario();
@@ -41,10 +43,9 @@ public class Main {
 			case 4: recetario.QuitarReceta();
 					break;
 			case 5: System.out.println("Gracias por utilizar RicettApp");
+                                        break;                  
                         
 		}
-		if(opc<5 ||opc>0){
-			ValidadorMenu();
-		}
+		
 	}	
 }
