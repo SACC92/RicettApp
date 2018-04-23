@@ -24,8 +24,8 @@ public class Recetario {
 	private static int Preguntar(){
                 Scanner leer = new Scanner(System.in);
                 
-                System.out.println("Â¿QuÃ© receta quiere quitar?");
-		MostrarAllRecetas();//muestra las recetas partiendo del nÃºmero 1, por eso despuÃ©s hay una resta
+                System.out.println("¿Qué receta quiere quitar?");
+		MostrarAllRecetas();//muestra las recetas partiendo del número 1, por eso después hay una resta
 		int opc = leer.nextInt();
 		int n=(opc-1);//Considerar que el arraylist empieza en cero
 		return n;					
@@ -67,7 +67,5 @@ public class Recetario {
 		System.out.println("");                
 	}
 	public void RankearRecetas(){
-	}
-	
-	
+	}	
 }

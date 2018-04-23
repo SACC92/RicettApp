@@ -12,19 +12,20 @@ public class Receta {
 		this.ingredientes=new ArrayList<Ingrediente>();
 		this.instrucciones=new ArrayList<Instruccion>();
 	}		
-	//MÃ©todos relacionados con ingredientes		
+	//Métodos relacionados con ingredientes		
 	public void CrearIngredientes(){
 		int opc=0;
 		Scanner leer = new Scanner(System.in);
-                
+        do{        
                 IngresarIngredientes();
 		do{ 						
-			System.out.println("Â¿Quiere ingresar otro ingrediente?");
+			System.out.println("¿Quiere ingresar otro ingrediente?");
 			System.out.println("1.Si");
 			System.out.println("2.No");
-                        System.out.println("");
 			opc = leer.nextInt();
 		}while(opc!=1 && opc!=2);		
+		}while(opc==1);
+        System.out.println("");
 	}	
 	
 	private void IngresarIngredientes(){
@@ -45,7 +46,7 @@ public class Receta {
 	public void CambiarIngredientes(){
 		Scanner leer = new Scanner(System.in);
                 
-                System.out.println("Â¿QuÃ© ingrediente desea cambiar?");
+                System.out.println("¿Qué ingrediente desea cambiar?");
                 String oldIng = leer.nextLine();
                 int posicion = BuscarIngrediente(oldIng);
                 
@@ -75,19 +76,20 @@ public class Receta {
                 return pos;
         }
         
-	//MÃ©todos relacionados con el arrayList de instrucciones
+	//Métodos relacionados con el arrayList de instrucciones
 	public void CrearInstruccion(){
 		int opc=0;
 		Scanner leer= new Scanner(System.in);
-                
+        do{        
                 IngresarPaso();
 		do{	
-			System.out.println("Â¿Quiere ingresar otro paso a seguir?");
+			System.out.println("¿Quiere ingresar otro paso a seguir?");
 			System.out.println("1.Si");
-			System.out.println("2.No");
-                        System.out.println("");
+			System.out.println("2.No");                        
 			opc=leer.nextInt();
 		}while(opc!=1 && opc!=2);
+        }while(opc==1);
+        System.out.println("");
 	}
 	private void IngresarPaso(){
 		Scanner leer = new Scanner(System.in);
@@ -106,7 +108,7 @@ public class Receta {
                 System.out.println("");
 	}
 	
-	//MÃ©todos get y set
+	//Métodos get y set
 	public String getNombre(){
 		return nombre;
 	}
