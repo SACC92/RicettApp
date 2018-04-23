@@ -1,0 +1,19 @@
+	public void CambiarIngredientes(){
+		Scanner leer = new Scanner(System.in);
+                
+                MostrarIngredientes();
+                
+                System.out.println("¿Qué el número del ingrediente desea cambiar?");
+                int oldIng = leer.nextInt()-1;
+                
+                if( oldIng>0 || oldIng<ingredientes.size()-1 ){
+                    System.out.println("Ingrese el nuevo ingrediente");
+                    String newIng = leer.nextLine();
+                    ingredientes.get(oldIng).setNombre(newIng);
+                }
+                else{
+                    System.out.println("No se puede realizar el cambio");
+                }
+                
+	}	
+	
