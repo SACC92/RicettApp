@@ -12,20 +12,23 @@ public class Receta {
 		this.ingredientes=new ArrayList<Ingrediente>();
 		this.instrucciones=new ArrayList<Instruccion>();
 	}		
-	//Métodos relacionados con ingredientes		
-	public void crearIngredientes(){
+	//MÃ©todos relacionados con ingredientes		
+	public void CrearIngredientes(){
 		int opc=0;
 		Scanner leer = new Scanner(System.in);
-		do{ ingresarIngredientes();						
-			System.out.println("¿Quiere ingresar otro ingrediente?");
+                
+		do{ IngresarIngredientes();						
+			System.out.println("Â¿Quiere ingresar otro ingrediente?");
 			System.out.println("1.Si");
 			System.out.println("2.No");
+                        System.out.println("");
 			opc = leer.nextInt();
 		}while(opc!=2);		
 	}	
 	
-	private void ingresarIngredientes(){
+	private void IngresarIngredientes(){
 		Scanner leer = new Scanner(System.in);
+                
 		System.out.println("Ingrese ingrediente de la receta");
 		Ingrediente ingrediente = new Ingrediente();
 		String nombre = leer.nextLine();
@@ -33,28 +36,60 @@ public class Receta {
 		
 		this.ingredientes.add(ingrediente);
 	}
-	public void mostrarIngredientes(){
+	public void MostrarIngredientes(){
 		for(int x=0;x<ingredientes.size();x++){
 			System.out.println(ingredientes.get(x).getNombre());			
 		}
 	}
-	public void cambiarIngredientes(){
-		
+	public void CambiarIngredientes(){
+		Scanner leer = new Scanner(System.in);
+                
+                System.out.println("Â¿QuÃ© ingrediente desea cambiar?");
+                String oldIng = leer.nextLine();
+                int posicion = BuscarIngrediente(oldIng);
+                
+                if( posicion !=-1 ){
+                    System.out.println("Ingrese el nuevo ingrediente");
+                    String newIng = leer.nextLine();
+                    ingredientes.get(posicion).setNombre(newIng);
+                }
+                else{
+                    System.out.println("No se puede realizar el cambio");
+                }
+                
 	}	
 	
-	//Métodos relacionados con el arrayList de instrucciones
-	public void crearInstruccion(){
+        private int BuscarIngrediente(String ingrediente){
+                int pos = -1; 
+            
+                for(int x=0;x<ingredientes.size();x++){
+                    if (ingredientes.get(x).equals(ingrediente)){
+                        pos = x;
+                        System.out.println("Ingrediente encontrado");
+                    }
+                    else{
+                        System.out.println("Ingrediente no encontrado");
+                    }
+                }
+                return pos;
+        }
+        
+	//MÃ©todos relacionados con el arrayList de instrucciones
+	public void CrearInstruccion(){
 		int opc=0;
 		Scanner leer= new Scanner(System.in);
-		do{	ingresarPaso();
-			System.out.println("¿Quiere ingresar otro paso a seguir?");
+                
+		do{	IngresarPaso();
+			System.out.println("Â¿Quiere ingresar otro paso a seguir?");
 			System.out.println("1.Si");
 			System.out.println("2.No");
+                        System.out.println("");
 			opc=leer.nextInt();
 		}while(opc!=2);
 	}
-	private void ingresarPaso(){
+	private void IngresarPaso(){
 		Scanner leer = new Scanner(System.in);
+                
 		System.out.println("Ingrese paso");
 		Instruccion instruccion = new Instruccion();
 		String paso = leer.nextLine();
@@ -62,13 +97,14 @@ public class Receta {
 		
 		this.instrucciones.add(instruccion);
 	}	
-	public void mostrarInstrucciones(){
+	public void MostrarInstrucciones(){
 		for(int x=0;x<instrucciones.size();x++){
 			System.out.println(instrucciones.get(x).getPaso());			
 		}
+                System.out.println("");
 	}
 	
-	//Métodos get y set
+	//MÃ©todos get y set
 	public String getNombre(){
 		return nombre;
 	}

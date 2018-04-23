@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args){
-		menu();
+		ValidadorMenu();
 	}
 	
-	private static void menu(){
-		texto();
+	private static void ValidadorMenu(){
+		Texto();
 		Scanner leer = new Scanner(System.in);
 		int opc=0; 
 		do{
@@ -15,35 +15,37 @@ public class Main {
 			
 		}while(opc>5 || opc <1);
 		
-		opcionElegida(opc);
+		OpcionElegida(opc);
 	}
 	
-	private static void texto(){
-		System.out.println("¿Qué desea hacer?");
+	private static void Texto(){
+		System.out.println("Â¿QuÃ© desea hacer?");
 		System.out.println("1. Agregar receta");
 		System.out.println("2. Ver todas las recetas");
 		System.out.println("3. Ver cantidad de recetas");
 		System.out.println("4. Borrar receta");
 		System.out.println("5. Salir");
+                System.out.println("6. Cambiar ingrediente");
 	}
 	
-	private static void opcionElegida(int opc){
+	private static void OpcionElegida(int opc){
 		
 		Recetario recetario = new Recetario();
 		
 		switch(opc){
-			case 1: recetario.agregarReceta();
+			case 1: recetario.AgregarReceta();
 					break;
-			case 2: recetario.mostrarAllRecetas();
+			case 2: recetario.MostrarAllRecetas();
 					break;
-			case 3: recetario.verCantidadRecetas();
+			case 3: recetario.VerCantidadRecetas();
 					break;
-			case 4: recetario.quitarReceta();
+			case 4: recetario.QuitarReceta();
 					break;
-			case 5: System.out.println("¡Adiós!");
+			case 5: System.out.println("Gracias por utilizar RicettApp");
+                        
 		}
 		if(opc<5 ||opc>0){
-			menu();
+			ValidadorMenu();
 		}
 	}	
 }

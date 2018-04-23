@@ -5,7 +5,7 @@ public class Recetario {
 	
 	private static ArrayList<Receta> recetas = new ArrayList<Receta>();
 	
-	public void agregarReceta(){
+	public void AgregarReceta(){
 		Scanner leer = new Scanner(System.in);
 		Receta receta = new Receta();
 
@@ -13,38 +13,40 @@ public class Recetario {
 		String nombre = leer.nextLine();
 		//Se fijan nombre de la receta y los ingredientes que tiene
 		receta.setNombre(nombre);
-		receta.crearIngredientes();
-		receta.crearInstruccion();
+		receta.CrearIngredientes();
+		receta.CrearInstruccion();
 		
 		recetas.add(receta);
 	}
-	public void quitarReceta(){		
-		recetas.remove(preguntar());	
+	public void QuitarReceta(){		
+		recetas.remove(Preguntar());	
 	}
-	private static int preguntar(){
-		System.out.println("¿Qué receta quiere quitar?");
-		mostrarAllRecetas();//muestra las recetas partiendo del número 1, por eso depues hay una resta
-		Scanner leer = new Scanner(System.in);
+	private static int Preguntar(){
+                Scanner leer = new Scanner(System.in);
+                
+                System.out.println("Â¿QuÃ© receta quiere quitar?");
+		MostrarAllRecetas();//muestra las recetas partiendo del nÃºmero 1, por eso despuÃ©s hay una resta
 		int opc = leer.nextInt();
 		int n=(opc-1);//Considerar que el arraylist empieza en cero
 		return n;					
 	}
 	
-	public static void mostrarAllRecetas(){
+	public static void MostrarAllRecetas(){
 		for(int x=0; x<recetas.size();x++){
 			System.out.println((x+1)+ " " + recetas.get(x).getNombre());
 		}
 	}
 	
-	public void findRecetaIngredientes(){
+	public void FindRecetaIngredientes(){
 		Scanner leer = new Scanner(System.in);
-		System.out.println("Ingrese ingrediente que tiene");
+		
+                System.out.println("Ingrese ingrediente que tiene");
 		String ing = leer.nextLine();
-		buscar(ing);
+		Buscar(ing);
 	}
 	
-	private static void buscar(String ing){
-		for(int x=0;x<recetas.size();x++){//El for de aqui es para contar la cantidad de recetas
+	private static void Buscar(String ing){
+		for(int x=0;x<recetas.size();x++){//Este for es para contar la cantidad de recetas
 			
 			/*Este array de abajo lo hice para evitar escribir muchos get().get()*/
 			ArrayList<Ingrediente> ingredientes = recetas.get(x).getIngredientes();			
@@ -58,11 +60,12 @@ public class Recetario {
 			}				
 		}	
 	}	
-	public void verCantidadRecetas(){
+	public void VerCantidadRecetas(){
 		int cantidad=recetas.size();
-		System.out.println(cantidad);
+                System.out.println("La cantidad de recetas disponibles es: "+ cantidad);
+		System.out.println("");                
 	}
-	public void rankearRecetas(){
+	public void RankearRecetas(){
 	}
 	
 	
