@@ -1,0 +1,8 @@
+A través de esta primera etapa se ha podido lograr desarrollar un análisis del proyecto que se 
+planea realizar a lo largo del semestre, el cual permitirá tener una mejor visión de cómo llevar
+ a cabo el desarrollo de esta actividad tanto a nivel de código, modelado y desarrollo de
+ interfaces, y de las mejoras que serán necesarias implementar en etapas futuras. 
+
+También se pudo lograr realizar una planificación temprana de cómo trabajar a lo
+ largo del semestre en el desarrollo de esta actividad, es decir, los roles y tareas
+ que deberán realizar los miembros de este proyecto.
