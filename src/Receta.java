@@ -40,42 +40,25 @@ public class Receta {
 	}
 	public void MostrarIngredientes(){
 		for(int x=0;x<ingredientes.size();x++){
-			System.out.println(ingredientes.get(x).getNombre());			
+			System.out.println((x+1)+" "+ingredientes.get(x).getNombre());			
 		}
 	}
-	public void CambiarIngredientes(){
+	
+	public int ObtenerViejoIngrediente(){
 		Scanner leer = new Scanner(System.in);
+		
+				System.out.println("Ingredientes que tiene actualmente la receta:");
+                MostrarIngredientes();
                 
                 System.out.println("¿Qué ingrediente desea cambiar?");
-                String oldIng = leer.nextLine();
-                int posicion = BuscarIngrediente(oldIng);
+                int oldIng =0;
+                do{
+                oldIng=(leer.nextInt()-1);
+                }while(oldIng>ingredientes.size() || oldIng<0);
                 
-                if( posicion !=-1 ){
-                    System.out.println("Ingrese el nuevo ingrediente");
-                    String newIng = leer.nextLine();
-                    ingredientes.get(posicion).setNombre(newIng);
-                }
-                else{
-                    System.out.println("No se puede realizar el cambio");
-                }
-                
-	}	
-	
-        private int BuscarIngrediente(String ingrediente){
-                int pos = -1; 
-            
-                for(int x=0;x<ingredientes.size();x++){
-                    if (ingredientes.get(x).equals(ingrediente)){
-                        pos = x;
-                        System.out.println("Ingrediente encontrado");
-                    }
-                    else{
-                        System.out.println("Ingrediente no encontrado");
-                    }
-                }
-                return pos;
-        }
-        
+                return oldIng;                
+	}
+		
 	//Métodos relacionados con el arrayList de instrucciones
 	public void CrearInstruccion(){
 		int opc=0;

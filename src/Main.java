@@ -7,13 +7,14 @@ public class Main {
 	}
 	
         private static void Texto(){
-		System.out.println("¿Qué desea hacer?");
-		System.out.println("1. Agregar receta");
-		System.out.println("2. Ver todas las recetas");
-		System.out.println("3. Ver cantidad de recetas");
-		System.out.println("4. Borrar receta");
-		System.out.println("5. Buscar ingrediente");
-		System.out.println("6. Salir");
+        
+        System.out.println("¿Qué desea hacer?");	
+        System.out.println("1. Ver recetas");	
+        System.out.println("2. Rankear Receta");//Método debe ser creado
+        System.out.println("3. Agregar recetas");	
+        System.out.println("4. Borrar Receta");	        
+        System.out.println("5. Ingredientes");
+        System.out.println("6. Salir");	        
 	}
 	
         
@@ -35,15 +36,17 @@ public class Main {
 		Recetario recetario = new Recetario();
 		
 		switch(opc){
-			case 1: recetario.AgregarReceta();
+		
+			case 1: recetario.VerCantidadRecetas();
+					recetario.ElegirReceta();					
 					break;
-			case 2: recetario.MostrarAllRecetas();
+			case 2: 
 					break;
-			case 3: recetario.VerCantidadRecetas();
+			case 3: recetario.AgregarReceta();
 					break;
 			case 4: recetario.QuitarReceta();
 					break;
-			case 5: recetario.FindRecetaIngredientes();
+			case 5: Case5(recetario);
 					break;
 			case 6: System.out.println("Gracias por utilizar RicettApp");
                     break;  
@@ -51,5 +54,29 @@ public class Main {
 		if(opc!=6){
 			ValidadorMenu();
 		}		
-	}	
+	}
+	
+	private static void Case5(Recetario recetario){
+		int opcCase5 =0;
+		Scanner leer = new Scanner(System.in);
+		do{
+		System.out.println("1. Buscar recetas con cierto ingrediente");
+		System.out.println("2. Cambiar ingrediente");
+		opcCase5= leer.nextInt();
+		}while(opcCase5!=1 && opcCase5!=2);
+		evaluarOpcCase5(recetario,opcCase5);
+	}
+	
+	private static void evaluarOpcCase5(Recetario recetario, int opcCase5){
+		if(opcCase5==1){
+			recetario.FindRecetaIngredientes();
+		}else{
+			if(opcCase5==2){
+				recetario.MostrarAllRecetas();
+				recetario.CambiarIng();
+			}else{
+				System.out.println("Error");
+			}
+		}		
+	}
 }

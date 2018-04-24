@@ -61,11 +61,53 @@ public class Recetario {
 			}				
 		}	
 	}	
+	
+	public void CambiarIng(){
+		Scanner antiguo = new Scanner(System.in);
+		Scanner nuevo = new Scanner(System.in);
+		int opc;
+		System.out.println("Ingrese receta a la que desea cambiar sus ingredientes");
+		do{
+			opc = (antiguo.nextInt()-1);
+		}while(opc>recetas.size() ||opc<0);
+		Receta receta = recetas.get(opc);
+		
+		ArrayList<Ingrediente> ingrediente = recetas.get(opc).getIngredientes();
+		int a= receta.ObtenerViejoIngrediente();
+		Ingrediente ingredienteViejo =ingrediente.get(a);
+		
+		System.out.println("Ingrese nuevo ingrediente");
+		String newIng= nuevo.nextLine();
+		ingredienteViejo.setNombre(newIng);
+	}
+		
 	public void VerCantidadRecetas(){
 		int cantidad=recetas.size();
                 System.out.println("La cantidad de recetas disponibles es: "+ cantidad);
 		System.out.println("");                
 	}
+	
+	public void ElegirReceta(){
+		if(recetas.size()!=0){
+			
+		int recetaElegida = 0;
+		Scanner leer = new Scanner(System.in);
+		MostrarAllRecetas();
+		
+		System.out.println("Escoja la receta que desea ver");		
+		recetaElegida=(leer.nextInt()-1);
+		MostrarOpcionElegida(recetaElegida);		
+		}
+	}
+	
+	private static void MostrarOpcionElegida(int recetaElegida){		
+		System.out.println("Nombre de la receta:" +" "+ recetas.get(recetaElegida).getNombre());		
+		System.out.println("Ingredientes:");
+		recetas.get(recetaElegida).MostrarIngredientes();		
+		System.out.println("Instrucciones:");
+		recetas.get(recetaElegida).MostrarInstrucciones();		
+	}
+	
 	public void RankearRecetas(){
 	}	
 }
