@@ -33,7 +33,7 @@ public class Recetario {
 	
 	public static void MostrarAllRecetas(){
 		for(int x=0; x<recetas.size();x++){
-			System.out.println((x+1)+ ". " + recetas.get(x).getNombre());
+			System.out.println((x+1)+ ") " + recetas.get(x).getNombre());
 		}
                 System.out.println("");
 	}

@@ -40,7 +40,7 @@ public class Receta {
 	}
 	public void MostrarIngredientes(){
 		for(int x=0;x<ingredientes.size();x++){
-			System.out.println((x+1)+" "+ingredientes.get(x).getNombre());			
+			System.out.println((x+1)+") "+ingredientes.get(x).getNombre());			
 		}
 	}
 	
@@ -86,7 +86,7 @@ public class Receta {
 	}	
 	public void MostrarInstrucciones(){
 		for(int x=0;x<instrucciones.size();x++){
-			System.out.println(instrucciones.get(x).getPaso());			
+			System.out.println((x+1)+") "+instrucciones.get(x).getPaso());			
 		}
                 System.out.println("");
 	}

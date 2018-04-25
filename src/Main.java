@@ -9,12 +9,11 @@ public class Main {
         private static void Texto(){
         
         System.out.println("¿Qué desea hacer?");	
-        System.out.println("1. Ver recetas");	
-        System.out.println("2. Rankear Receta");//Método debe ser creado
-        System.out.println("3. Agregar recetas");	
-        System.out.println("4. Borrar Receta");	        
-        System.out.println("5. Ingredientes");
-        System.out.println("6. Salir");	        
+        System.out.println("1. Ver recetas");
+        System.out.println("2. Agregar recetas");	
+        System.out.println("3. Borrar Receta");	        
+        System.out.println("4. Ingredientes");
+        System.out.println("5. Salir");	        
 	}
 	
         
@@ -25,7 +24,7 @@ public class Main {
                     Texto();
                     opc = leer.nextInt();
                     
-		}while(opc>6 || opc <1);
+		}while(opc>5 || opc <1);
 		
 		OpcionElegida(opc);
 	}
@@ -39,24 +38,22 @@ public class Main {
 		
 			case 1: recetario.VerCantidadRecetas();
 					recetario.ElegirReceta();					
+					break;			
+			case 2: recetario.AgregarReceta();
 					break;
-			case 2: 
+			case 3: recetario.QuitarReceta();
 					break;
-			case 3: recetario.AgregarReceta();
+			case 4: Case4(recetario);
 					break;
-			case 4: recetario.QuitarReceta();
-					break;
-			case 5: Case5(recetario);
-					break;
-			case 6: System.out.println("Gracias por utilizar RicettApp");
+			case 5: System.out.println("Gracias por utilizar RicettApp");
                     break;  
 		}
-		if(opc!=6){
+		if(opc!=5){
 			ValidadorMenu();
 		}		
 	}
 	
-	private static void Case5(Recetario recetario){
+	private static void Case4(Recetario recetario){
 		int opcCase5 =0;
 		Scanner leer = new Scanner(System.in);
 		do{
@@ -64,10 +61,10 @@ public class Main {
 		System.out.println("2. Cambiar ingrediente");
 		opcCase5= leer.nextInt();
 		}while(opcCase5!=1 && opcCase5!=2);
-		evaluarOpcCase5(recetario,opcCase5);
+		evaluarOpcCase4(recetario,opcCase5);
 	}
 	
-	private static void evaluarOpcCase5(Recetario recetario, int opcCase5){
+	private static void evaluarOpcCase4(Recetario recetario, int opcCase5){
 		if(opcCase5==1){
 			recetario.FindRecetaIngredientes();
 		}else{
