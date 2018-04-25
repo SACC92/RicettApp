@@ -54,21 +54,21 @@ public class Main {
 	}
 	
 	private static void Case4(Recetario recetario){
-		int opcCase5 =0;
+		int opcCase4 =0;
 		Scanner leer = new Scanner(System.in);
 		do{
 		System.out.println("1. Buscar recetas con cierto ingrediente");
 		System.out.println("2. Cambiar ingrediente");
-		opcCase5= leer.nextInt();
-		}while(opcCase5!=1 && opcCase5!=2);
-		evaluarOpcCase4(recetario,opcCase5);
+		opcCase4= leer.nextInt();
+		}while(opcCase4!=1 && opcCase4!=2);
+		evaluarOpcCase4(recetario,opcCase4);
 	}
 	
-	private static void evaluarOpcCase4(Recetario recetario, int opcCase5){
-		if(opcCase5==1){
+	private static void evaluarOpcCase4(Recetario recetario, int opcCase4){
+		if(opcCase4==1){
 			recetario.FindRecetaIngredientes();
 		}else{
-			if(opcCase5==2){
+			if(opcCase4==2){
 				recetario.MostrarAllRecetas();
 				recetario.CambiarIng();
 			}else{
