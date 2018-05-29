@@ -20,13 +20,16 @@ public class GuiAgregarReceta extends JFrame implements ActionListener{
     protected JPanel jPanel2;
     protected JTextField t2;
     protected JLabel jLabel2;    
+    protected JButton bNumIng;
     
     protected JPanel jPanel3;
     protected JLabel jLabel3;
-    protected JTextField t3;    
+    protected JTextField t3;
+    protected JButton bNumPasos;    
     
     protected JPanel jPanel4;
     protected JButton bAgregar;
+    
     
     public GuiAgregarReceta(String title){
         
@@ -35,14 +38,18 @@ public class GuiAgregarReceta extends JFrame implements ActionListener{
         
         bAgregar = new JButton("Agregar Receta");
         bAgregar.addActionListener(this);
+        bNumIng = new JButton("Nº Ingredientes");
+        bNumIng.addActionListener(this);
+        bNumPasos = new JButton("Nº Pasos");
+        bNumPasos.addActionListener(this);
         
         jLabel1 = new JLabel("Nombre");
-        jLabel2 = new JLabel("Ingrediente");
-        jLabel3 = new JLabel("Instruccion o paso");
+        jLabel2 = new JLabel("Nro. Ingredientes");
+        jLabel3 = new JLabel("Nro. Instrucciones");
         
         t1 = new JTextField("nombre");
-        t2 = new JTextField("ingrediente");
-        t3 = new JTextField("instruccion");
+        t2 = new JTextField("nº ingredientes");
+        t3 = new JTextField("nº instrucciones");
         
         jPanel1= new JPanel();
         jPanel2= new JPanel();
@@ -54,11 +61,13 @@ public class GuiAgregarReceta extends JFrame implements ActionListener{
         
         jPanel2.add(jLabel2);
         jPanel2.add(t2);
+        jPanel2.add(bNumIng);
         
         jPanel3.add(jLabel3);
         jPanel3.add(t3);
+        jPanel3.add(bNumPasos);
         
-        jPanel4.add(bAgregar);
+        jPanel4.add(bAgregar);   
         
         this.add(jPanel1);
         this.add(jPanel2);
@@ -74,6 +83,7 @@ public class GuiAgregarReceta extends JFrame implements ActionListener{
     }
     public void actionPerformed(ActionEvent e) {    
         
+        //ARREGLAR
         if(e.getSource()==bAgregar){
             
             Recetario recetario = new Recetario();
@@ -91,5 +101,17 @@ public class GuiAgregarReceta extends JFrame implements ActionListener{
             recetario.recetas.add(receta);
         }
         
+        if(e.getSource() == bNumPasos){
+        
+            GuiInputPasos guiPasos = new GuiInputPasos("Instrucciones");
+            guiPasos.setVisible(true);
+            
+        
+        }
+        
+        if(e.getSource() == bNumIng){}
+        
+            GuiInputIng guiIng = new GuiInputIng("Ingredientes");
+            guiIng.setVisible(true);
     }
 }
