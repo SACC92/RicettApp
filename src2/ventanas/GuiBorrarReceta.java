@@ -36,6 +36,7 @@ public class GuiBorrarReceta extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500,100);
         setLocationRelativeTo(null);
+        setResizable(false);
     } 
         
     public void actionPerformed(ActionEvent e) {        

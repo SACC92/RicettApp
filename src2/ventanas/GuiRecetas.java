@@ -11,12 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import funciones.Recetario;
-import java.util.ArrayList;
 
-/**
- *
- * @author Lucas
- */
 public class GuiRecetas extends JFrame implements ActionListener{
     
     protected JLabel jLabel1;
@@ -53,8 +48,8 @@ public class GuiRecetas extends JFrame implements ActionListener{
         listaRecetas = new JList();
         listaRecetas.setModel(listModel);        
         jPanel3= new JPanel();                          
-        listaRecetas.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        
+        listaRecetas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                
         jPanel4= new JPanel();
         area= new JTextArea();
         area.setSize(200,200);
@@ -87,19 +82,23 @@ public class GuiRecetas extends JFrame implements ActionListener{
         //Operaciones por defecto
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500,500);
-        setLocationRelativeTo(null);      
+        setLocationRelativeTo(null);  
+        setResizable(false);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if(e.getSource()==bVer){ 
-            //Segun recetas en una lista mostrar en "area" los datos:
-            //mostrar(Elemento del jlist elegido);
+        if(e.getSource()==bVer){       
+            int i= listaRecetas.getSelectedIndex();
+            mostrar(i);
         }        
     }
     
-    void mostrar(){
-        area.setText("Los datos de la receta son:"+ "\nNombre:" + "\nIngredientes:" + "\nInstrucciones:");
+    void mostrar(int i){
+        Recetario recetario = new Recetario();
+        area.setText("Los datos de la receta son:"+ "\nNombre:"+ recetario.recetas.get(i).getNombre() 
+                + "\nIngredientes:"+ recetario.recetas.get(i).getIngredientes().get(0).getNombre() 
+                + "\nInstrucciones:"+recetario.recetas.get(i).getInstruccion().get(0).getPaso());
     }
 }

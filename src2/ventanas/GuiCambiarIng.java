@@ -51,7 +51,7 @@ public class GuiCambiarIng extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500,200);
         setLocationRelativeTo(null);
-     
+        setResizable(false);
      
     }
     

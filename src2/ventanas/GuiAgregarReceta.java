@@ -69,6 +69,7 @@ public class GuiAgregarReceta extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500,150);
         setLocationRelativeTo(null);
+        setResizable(false);
         
     }
     public void actionPerformed(ActionEvent e) {    

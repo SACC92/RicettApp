@@ -38,7 +38,7 @@ public class GuiBuscarIng extends JFrame implements ActionListener{
         
         jPanel3 = new JPanel();
         jLabelR = new JLabel("Resultado:");
-        tResultado = new JTextField(" ");        
+        tResultado = new JTextField("            ");  
       
         //agregar los comportamientos a los obejtos de loa ventana
         bBuscar.addActionListener(this);
@@ -61,7 +61,7 @@ public class GuiBuscarIng extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500,200);
         setLocationRelativeTo(null);
-     
+        setResizable(false);
      
     }
     

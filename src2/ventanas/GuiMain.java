@@ -47,7 +47,7 @@ public class GuiMain extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500,200);
         setLocationRelativeTo(null);
-     
+        setResizable(false);
     }
     
     @Override
