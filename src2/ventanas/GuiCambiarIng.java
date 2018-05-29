@@ -4,11 +4,14 @@ import funciones.Recetario;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 public class GuiCambiarIng extends JFrame implements ActionListener{
     
@@ -16,12 +19,7 @@ public class GuiCambiarIng extends JFrame implements ActionListener{
     protected JPanel jPanel;
     
     protected JPanel jPanel2;
-    protected JLabel jLabelN;
-    protected JTextField tNombre;
-    
-    protected JPanel jPanel3;
-    protected JLabel jLabelIN;//letra i
-    protected JTextField tNuevo;
+    protected JList listaRecetas;
     
     GuiCambiarIng(String title) {
         
@@ -33,12 +31,15 @@ public class GuiCambiarIng extends JFrame implements ActionListener{
         jPanel = new JPanel();
         
         jPanel2 = new JPanel();
-        jLabelN = new JLabel("Receta:");
-        tNombre = new JTextField("nombre");
-        
-        jPanel3 = new JPanel();
-        jLabelIN= new JLabel("Ingrediente nuevo");
-        tNuevo = new JTextField("ingrediente");
+        //para el JList
+        Recetario recetario = new Recetario();
+        DefaultListModel listModel = new DefaultListModel();  
+        for(int x=0; x<recetario.recetas.size();x++){
+            listModel.addElement(recetario.recetas.get(x).getNombre());
+        }
+        listaRecetas = new JList();
+        listaRecetas.setModel(listModel);                  
+        listaRecetas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
       
         //agregar los comportamientos a los objetos de loa ventana
         bCambiar.addActionListener(this);
@@ -48,15 +49,10 @@ public class GuiCambiarIng extends JFrame implements ActionListener{
         
         jPanel.add(bCambiar);
         
-        jPanel2.add(jLabelN);
-        jPanel2.add(tNombre);
-        
-        jPanel3.add(jLabelIN);
-        jPanel3.add(tNuevo);
+        jPanel2.add(listaRecetas);
         
         this.add(jPanel);
         this.add(jPanel2);
-        this.add(jPanel3);
         //Operaciones por defecto
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500,200);
@@ -64,21 +60,12 @@ public class GuiCambiarIng extends JFrame implements ActionListener{
     }
     
      @Override
-    public void actionPerformed(ActionEvent e) { 
-        
-        Recetario recetario = new Recetario();    
+    public void actionPerformed(ActionEvent e) {    
         
         if (e.getSource()== bCambiar) {
-            String nombre = tNombre.getText();
-            String nuevo = tNuevo.getText();
-            for(int x=0; x< recetario.recetas.size();x++){                
-                if(nombre.equals(recetario.recetas.get(x).getNombre())){
-                    for(int y=0; y<recetario.recetas.get(x).getIngredientes().size();y++){                        
-                        recetario.recetas.get(x).getIngredientes().get(y).setNombre(nuevo);
-                    }
-                }
-            }
-        }        
-    }    
-    
+            int i = listaRecetas.getSelectedIndex();
+            GuiCambiarIngAntiguos ing = new GuiCambiarIngAntiguos("Cambiar",i);
+            ing.setVisible(true);
+        }       
+    }  
 }
