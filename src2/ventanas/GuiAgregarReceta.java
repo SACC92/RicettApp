@@ -17,62 +17,32 @@ public class GuiAgregarReceta extends JFrame implements ActionListener{
     protected JLabel jLabel1;    
     protected JTextField t1;
     
-    protected JPanel jPanel2;
-    protected JTextField t2;
-    protected JLabel jLabel2;    
-    protected JButton bNumIng;
-    
-    protected JPanel jPanel3;
-    protected JLabel jLabel3;
-    protected JTextField t3;
-    protected JButton bNumPasos;    
-    
-    protected JPanel jPanel4;
-    protected JButton bAgregar;
+    protected JPanel jPanel2;   
+    protected JButton bAgrIng;
     
     
     public GuiAgregarReceta(String title){
         
         super(title);
-        this.setLayout( new FlowLayout() );  
-        
-        bAgregar = new JButton("Agregar Receta");
-        bAgregar.addActionListener(this);
-        bNumIng = new JButton("Nº Ingredientes");
-        bNumIng.addActionListener(this);
-        bNumPasos = new JButton("Nº Pasos");
-        bNumPasos.addActionListener(this);
-        
-        jLabel1 = new JLabel("Nombre");
-        jLabel2 = new JLabel("Nro. Ingredientes");
-        jLabel3 = new JLabel("Nro. Instrucciones");
-        
-        t1 = new JTextField("nombre");
-        t2 = new JTextField("nº ingredientes");
-        t3 = new JTextField("nº instrucciones");
+        this.setLayout( new FlowLayout() );         
         
         jPanel1= new JPanel();
+        jLabel1 = new JLabel("Nombre");
+        t1 = new JTextField("nombre");
+        
         jPanel2= new JPanel();
-        jPanel3= new JPanel();
-        jPanel4= new JPanel();
+        bAgrIng = new JButton("Agregar Ingredientes");
+        bAgrIng.addActionListener(this);
+
         
         jPanel1.add(jLabel1);
         jPanel1.add(t1);
         
-        jPanel2.add(jLabel2);
-        jPanel2.add(t2);
-        jPanel2.add(bNumIng);
-        
-        jPanel3.add(jLabel3);
-        jPanel3.add(t3);
-        jPanel3.add(bNumPasos);
-        
-        jPanel4.add(bAgregar);   
+        jPanel2.add(bAgrIng);        
         
         this.add(jPanel1);
         this.add(jPanel2);
-        this.add(jPanel3);
-        this.add(jPanel4);
+
         
         //Operaciones por defecto
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -83,35 +53,40 @@ public class GuiAgregarReceta extends JFrame implements ActionListener{
     }
     public void actionPerformed(ActionEvent e) {    
         
-        //ARREGLAR
-        if(e.getSource()==bAgregar){
-            
-            Recetario recetario = new Recetario();
+        if(e.getSource() == bAgrIng){
             Receta receta = new Receta();
-            Ingrediente ingrediente = new Ingrediente();
-            Instruccion instruccion = new Instruccion();
-        
             String nombre = t1.getText();
-            ingrediente.setNombre(t2.getText());
-            instruccion.setPaso(t3.getText());
-        
             receta.setNombre(nombre);
-            receta.getIngredientes().add(ingrediente);
-            receta.getInstruccion().add(instruccion);
-            recetario.recetas.add(receta);
+            
+            GuiInputIng guiIng = new GuiInputIng("Ingredientes",receta);
+            guiIng.setVisible(true);
         }
+
+        //if(e.getSource()==bAgregar){
+            
+            //Recetario recetario = new Recetario();
+            //Receta receta = new Receta();
+            //Ingrediente ingrediente = new Ingrediente();
+            //Instruccion instruccion = new Instruccion();
         
-        if(e.getSource() == bNumPasos){
+            //String nombre = t1.getText();
+            //ingrediente.setNombre(t2.getText());
+            //instruccion.setPaso(t3.getText());
         
-            GuiInputPasos guiPasos = new GuiInputPasos("Instrucciones");
-            guiPasos.setVisible(true);
+            //receta.setNombre(nombre);
+            //receta.getIngredientes().add(ingrediente);
+            //receta.getInstruccion().add(instruccion);
+            //recetario.recetas.add(receta);
+        //}
+    
+        
+        //if(e.getSource() == bNumPasos){
+        
+            //GuiInputPasos guiPasos = new GuiInputPasos("Instrucciones");
+            //guiPasos.setVisible(true);
             
         
-        }
-        
-        if(e.getSource() == bNumIng){}
-        
-            GuiInputIng guiIng = new GuiInputIng("Ingredientes");
-            guiIng.setVisible(true);
+        //}
+
     }
 }
