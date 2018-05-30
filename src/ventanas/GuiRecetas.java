@@ -86,10 +86,13 @@ public class GuiRecetas extends JFrame implements ActionListener {
         }
     }
 
-    void mostrar(int i) {
+     void mostrar(int i){
         Recetario recetario = new Recetario();
-        area.setText("Los datos de la receta son:" + "\nNombre:" + recetario.recetas.get(i).getNombre()
-                + "\nIngredientes:" + recetario.recetas.get(i).getIngredientes().get(0).getNombre()
-                + "\nInstrucciones:" + recetario.recetas.get(i).getInstruccion().get(0).getPaso());
+        String ingredientes = recetario.obtenerIngredientes(i); 
+        String instrucciones = recetario.obtenerInstrucciones(i); 
+        
+        area.setText("Los datos de la receta son:"+ "\nNombre:"+" "+recetario.recetas.get(i).getNombre() 
+                + "\nIngredientes:"+ ingredientes 
+                + "\nInstrucciones:"+instrucciones);
     }
 }

@@ -32,4 +32,25 @@ public class Recetario {
             }
         }
     }
+    
+    //Métodos para mostrar en Ventana
+    public String obtenerIngredientes(int i){
+        Recetario recetario = new Recetario();
+        String ingredientes ="";
+        for(int x=0; x<recetario.recetas.get(i).getIngredientes().size();x++){
+            String ing = recetario.recetas.get(i).getIngredientes().get(x).getNombre();
+            ingredientes += "\n" + ing ;
+        }        
+        return ingredientes;
+    } 
+    
+    public String obtenerInstrucciones(int i){
+        Recetario recetario = new Recetario();
+        String instrucciones="";
+        for(int x=0; x<recetario.recetas.get(i).getInstruccion().size();x++){
+            String paso = recetario.recetas.get(i).getInstruccion().get(x).getPaso();
+            instrucciones +="\n"+ paso;
+        }
+        return instrucciones;
+    }
 }

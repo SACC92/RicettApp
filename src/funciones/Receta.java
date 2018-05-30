@@ -36,5 +36,5 @@ public class Receta {
 
     public void setInstruccion(ArrayList<Instruccion> instrucciones) {
         this.instrucciones = instrucciones;
-    }
+    }       
 }
