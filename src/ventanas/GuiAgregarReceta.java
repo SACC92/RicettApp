@@ -49,8 +49,9 @@ public class GuiAgregarReceta extends JFrame implements ActionListener {
             Receta receta = new Receta();
             String nombre = t1.getText();
             receta.setNombre(nombre);
-
+           
             GuiInputIng guiIng = new GuiInputIng("Ingredientes", receta);
+            setVisible(false);
             guiIng.setVisible(true);
         }
 

@@ -64,8 +64,6 @@ public class GuiInputPasos extends JFrame implements ActionListener {
             Recetario recetario = new Recetario();
             recetario.recetas.add(receta);
             setVisible(false);
-            GuiMain guiMenu = new GuiMain("Menú");
-            guiMenu.setVisible(true);
         }
     }
 }

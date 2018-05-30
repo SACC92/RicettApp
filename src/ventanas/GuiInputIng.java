@@ -59,6 +59,7 @@ public class GuiInputIng extends JFrame implements ActionListener {
 
         if (e.getSource() == bPasos) {
             GuiInputPasos guiPasos = new GuiInputPasos("Instrucciones", this.receta);
+            setVisible(false);
             guiPasos.setVisible(true);
         }
 
