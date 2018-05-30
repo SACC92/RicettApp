@@ -1,18 +1,10 @@
 package ventanas;
 
-/**
- *
- * @author Jekill
- */
-
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import funciones.Ingrediente;
 import funciones.Instruccion;
-
 import funciones.Receta;
 import funciones.Recetario;
 
@@ -54,7 +46,7 @@ public class GuiInputPasos extends JFrame implements ActionListener {
 
         //Operaciones por defecto
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 150);
+        setSize(700, 150);
         setLocationRelativeTo(null);
         setResizable(false);
 
