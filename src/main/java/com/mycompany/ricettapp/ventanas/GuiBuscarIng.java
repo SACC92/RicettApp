@@ -1,4 +1,4 @@
-package ventanas;
+package com.mycompany.ricettapp.ventanas;
 
 import funciones.Recetario;
 import java.awt.FlowLayout;

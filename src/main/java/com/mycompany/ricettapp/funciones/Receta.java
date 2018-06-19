@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Receta {
 
-    private ArrayList<Ingrediente> ingredientes;
-    private ArrayList<Instruccion> instrucciones;
-    private String nombre;
+    public ArrayList<Ingrediente> ingredientes;
+    public ArrayList<Instruccion> instrucciones;
+    public String nombre;
 
     public Receta() {
         this.nombre = " ";
