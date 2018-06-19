@@ -69,6 +69,7 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
 
         if (e.getSource() == bBuscar) {
             String ing = this.tBuscar.getText();
+            //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y BUSCAR EL INGREDIENTE, RETORNANDO RECETAS QUE LO CONTENGAN.
             tResultado.setText(recetario.buscarIngrediente(ing));
         }
     }

@@ -55,8 +55,10 @@ public class GuiMain extends JFrame implements ActionListener {
             ventRecet.setVisible(true);
         }
         if (e.getSource() == bAgregarReceta) {
-            GuiAgregarReceta ventA = new GuiAgregarReceta("Agregar Receta");
-            ventA.setVisible(true);
+            //GuiAgregarReceta ventA = new GuiAgregarReceta("Agregar Receta");
+            //ventA.setVisible(true);
+            GuiAdd ventana = new GuiAdd("Agregar Receta");
+            ventana.setVisible(true);
         }
         if (e.getSource() == bBorrarReceta) {
             GuiBorrarReceta ventB = new GuiBorrarReceta("Borrar Receta");

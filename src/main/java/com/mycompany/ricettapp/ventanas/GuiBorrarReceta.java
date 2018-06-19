@@ -42,6 +42,7 @@ public class GuiBorrarReceta extends JFrame implements ActionListener {
 
         if (e.getSource() == bBorrar) {
             String receta = t.getText();
+            //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y AHI BUSCAR LA RECETA, PARA BORRARLA.
             Recetario recetario = new Recetario();
             recetario.borrarRecetas(receta);
         }

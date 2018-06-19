@@ -87,6 +87,7 @@ public class GuiRecetas extends JFrame implements ActionListener {
     }
 
      void mostrar(int i){
+        //BUSCAR RECETA POR CODIGO EN EL ARCHIVO Y RETORNAR LA INFO DE ESTE.
         Recetario recetario = new Recetario();
         String ingredientes = recetario.obtenerIngredientes(i); 
         String instrucciones = recetario.obtenerInstrucciones(i); 
