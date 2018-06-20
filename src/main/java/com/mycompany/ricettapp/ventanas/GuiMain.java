@@ -52,20 +52,24 @@ public class GuiMain extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == bVerRecetas) {
+            System.out.println("hola");
             GuiVerRecetas ventRecet = new GuiVerRecetas("Ver Recetas");
             ventRecet.setVisible(true);
         }
         if (e.getSource() == bAgregarReceta) {
+            System.out.println("hola");
             //GuiAgregarReceta ventA = new GuiAgregarReceta("Agregar Receta");
             //ventA.setVisible(true);
             GuiAdd ventana = new GuiAdd("Agregar Receta");
             ventana.setVisible(true);
         }
         if (e.getSource() == bBorrarReceta) {
+            System.out.println("hola");
             GuiBorrarReceta ventB = new GuiBorrarReceta("Borrar Receta");
             ventB.setVisible(true);
         }
         if (e.getSource() == bIngredientes) {
+            System.out.println("hola");
             GuiBuscarIng buscar = new GuiBuscarIng("Buscar Ingrediente");
             buscar.setVisible(true);
         }
