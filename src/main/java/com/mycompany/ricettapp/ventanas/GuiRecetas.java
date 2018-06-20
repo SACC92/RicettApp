@@ -11,17 +11,24 @@ public class GuiRecetas extends JFrame {
 	private PanelJlist panelList;
 	
 	public GuiRecetas(String title) throws HeadlessException {
-		super(title);
+		
+                super(title);
 		this.panelList = new PanelJlist();
 		this.setContentPane(panelList);
 		
 		
 		this.setLocationRelativeTo(null);
 		this.setSize(550, 550);
+                setResizable(false);
 		this.setMinimumSize(this.getSize());
 		this.setMaximumSize(this.getSize());
-
+                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
+                
+                
+                
+                
+                
 	}
 
 

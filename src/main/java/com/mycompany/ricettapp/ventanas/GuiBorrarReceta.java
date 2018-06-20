@@ -6,45 +6,28 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import com.mycompany.ricettapp.funciones.Recetario;
 
-public class GuiBorrarReceta extends JFrame implements ActionListener {
+public class GuiBorrarReceta extends JFrame {
 
     protected JPanel jPanel;
-    protected JLabel jLabel;
-    protected JButton bBorrar;
-    protected JTextField t;
+    
+    private PanelJlistBorrar panelList;
 
     public GuiBorrarReceta(String title) {
 
         super(title);
         this.setLayout(new FlowLayout());
+        
+        this.panelList = new PanelJlistBorrar();
+	this.setContentPane(panelList);
 
         jPanel = new JPanel();
-        jLabel = new JLabel("Receta:");
-        t = new JTextField("nombre");
-        bBorrar = new JButton("Borrar");
-
-        bBorrar.addActionListener(this);
-
-        jPanel.add(jLabel);
-        jPanel.add(t);
-        jPanel.add(bBorrar);
 
         this.add(jPanel);
 
         //Operaciones por defecto
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(700, 100);
+        setSize(550, 550);
         setLocationRelativeTo(null);
         setResizable(false);
-    }
-
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == bBorrar) {
-            String receta = t.getText();
-            //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y AHI BUSCAR LA RECETA, PARA BORRARLA.
-            Recetario recetario = new Recetario();
-            recetario.borrarRecetas(receta);
-        }
     }
 }
