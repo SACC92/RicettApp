@@ -92,11 +92,10 @@ public class GuiVerRecetas extends JFrame implements ActionListener{
                 this.add(jPanel2);
                 this.add(jPanel3);
                 
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                setSize(700, 250);
-                setLocationRelativeTo(null);
-                setResizable(false);
-                
+		this.setLocationRelativeTo(null);
+		this.setSize(500, 250);
+		this.setMinimumSize(this.getSize());
+		this.setMaximumSize(this.getSize());
                 
                 this.setVisible(true);
 	}
