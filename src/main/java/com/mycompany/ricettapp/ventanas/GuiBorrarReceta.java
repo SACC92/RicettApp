@@ -4,7 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import funciones.Recetario;
+import com.mycompany.ricettapp.funciones.Recetario;
 
 public class GuiBorrarReceta extends JFrame implements ActionListener {
 

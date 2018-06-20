@@ -1,4 +1,4 @@
-package ventanas;
+package com.mycompany.ricettapp.ventanas;
 
 import java.awt.Container;
 import java.awt.Dimension;

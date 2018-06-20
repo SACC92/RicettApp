@@ -1,4 +1,4 @@
-package funciones;
+package com.mycompany.ricettapp.funciones;
 
 public class Ingrediente {
 

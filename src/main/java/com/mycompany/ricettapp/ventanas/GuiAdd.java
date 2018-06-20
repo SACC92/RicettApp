@@ -4,10 +4,10 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import funciones.Receta;
-import funciones.Ingrediente;
-import funciones.Instruccion;
-import funciones.Recetario;
+import com.mycompany.ricettapp.funciones.Receta;
+import com.mycompany.ricettapp.funciones.Ingrediente;
+import com.mycompany.ricettapp.funciones.Instruccion;
+import com.mycompany.ricettapp.funciones.Recetario;
 
 public class GuiAdd extends JFrame implements ActionListener{
    

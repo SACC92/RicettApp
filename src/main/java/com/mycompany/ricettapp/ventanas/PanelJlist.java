@@ -1,6 +1,6 @@
-package ventanas;
+package com.mycompany.ricettapp.ventanas;
 
-import funciones.Recetario;
+import com.mycompany.ricettapp.funciones.Recetario;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
