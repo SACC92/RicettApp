@@ -18,7 +18,7 @@ public class GuiMain extends JFrame implements ActionListener {
 
         super(title);
         this.setLayout(new FlowLayout());
-        
+
         //instanciar los objetos de la ventana
         bVerRecetas = new JButton("Ver Recetas");
         bAgregarReceta = new JButton("Agregar Receta");
@@ -45,7 +45,7 @@ public class GuiMain extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 200);
         setLocationRelativeTo(null);
-        setResizable(false); 
+        setResizable(false);
     }
 
     @Override
@@ -56,8 +56,6 @@ public class GuiMain extends JFrame implements ActionListener {
             ventRecet.setVisible(true);
         }
         if (e.getSource() == bAgregarReceta) {
-            //GuiAgregarReceta ventA = new GuiAgregarReceta("Agregar Receta");
-            //ventA.setVisible(true);
             GuiAdd ventana = new GuiAdd("Agregar Receta");
             ventana.setVisible(true);
         }
