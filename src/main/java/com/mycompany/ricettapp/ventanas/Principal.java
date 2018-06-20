@@ -1,6 +1,6 @@
 package com.mycompany.ricettapp.ventanas;
 
-public class Main {
+public class Principal {
     
     public static void main (String[]args){
         
