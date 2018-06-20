@@ -24,13 +24,7 @@ public class GuiVerRecetas extends JFrame {
 		this.setMaximumSize(this.getSize());
                 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
-                
-                
-                
-                
-                
+
 	}
-
-
 
 }
