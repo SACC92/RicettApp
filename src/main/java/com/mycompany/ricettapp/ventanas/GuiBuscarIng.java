@@ -34,11 +34,11 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
 
         jPanel2 = new JPanel();
         jLabelB = new JLabel("Busqueda:");
-        tBuscar = new JTextField("nombre");
+        tBuscar = new JTextField(10);
 
         jPanel3 = new JPanel();
         jLabelR = new JLabel("Resultado:");
-        tResultado = new JTextField("            ");
+        tResultado = new JTextField(15);
 
         //agregar los comportamientos a los obejtos de loa ventana
         bBuscar.addActionListener(this);
