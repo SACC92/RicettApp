@@ -96,6 +96,7 @@ public class GuiVerRecetas extends JFrame implements ActionListener{
 		this.setSize(500, 250);
 		this.setMinimumSize(this.getSize());
 		this.setMaximumSize(this.getSize());
+                this.setResizable(false);
                 
                 this.setVisible(true);
 	}
