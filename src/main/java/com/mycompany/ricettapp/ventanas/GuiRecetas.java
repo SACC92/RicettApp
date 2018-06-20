@@ -17,7 +17,7 @@ public class GuiRecetas extends JFrame {
 		
 		
 		this.setLocationRelativeTo(null);
-		this.setSize(400, 250);
+		this.setSize(550, 550);
 		this.setMinimumSize(this.getSize());
 		this.setMaximumSize(this.getSize());
 
