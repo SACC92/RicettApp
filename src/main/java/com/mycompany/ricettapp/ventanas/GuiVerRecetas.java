@@ -6,11 +6,11 @@ import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
 
-public class GuiRecetas extends JFrame {	
+public class GuiVerRecetas extends JFrame {	
 	
 	private PanelJlist panelList;
 	
-	public GuiRecetas(String title) throws HeadlessException {
+	public GuiVerRecetas(String title) throws HeadlessException {
 		
                 super(title);
 		this.panelList = new PanelJlist();
