@@ -11,7 +11,9 @@ import java.nio.file.Paths;
 
 public class Gestor {
 
-    /*public static void main(String[] args) {
+    /*
+    public static void main(String[] args) {
+        
         crearDirectorio();
         crearRecetario();
         Receta r = new Receta();
@@ -24,8 +26,7 @@ public class Gestor {
         r.getIngredientes().add(agua);
         r.getInstrucciones().add(paso1);
         añadirReceta(r,001,1);
-        
-        
+        System.out.println(leerRecetario());
         
     }
     */
@@ -69,7 +70,7 @@ public class Gestor {
 
     }
 
-    public static String leerRecetario(){
+    public static String leerRecetario(){ //FUNCIONA
     
         String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario.txt";
         Path archivo = Paths.get(ruta);
@@ -97,13 +98,13 @@ public class Gestor {
         String ingredientes = ingredientes(receta);
         String instrucciones = instrucciones(receta);
 
-        String textoReceta = "@" + num + "\n"
+        String textoRecetaNueva = "@" + num + "\n"
                 + codRec + "," + "\t" + receta.ranking + " ," + "\t" + receta.ingredientes.size() + " ," + "\t" + receta.instrucciones.size() + "\n"
                 + ingredientes + "\n"
                 + instrucciones;
 
-        StringBuilder sb = new StringBuilder(textoReceta);
-        sb.append("\n" + textoReceta);
+        StringBuilder sb = new StringBuilder(leerRecetario());
+        sb.append("\n" + textoRecetaNueva);
 
         try {
             Files.write(archivo, (sb.toString()).getBytes());
