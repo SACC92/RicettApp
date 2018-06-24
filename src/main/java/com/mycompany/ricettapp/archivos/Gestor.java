@@ -48,6 +48,27 @@ public class Gestor {
 
     }
 
+    public static String leerRecetario(){
+    
+        String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario";
+        Path archivo = Paths.get(ruta);
+        String texto = "";
+
+        try{
+            
+            texto = new String(Files.readAllBytes(archivo));
+            
+        }
+        
+        catch(IOException e){
+        
+            System.out.println("No se pudo leer el archivo");
+        
+        } 
+        
+        return texto;
+    }
+    
     public static void añadirReceta(Receta receta, int codRec, int num) {
 
         String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario";
@@ -99,13 +120,13 @@ public class Gestor {
     }
 
     public static String leerNombresRecetas() {
-
+    
     }
 
     public static String leerReceta() {
-
+        
     }
-
+    
     public static String buscarReceta() {
 
     }
@@ -114,8 +135,8 @@ public class Gestor {
 
     }
 
-    public static void borrarReceta(String nombre) {
-
+    public static void borrarReceta(int codRec){
+        
     }
 
 }
