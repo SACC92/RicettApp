@@ -41,7 +41,7 @@ public class Gestor {
 
     public static void crearRecetario() {
 
-        String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario";
+        String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario.txt";
         Path archivo = Paths.get(ruta);
         String texto = "Recetario";
 
