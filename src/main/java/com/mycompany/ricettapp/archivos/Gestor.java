@@ -1,5 +1,7 @@
 package com.mycompany.ricettapp.archivos;
 
+import com.mycompany.ricettapp.funciones.Ingrediente;
+import com.mycompany.ricettapp.funciones.Instruccion;
 import com.mycompany.ricettapp.funciones.Receta;
 import java.io.File;
 import java.io.IOException;
@@ -9,13 +11,26 @@ import java.nio.file.Paths;
 
 public class Gestor {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         crearDirectorio();
         crearRecetario();
+        Receta r = new Receta();
+        Ingrediente agua = new Ingrediente();
+        agua.setNombre("agua");
+        Instruccion paso1 = new Instruccion();
+        paso1.setPaso("hervir");
+        r.setNombre("Agua hervida");
+        r.setRanking(8);
+        r.getIngredientes().add(agua);
+        r.getInstrucciones().add(paso1);
+        añadirReceta(r,001,1);
+        
+        
         
     }
+    */
     
-    public static void crearDirectorio() {
+    public static void crearDirectorio() { //FUNCIONA
         String ruta = new File("").getAbsolutePath() + File.separator + "Recetas";
         Path directorio = Paths.get(ruta);
 
@@ -39,7 +54,7 @@ public class Gestor {
 
     }
 
-    public static void crearRecetario() {
+    public static void crearRecetario() { //FUNCIONA
 
         String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario.txt";
         Path archivo = Paths.get(ruta);
@@ -56,7 +71,7 @@ public class Gestor {
 
     public static String leerRecetario(){
     
-        String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario";
+        String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario.txt";
         Path archivo = Paths.get(ruta);
         String texto = "";
 
@@ -75,15 +90,15 @@ public class Gestor {
         return texto;
     }
     
-    public static void añadirReceta(Receta receta, int codRec, int num) {
+    public static void añadirReceta(Receta receta, int codRec, int num) { //FUNCIONA
 
-        String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario";
+        String ruta = new File("").getAbsolutePath() + File.separator + "Recetas" + File.separator + "recetario.txt";
         Path archivo = Paths.get(ruta);
         String ingredientes = ingredientes(receta);
         String instrucciones = instrucciones(receta);
 
         String textoReceta = "@" + num + "\n"
-                + codRec + "," + "\t" + receta.ranking + "," + "\t" + receta.ingredientes.size() + "," + "\t" + receta.instrucciones.size() + "\n"
+                + codRec + "," + "\t" + receta.ranking + " ," + "\t" + receta.ingredientes.size() + " ," + "\t" + receta.instrucciones.size() + "\n"
                 + ingredientes + "\n"
                 + instrucciones;
 
@@ -99,7 +114,7 @@ public class Gestor {
 
     }
 
-    private static String ingredientes(Receta receta) {
+    private static String ingredientes(Receta receta) { //FUNCIONA
 
         String ingredientes = "";
 
@@ -112,7 +127,7 @@ public class Gestor {
         return ingredientes;
     }
 
-    private static String instrucciones(Receta receta) {
+    private static String instrucciones(Receta receta) { //FUNCIONA
 
         String instrucciones = "";
 
