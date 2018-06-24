@@ -9,6 +9,12 @@ import java.nio.file.Paths;
 
 public class Gestor {
 
+    public static void main(String[] args) {
+        crearDirectorio();
+        crearRecetario();
+        
+    }
+    
     public static void crearDirectorio() {
         String ruta = new File("").getAbsolutePath() + File.separator + "Recetas";
         Path directorio = Paths.get(ruta);
@@ -119,6 +125,7 @@ public class Gestor {
         return instrucciones;
     }
 
+    /*
     public static String leerNombresRecetas() {
     
     }
@@ -138,5 +145,6 @@ public class Gestor {
     public static void borrarReceta(int codRec){
         
     }
+    */
 
 }

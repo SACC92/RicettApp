@@ -80,8 +80,8 @@ public class PrototipoGestor {
         String saltoLinea = System.getProperty("line.separator");
         
         String instrucciones = "";
-        for(int x =0; x<receta.getInstruccion().size();x++){
-            instrucciones = instrucciones + saltoLinea + receta.getInstruccion().get(x).getPaso();
+        for(int x =0; x<receta.getInstrucciones().size();x++){
+            instrucciones = instrucciones + saltoLinea + receta.getInstrucciones().get(x).getPaso();
         }  
         return instrucciones;
     }     
