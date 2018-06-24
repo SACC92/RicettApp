@@ -99,7 +99,7 @@ public class Gestor {
         String instrucciones = instrucciones(receta);
 
         String textoRecetaNueva = "@" + num + "\n"
-                + codRec + "," + "\t" + receta.ranking + " ," + "\t" + receta.ingredientes.size() + " ," + "\t" + receta.instrucciones.size() + "\n"
+                + codRec + " ," + "\t" + receta.getNombre() + " ," + "\t" + receta.ranking + " ," + "\t" + receta.ingredientes.size() + " ," + "\t" + receta.instrucciones.size() + "\n"
                 + ingredientes + "\n"
                 + instrucciones;
 
@@ -140,13 +140,13 @@ public class Gestor {
 
         return instrucciones;
     }
-
+    
     /*
     public static String leerNombresRecetas() {
     
     }
-
-    public static String leerReceta() {
+    
+    public static String leerReceta(int codRec) {
         
     }
     
