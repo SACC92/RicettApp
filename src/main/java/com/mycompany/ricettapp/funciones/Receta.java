@@ -45,11 +45,11 @@ public class Receta {
         this.ingredientes = ingredientes;
     }
 
-    public ArrayList<Instruccion> getInstruccion() {
+    public ArrayList<Instruccion> getInstrucciones() {
         return instrucciones;
     }
 
-    public void setInstruccion(ArrayList<Instruccion> instrucciones) {
+    public void setInstrucciones(ArrayList<Instruccion> instrucciones) {
         this.instrucciones = instrucciones;
     }       
 }

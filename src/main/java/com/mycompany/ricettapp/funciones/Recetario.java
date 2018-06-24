@@ -47,8 +47,8 @@ public class Recetario {
     public String obtenerInstrucciones(int i){
         Recetario recetario = new Recetario();
         String instrucciones="";
-        for(int x=0; x<recetario.recetas.get(i).getInstruccion().size();x++){
-            String paso = recetario.recetas.get(i).getInstruccion().get(x).getPaso();
+        for(int x=0; x<recetario.recetas.get(i).getInstrucciones().size();x++){
+            String paso = recetario.recetas.get(i).getInstrucciones().get(x).getPaso();
             instrucciones +="\n"+ paso;
         }
         return instrucciones;

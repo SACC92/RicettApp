@@ -1,8 +1,10 @@
 package com.mycompany.ricettapp.ventanas;
 
+import com.mycompany.ricettapp.archivos.Gestor;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dialog;
 import javax.swing.*;
 import com.mycompany.ricettapp.funciones.Receta;
 import com.mycompany.ricettapp.funciones.Ingrediente;
@@ -29,6 +31,7 @@ public class GuiAdd extends JFrame implements ActionListener{
     protected JButton guardarB;
     
     protected Receta receta;
+    protected Gestor gestor;
 
     
     
@@ -77,6 +80,7 @@ public class GuiAdd extends JFrame implements ActionListener{
         ingredienteB.addActionListener(this);
        
         receta = new Receta();
+        gestor = new Gestor();
 
         //Operaciones por defecto
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -102,8 +106,8 @@ public class GuiAdd extends JFrame implements ActionListener{
                 Recetario recetario = new Recetario();
 
                 receta.setNombre(nombreTF.getText());
-                recetario.recetas.add(receta);
-                //EN ESTA PARTE LA RECETA DEBE SER GUARDADA EN EL ARCHIVO
+                //recetario.recetas.add(receta);
+                gestor.addReceta(receta);
                 setVisible(false);
 
             }
@@ -114,7 +118,7 @@ public class GuiAdd extends JFrame implements ActionListener{
 
             if (ingredienteTF.getText().isEmpty()) {
 
-                //PopUp de error campo vacio.
+                JOptionPane.showMessageDialog(null, "Ingrese al menos un ingrediente y presione Añadir Ingrediente");
                 
             } else {
 
@@ -131,14 +135,14 @@ public class GuiAdd extends JFrame implements ActionListener{
 
             if (instruccionTF.getText().isEmpty()) {
 
-                //PopUp de error campo vacio.
+                JOptionPane.showMessageDialog(null, "Ingrese al menos una instrucción y presione Añadir Instrucción");
                 
             } else {
 
                 Instruccion instruccion = new Instruccion();
 
                 instruccion.setPaso(instruccionTF.getText());
-                receta.getInstruccion().add(instruccion);
+                receta.getInstrucciones().add(instruccion);
 
             }
 
