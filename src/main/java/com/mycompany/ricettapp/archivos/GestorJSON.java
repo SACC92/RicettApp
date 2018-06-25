@@ -95,7 +95,7 @@ public class GestorJSON {
 
         try {
 
-            Object obj = parser.parse(new FileReader("prueba.json"));
+            Object obj = parser.parse(new FileReader("recetario.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
             System.out.println(jsonObject);
