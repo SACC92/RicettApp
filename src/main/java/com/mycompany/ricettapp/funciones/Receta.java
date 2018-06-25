@@ -1,8 +1,13 @@
 package com.mycompany.ricettapp.funciones;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import org.json.simple.JSONStreamAware;
+import org.json.simple.JSONValue;
 
-public class Receta {
+public class Receta implements JSONStreamAware {
 
     public ArrayList<Ingrediente> ingredientes;
     public ArrayList<Instruccion> instrucciones;
@@ -15,6 +20,15 @@ public class Receta {
         this.instrucciones = new ArrayList<Instruccion>();
         this.ranking=0;
     }
+
+    public Receta(String nombre, int ranking, ArrayList<Ingrediente> ingredientes, ArrayList<Instruccion> instrucciones) {
+        this.ingredientes = ingredientes;
+        this.instrucciones = instrucciones;
+        this.nombre = nombre;
+        this.ranking = ranking;
+    }
+    
+    
     
     public void rankear(){
         this.ranking += 1;
@@ -52,4 +66,20 @@ public class Receta {
     public void setInstrucciones(ArrayList<Instruccion> instrucciones) {
         this.instrucciones = instrucciones;
     }       
+
+    @Override
+    public void writeJSONString(Writer writer) throws IOException {
+        
+        try{
+            
+            LinkedHashMap obj = new LinkedHashMap();
+            obj.put("ingredientes",this.ingredientes);
+            obj.put("instrucciones", this.instrucciones);
+            obj.put("nombre", this.nombre);
+            obj.put("ranking", String.valueOf(this.ranking));
+            JSONValue.writeJSONString(obj, writer);
+            
+        }catch(IOException e){}
+        
+    }
 }

@@ -156,6 +156,8 @@ public class Gestor {
 
     public static String buscarIngrediente() {
 
+    
+    
     }
 
     public static void borrarReceta(int codRec){

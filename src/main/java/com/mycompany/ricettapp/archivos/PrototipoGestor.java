@@ -2,7 +2,10 @@
 package main.java.com.mycompany.ricettapp.archivos;
 
 import com.mycompany.ricettapp.funciones.Receta;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -119,5 +122,40 @@ public class PrototipoGestor {
         else{
           System.out.println(pal + " se repitió "+contador+" veces");
         }
+    }    
+    
+    private static int contarLineas() throws FileNotFoundException, IOException{
+        int numLineas=0;
+        String fichero = new File("").getAbsolutePath() + File.separator +"Recetas"+File.separator+ "Recetario"+".txt";        
+        BufferedReader reader = new BufferedReader(new FileReader(fichero));
+        String linea= reader.readLine();
+        
+        while (linea!=null)
+        {        
+        numLineas=numLineas+1;
+        linea=reader.readLine();
+        }   
+        return numLineas;
+    }
+    
+    private static String [] vectorLineas() throws FileNotFoundException, IOException{
+        int numLineas=0;
+        int contador=0;
+        String fichero = new File("").getAbsolutePath() + File.separator +"Recetas"+File.separator+ "Recetario"+".txt";        
+                
+        BufferedReader reader = new BufferedReader(new FileReader(fichero));
+        String linea = reader.readLine();         
+        
+        numLineas=contarLineas();
+        
+        String datos[] = new String[numLineas];
+        
+        while(linea!=null&&contador<numLineas)
+        {
+            datos[contador]=linea;
+            linea=reader.readLine();
+            contador++;
+        }   
+        return datos;
     }
 }
