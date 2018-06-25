@@ -6,7 +6,7 @@ public class Recetario {
 
     public static ArrayList<Receta> recetas = new ArrayList<Receta>();
 
-    public String buscarIngrediente(String ing) {
+     public String buscarIngrediente(String ing) {
         String resultado = "";
         String saltoLinea=System.getProperty("line.separator");
         for (int x = 0; x < recetas.size(); x++) {

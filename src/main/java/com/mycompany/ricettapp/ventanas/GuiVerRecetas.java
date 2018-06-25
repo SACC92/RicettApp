@@ -21,8 +21,8 @@ import javax.swing.ListSelectionModel;
 
 public class GuiVerRecetas extends JFrame implements ActionListener {
 
-    private JScrollPane menuScrollPane;
-    private JScrollPane areaScrollPane;
+    protected JScrollPane menuScrollPane;
+    protected JScrollPane areaScrollPane;
 
     protected JList listaRecetas;
 

@@ -1,6 +1,8 @@
 package com.mycompany.ricettapp.ventanas;
 
 import com.mycompany.ricettapp.funciones.Recetario;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class GuiBuscarIng extends JFrame implements ActionListener {
@@ -21,7 +25,9 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
 
     protected JPanel jPanel3;
     protected JLabel jLabelR;
-    protected JTextField tResultado;
+    
+    protected JScrollPane areaScrollPane;
+    protected JTextArea area;
 
     GuiBuscarIng(String title) {
 
@@ -38,7 +44,10 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
 
         jPanel3 = new JPanel();
         jLabelR = new JLabel("Resultado:");
-        tResultado = new JTextField(15);
+        
+        area = new JTextArea();
+        areaScrollPane = new JScrollPane(area);
+        areaScrollPane.setPreferredSize(new Dimension(100, 100));
 
         //agregar los comportamientos a los obejtos de loa ventana
         bBuscar.addActionListener(this);
@@ -49,9 +58,10 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
 
         jPanel2.add(jLabelB);
         jPanel2.add(tBuscar);
-
+              
+        this.areaScrollPane.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         jPanel3.add(jLabelR);
-        jPanel3.add(tResultado);
+        jPanel3.add(areaScrollPane);  
 
         this.add(jPanel);
         this.add(jPanel2);
@@ -70,7 +80,7 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
         if (e.getSource() == bBuscar) {
             String ing = this.tBuscar.getText();
             //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y BUSCAR EL INGREDIENTE, RETORNANDO RECETAS QUE LO CONTENGAN.
-            tResultado.setText(recetario.buscarIngrediente(ing));
+            area.setText(recetario.buscarIngrediente(ing));
         }
     }
 }
