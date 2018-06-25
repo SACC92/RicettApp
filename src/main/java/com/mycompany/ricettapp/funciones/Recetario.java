@@ -7,13 +7,14 @@ public class Recetario {
     public static ArrayList<Receta> recetas = new ArrayList<Receta>();
 
     public String buscarIngrediente(String ing) {
-        //Métdo debe ser mejorado, pues solo sirve para 1 resultado
-        String resultado = " ";
+        String resultado = "";
+        String saltoLinea=System.getProperty("line.separator");
         for (int x = 0; x < recetas.size(); x++) {
             for (int y = 0; y < recetas.get(x).getIngredientes().size(); y++) {
 
                 if (ing.equals(recetas.get(x).getIngredientes().get(y).getNombre())) {
-                    resultado = recetas.get(x).getNombre();
+                    resultado = resultado+saltoLinea+recetas.get(x).getNombre();
+                    y=recetas.get(x).getIngredientes().size();
                 }
 
             }
@@ -31,26 +32,5 @@ public class Recetario {
                 this.recetas.remove(x);
             }
         }
-    }
-    
-    //Métodos para mostrar en Ventana
-    public String obtenerIngredientes(int i){
-        Recetario recetario = new Recetario();
-        String ingredientes ="";
-        for(int x=0; x<recetario.recetas.get(i).getIngredientes().size();x++){
-            String ing = recetario.recetas.get(i).getIngredientes().get(x).getNombre();
-            ingredientes += "\n" + ing ;
-        }        
-        return ingredientes;
-    } 
-    
-    public String obtenerInstrucciones(int i){
-        Recetario recetario = new Recetario();
-        String instrucciones="";
-        for(int x=0; x<recetario.recetas.get(i).getInstrucciones().size();x++){
-            String paso = recetario.recetas.get(i).getInstrucciones().get(x).getPaso();
-            instrucciones +="\n"+ paso;
-        }
-        return instrucciones;
     }
 }

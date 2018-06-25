@@ -9,8 +9,8 @@ import org.json.simple.JSONValue;
 
 public class Receta implements JSONStreamAware {
 
-    public ArrayList<Ingrediente> ingredientes;
-    public ArrayList<Instruccion> instrucciones;
+    public static ArrayList<Ingrediente> ingredientes;
+    public static ArrayList<Instruccion> instrucciones;
     public String nombre;
     public String ranking;
 
@@ -28,7 +28,28 @@ public class Receta implements JSONStreamAware {
         this.ranking = ranking;
     }
     
+    public String toString(){
+        String saltoLinea = System.getProperty("line.separator");
+        return "Nombre: "+nombre+saltoLinea+"Ranking: "+ranking+saltoLinea+"Ingredientes: "+ ings()+saltoLinea+"Instrucciones:"+inst();
+    }
     
+    private static String ings(){
+        String ings = "";
+        String saltoLinea = System.getProperty("line.separator");
+        for(int x=0;x<ingredientes.size();x++){
+            ings+= saltoLinea + ingredientes.get(x).getNombre();
+        }        
+        return ings;
+    }   
+    
+    private static String inst(){
+        String inst = "";
+        String saltoLinea = System.getProperty("line.separator");
+        for(int x=0;x<instrucciones.size();x++){
+            inst+= saltoLinea + instrucciones.get(x).getPaso();
+        }        
+        return inst;
+    }
     
     public void rankear(){
         this.ranking += 1;

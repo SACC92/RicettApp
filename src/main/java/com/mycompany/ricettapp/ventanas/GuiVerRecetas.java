@@ -116,21 +116,12 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
     void mostrar(int i) {
         if (i > -1) {
             Recetario recetario = new Recetario();
-            String ingredientes = recetario.obtenerIngredientes(i);
-            String instrucciones = recetario.obtenerInstrucciones(i);
-
-            gestor.leerReceta();
-
-            recetario.recetas.get(i).rankear();
-
-            area.setText("Los datos de la receta son:" + "\nNombre:" + " " + recetario.recetas.get(i).getNombre()
-                    + "\nRanking:" + recetario.recetas.get(i).getRanking()
-                    + "\nIngredientes:" + ingredientes
-                    + "\nInstrucciones:" + instrucciones);
+           recetario.recetas.get(i).rankear();
+            String saltoLinea = System.getProperty("line.separator");
+            area.setText("Los datos de la receta son:"+saltoLinea+ recetario.recetas.get(i).toString());
         } else {
             area.setText("Seleccione una receta de la lista"
                     + "\npara poder realizar esta acción");
         }
     }
-
 }
