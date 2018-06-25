@@ -33,10 +33,10 @@ public class GestorJSON {
         echar.setPaso("echar a la olla");
         
         
-        llenarJSONArray(ingredientes,agua);
-        llenarJSONArray(ingredientes,fideos);
-        llenarJSONArray(instrucciones,sacar);
-        llenarJSONArray(instrucciones,echar);
+        llenarJSONArray(ingredientes,agua.getNombre());
+        llenarJSONArray(ingredientes,fideos.getNombre());
+        llenarJSONArray(instrucciones,sacar.getPaso());
+        llenarJSONArray(instrucciones,echar.getPaso());
         
         
         saveFile(encode("tallarines",9,ingredientes,instrucciones));
