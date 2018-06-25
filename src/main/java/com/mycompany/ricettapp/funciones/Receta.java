@@ -12,16 +12,16 @@ public class Receta implements JSONStreamAware {
     public ArrayList<Ingrediente> ingredientes;
     public ArrayList<Instruccion> instrucciones;
     public String nombre;
-    public int ranking;
+    public String ranking;
 
     public Receta() {
         this.nombre = " ";
         this.ingredientes = new ArrayList<Ingrediente>();
         this.instrucciones = new ArrayList<Instruccion>();
-        this.ranking=0;
+        this.ranking="0";
     }
 
-    public Receta(String nombre, int ranking, ArrayList<Ingrediente> ingredientes, ArrayList<Instruccion> instrucciones) {
+    public Receta(String nombre, String ranking, ArrayList<Ingrediente> ingredientes, ArrayList<Instruccion> instrucciones) {
         this.ingredientes = ingredientes;
         this.instrucciones = instrucciones;
         this.nombre = nombre;
@@ -35,11 +35,11 @@ public class Receta implements JSONStreamAware {
     }
     
     //Getters y Setters
-    public int getRanking(){
+    public String getRanking(){
         return ranking;
     }
     
-    public void setRanking(int ranking){
+    public void setRanking(String ranking){
         this.ranking=ranking;
     }
     

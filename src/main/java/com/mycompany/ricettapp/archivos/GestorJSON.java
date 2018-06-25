@@ -1,94 +1,139 @@
 package com.mycompany.ricettapp.archivos;
 
-import org.json.simple.*;
-import com.mycompany.ricettapp.funciones.*;
+import com.mycompany.ricettapp.funciones.Ingrediente;
+import com.mycompany.ricettapp.funciones.Instruccion;
+import com.mycompany.ricettapp.funciones.Receta;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 
 public class GestorJSON {
+
+    static JSONArray ingredientes = new JSONArray();
+    static JSONArray instrucciones = new JSONArray();
     
-    public static ArrayList<String> ingredientes = new ArrayList();
-    public static ArrayList<String> instrucciones = new ArrayList();
-    public static String nombre;
-    public static int ranking;
-    
-    public static void llenado(){
-    
-        ingredientes.add("agua");
-        ingredientes.add("agua2");
-        instrucciones.add("paso1");
-        instrucciones.add("paso2");
-        nombre = "agua hervida";
-        ranking = 5;
-    
-    
-    }
-    
-    
-    
-    public static void main(String[] args) throws IOException, org.json.simple.parser.ParseException {
+    public static void main(String[] args) {
         
-        llenado();
+        Ingrediente agua = new Ingrediente();
+        Ingrediente fideos = new Ingrediente();
+        Instruccion sacar = new Instruccion();
+        Instruccion echar = new Instruccion();
         
-        String sinFormatear = encodeRecetas(addRecetas(new JSONArray(),ingredientes, instrucciones, nombre, ranking));
-        System.out.println(sinFormatear);
-        guardarArchivo(addRecetas(new JSONArray(),ingredientes, instrucciones, nombre, ranking));
-        parsearRecetario();
+        agua.setNombre("agua");
+        fideos.setNombre("fideos");
+        sacar.setPaso("sacar de la bolsa");
+        echar.setPaso("echar a la olla");
         
+        
+        llenarJSONArray(ingredientes,agua);
+        llenarJSONArray(ingredientes,fideos);
+        llenarJSONArray(instrucciones,sacar);
+        llenarJSONArray(instrucciones,echar);
+        
+        
+        saveFile(encode("tallarines",9,ingredientes,instrucciones));
+        String nombre = decode().getNombre();
+        String ranking = decode().getRanking();
+        String ing = decode().getIngredientes().toString();
+        String ins = decode().getInstrucciones().toString();
         
 
         
     }
     
-    public static JSONArray addRecetas(JSONArray recetario, ArrayList ingredientes, ArrayList instrucciones, String nombre, int ranking){
     
-        recetario.add(new Receta(nombre,ranking,ingredientes,instrucciones));
-        return recetario;
+    public static void llenarJSONArray(JSONArray array, Object obj){
+    
+        array.add(obj);
     
     }
     
-    public static String encodeRecetas(JSONArray recetario) throws IOException{
     
-        StringWriter out = new StringWriter();
+    public static JSONObject encode(String nombre,int ranking, JSONArray ingredientes, JSONArray instrucciones){
+    
+        JSONObject obj = new JSONObject();
+        obj.put("nombre",nombre);
+        obj.put("ranking", String.valueOf(ranking));
+        obj.put("ingredientes", ingredientes);
+        obj.put("instrucciones", instrucciones);
+        return obj;
         
-        try{
-            
-            recetario.writeJSONString(out);
+    }
 
-        }
+    public static void saveFile(JSONObject obj){
         
-        catch(IOException e){
-        
+        try (FileWriter file = new FileWriter("recetario.json")) {
+
+            file.write(obj.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
             e.printStackTrace();
-        
         }
-        
-        return out.toString();
+
+        System.out.print(obj);
+    
+    
     
     }
     
-    private static void parsearRecetario() {
-                
-        JSONParser jsonParser = new JSONParser();
-		
-	try {
-		
-            FileReader reader = new FileReader("Datos/recetario.json");
-            Object obj = jsonParser.parse(reader);
+    public static Receta decode(){
+    
+        ArrayList<Ingrediente> ingredientesAL = new ArrayList();  
+        ArrayList<Instruccion> instruccionesAL = new ArrayList();
+        Receta r = new Receta();
+        
+        JSONParser parser = new JSONParser();
 
-            JSONArray recetario = (JSONArray) obj;
-            System.out.println(recetario);
+        try {
+
+            Object obj = parser.parse(new FileReader("prueba.json"));
+
+            JSONObject jsonObject = (JSONObject) obj;
+            System.out.println(jsonObject);
+
+            String nombre = (String) jsonObject.get("nombre");
+            r.setNombre(nombre);
+            System.out.println(nombre);
             
-            //Iterate over employee array
-           recetario.forEach( rec -> parseReceta( (JSONObject) rec ) );
+
+            String ranking = ((String) jsonObject.get("ranking"));
+            r.setRanking(ranking);
+            System.out.println(ranking);
+
+            JSONArray ingredientesJA = (JSONArray) jsonObject.get("ingredientes");
+            Iterator<String> iteratorING = ingredientesJA.iterator();
+
+            while (iteratorING.hasNext()) {
+                Ingrediente ing = new Ingrediente();
+                ing.setNombre(iteratorING.next());
+                ingredientesAL.add(ing);
+                System.out.println(iteratorING.next());
+            }
+            
+            r.setIngredientes(ingredientesAL);
+            
+            JSONArray instruccionesJA = (JSONArray) jsonObject.get("instrucciones");
+            Iterator<String> iteratorINS = instruccionesJA.iterator();
+
+            while (iteratorINS.hasNext()) {
+                Instruccion ins = new Instruccion();
+                ins.setPaso(iteratorINS.next());
+                instruccionesAL.add(ins);
+                System.out.println(iteratorINS.next());
+            }
+            
+            r.setInstrucciones(instruccionesAL);
+            
+            
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -97,48 +142,9 @@ public class GestorJSON {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-	}
-	
-    
-private static void parseReceta(JSONObject receta) 
-	{
-		//Get employee object within list
-		JSONObject rec = (JSONObject) receta.get("employee");
-		
-		//Get employee first name
-		String firstName = (String) rec.get("ingredientes");	
-		System.out.println(firstName);
-		
-		//Get employee last name
-		String lastName = (String) rec.get("instrucciones");	
-		System.out.println(lastName);
-		
-		//Get employee website name
-		String website = (String) rec.get("nombre");	
-		System.out.println(website);
-	}
         
-    
-    public static void guardarArchivo(JSONArray recetario){
+        return r;
         
-        try  {
-            FileWriter file = new FileWriter("Datos/recetario.json");
-            file.write(recetario.toJSONString());
-            file.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
-    
+ 
 }
-        
-    
-
-        
-
-    
-    
-    
-    
-
