@@ -17,16 +17,16 @@ import javax.swing.JTextField;
 
 public class GuiBuscarIng extends JFrame implements ActionListener {
 
-    protected JButton bBuscar;
-    protected JPanel jPanel;
+    protected JButton buscarB;
+    protected JPanel btBuscarP;
 
-    protected JPanel jPanel2;
-    protected JLabel jLabelB;
-    protected JTextField tBuscar;
+    protected JPanel busquedaP;
+    protected JLabel busquedaLB;
+    protected JTextField busquedaTF;
 
-    protected JPanel jPanel3;
-    protected JLabel jLabelR;
-    
+    protected JPanel resultadoP;
+    protected JLabel resultadoLB;
+
     protected JScrollPane areaScrollPane;
     protected JTextArea area;
 
@@ -36,59 +36,62 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
         this.setLayout(new FlowLayout());
 
         //instanciar los objetos de la ventana
-        bBuscar = new JButton("Buscar");
-        jPanel = new JPanel();
+        buscarB = new JButton("Buscar");
+        btBuscarP = new JPanel();
 
-        jPanel2 = new JPanel();
-        jLabelB = new JLabel("Busqueda:");
-        tBuscar = new JTextField(10);
+        busquedaP = new JPanel();
+        busquedaLB = new JLabel("Busqueda:");
+        busquedaTF = new JTextField(10);
 
-        jPanel3 = new JPanel();
-        jLabelR = new JLabel("Resultado:");
-        
+        resultadoP = new JPanel();
+        resultadoLB = new JLabel("Resultado:");
+
         area = new JTextArea();
         areaScrollPane = new JScrollPane(area);
         areaScrollPane.setPreferredSize(new Dimension(100, 100));
 
         //agregar los comportamientos a los obejtos de loa ventana
-        bBuscar.addActionListener(this);
+        buscarB.addActionListener(this);
 
         // agregar objetos a la ventana
-        // uso de paneles para ordenar la distribucion de objetos en la ventana
-        jPanel.add(bBuscar);
+        btBuscarP.add(buscarB);
 
-        jPanel2.add(jLabelB);
-        jPanel2.add(tBuscar);
-              
+        busquedaP.add(busquedaLB);
+        busquedaP.add(busquedaTF);
+
         this.areaScrollPane.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        jPanel3.add(jLabelR);
-        jPanel3.add(areaScrollPane);  
+        resultadoP.add(resultadoLB);
+        resultadoP.add(areaScrollPane);
 
-        this.add(jPanel);
-        this.add(jPanel2);
-        this.add(jPanel3);
-        //Operaciones por defecto
+        this.add(btBuscarP);
+        this.add(busquedaP);
+        this.add(resultadoP);
+
+        //Configuración ventana
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700, 200);
         setLocationRelativeTo(null);
         setResizable(false);
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         Recetario recetario = new Recetario();
 
-        if (e.getSource() == bBuscar) {
-            if(this.tBuscar.getText().toString().isEmpty()){
-            
+        if (e.getSource() == buscarB) {
+            if (this.busquedaTF.getText().toString().isEmpty()) {
+
                 JOptionPane.showMessageDialog(null, "Ingrese un ingrediente para realizar la busqueda");
-            
-            }
-            else{
-                String ing = this.tBuscar.getText();
+
+            } else {
+
+                String ing = this.busquedaTF.getText();
                 //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y BUSCAR EL INGREDIENTE, RETORNANDO RECETAS QUE LO CONTENGAN.
                 area.setText(recetario.buscarIngrediente(ing));
                 area.setEditable(false);
+
             }
         }
     }
