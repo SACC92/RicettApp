@@ -35,27 +35,27 @@ public class GuiBorrarReceta extends JFrame implements ActionListener {
         //para el JList y barra
         Recetario recetario = new Recetario();
         DefaultListModel listModel = new DefaultListModel();
-        
+
         for (int x = 0; x < recetario.recetas.size(); x++) {
-            
+
             listModel.addElement(recetario.recetas.get(x).getNombre());
-        
+
         }
-        
+
         listaRecetas = new JList();
         listaRecetas.setModel(listModel);
         listaRecetas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+
         menuScrollPane = new JScrollPane(listaRecetas);
         menuScrollPane.setPreferredSize(new Dimension(100, 100));
-        
+
         //Para saber la cantidad de recetas almacenadas        
         counterLB = new JLabel(String.valueOf(recetario.verCantidadRecetas()));
 
         //agregar los comportamientos a los obejtos de loa ventana
         borrarB.addActionListener(this);
 
-        // agregar objetos a la ventana uso de paneles para ordenar la distribucion de objetos en la ventana
+        // agregar objetos a la ventana
         counterP.add(recetasLB);
         counterP.add(counterLB);
 
@@ -74,28 +74,34 @@ public class GuiBorrarReceta extends JFrame implements ActionListener {
         setResizable(false);
 
         this.setVisible(true);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == borrarB) {
+
             int i = listaRecetas.getSelectedIndex();
             borrar(i);
+
         }
+
     }
 
     void borrar(int i) {
         try {
 
             Recetario recetario = new Recetario();
-
             recetario.recetas.remove(i);
-
             JOptionPane.showMessageDialog(null, "Receta borrada exitosamente");
 
         } catch (Exception e) {
+
             JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista");
+
         }
+
     }
+
 }

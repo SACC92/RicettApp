@@ -9,9 +9,8 @@ import javax.swing.*;
 import com.mycompany.ricettapp.funciones.*;
 import org.json.simple.JSONArray;
 
+public class GuiAdd extends JFrame implements ActionListener {
 
-public class GuiAdd extends JFrame implements ActionListener{
-   
     protected JPanel nombreP;
     protected JLabel nombreLB;
     protected JTextField nombreTF;
@@ -28,12 +27,10 @@ public class GuiAdd extends JFrame implements ActionListener{
 
     protected JPanel guardarP;
     protected JButton guardarB;
-    
+
     protected Receta receta;
     protected Gestor gestor;
 
-    
-    
     public GuiAdd(String titulo) {
 
         super(titulo);
@@ -73,11 +70,11 @@ public class GuiAdd extends JFrame implements ActionListener{
         this.add(ingredienteP);
         this.add(instruccionP);
         this.add(guardarP);
-        
+
         guardarB.addActionListener(this);
         instruccionB.addActionListener(this);
         ingredienteB.addActionListener(this);
-       
+
         receta = new Receta();
 
         //Operaciones por defecto
@@ -91,29 +88,27 @@ public class GuiAdd extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        
-
         if (e.getSource() == guardarB) {
 
             if (nombreTF.getText().isEmpty() || receta.ingredientes.isEmpty() || receta.instrucciones.isEmpty()) {
 
                 JOptionPane.showMessageDialog(null, "Uno o mas campos vacíos");
-                
+
             } else {
 
                 JSONArray ingredientes = new JSONArray();
                 JSONArray instrucciones = new JSONArray();
-                
+
                 for (int i = 0; i < receta.getIngredientes().size(); i++) {
                     GestorJSON.llenarJSONArray(ingredientes, receta.getIngredientes().get(i).getNombre());
                 }
-                
+
                 for (int i = 0; i < receta.getInstrucciones().size(); i++) {
                     GestorJSON.llenarJSONArray(instrucciones, receta.getInstrucciones().get(i).getPaso());
                 }
-                
+
                 GestorJSON.saveFile(GestorJSON.encode(receta.nombre, Integer.parseInt(receta.ranking), ingredientes, instrucciones));
-                
+
                 setVisible(false);
 
             }
@@ -125,7 +120,7 @@ public class GuiAdd extends JFrame implements ActionListener{
             if (ingredienteTF.getText().isEmpty()) {
 
                 JOptionPane.showMessageDialog(null, "Ingrese al menos un ingrediente y presione Añadir Ingrediente");
-                
+
             } else {
 
                 Ingrediente ingrediente = new Ingrediente();
@@ -142,7 +137,7 @@ public class GuiAdd extends JFrame implements ActionListener{
             if (instruccionTF.getText().isEmpty()) {
 
                 JOptionPane.showMessageDialog(null, "Ingrese al menos una instrucción y presione Añadir Instrucción");
-                
+
             } else {
 
                 Instruccion instruccion = new Instruccion();

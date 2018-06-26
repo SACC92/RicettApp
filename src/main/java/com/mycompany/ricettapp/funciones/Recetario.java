@@ -6,15 +6,15 @@ public class Recetario {
 
     public static ArrayList<Receta> recetas = new ArrayList<Receta>();
 
-     public String buscarIngrediente(String ing) {
+    public String buscarIngrediente(String ing) {
         String resultado = "";
-        String saltoLinea=System.getProperty("line.separator");
+        String saltoLinea = System.getProperty("line.separator");
         for (int x = 0; x < recetas.size(); x++) {
             for (int y = 0; y < recetas.get(x).getIngredientes().size(); y++) {
 
                 if (ing.equals(recetas.get(x).getIngredientes().get(y).getNombre())) {
-                    resultado = resultado+saltoLinea+recetas.get(x).getNombre();
-                    y=recetas.get(x).getIngredientes().size();
+                    resultado = resultado + saltoLinea + recetas.get(x).getNombre();
+                    y = recetas.get(x).getIngredientes().size();
                 }
 
             }

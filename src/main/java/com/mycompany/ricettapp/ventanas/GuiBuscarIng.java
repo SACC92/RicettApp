@@ -72,12 +72,12 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
         setSize(700, 200);
         setLocationRelativeTo(null);
         setResizable(false);
-        
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         Recetario recetario = new Recetario();
 
         if (e.getSource() == buscarB) {

@@ -7,7 +7,7 @@ public class Ingrediente {
     public Ingrediente() {
         this.nombre = " ";
     }
-    //M�todos get y set
+    //Metodos get y set
 
     public String getNombre() {
         return nombre;
