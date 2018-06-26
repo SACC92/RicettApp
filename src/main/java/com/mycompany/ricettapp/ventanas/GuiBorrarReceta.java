@@ -11,8 +11,6 @@ import java.awt.Dimension;
 public class GuiBorrarReceta extends JFrame implements ActionListener{
 
             private JScrollPane menuScrollPane;
-            private JScrollPane areaScrollPane;
-        
             protected JList listaRecetas;
         
             protected JLabel jLabel1;
@@ -21,9 +19,6 @@ public class GuiBorrarReceta extends JFrame implements ActionListener{
 
             protected JPanel jPanel2;
             protected JButton bBorrar;
-
-            protected JPanel jPanel3;
-            protected JTextArea area;
 
         public GuiBorrarReceta(String title) {
                 super(title);
@@ -48,14 +43,7 @@ public class GuiBorrarReceta extends JFrame implements ActionListener{
 		menuScrollPane = new JScrollPane(listaRecetas);
                 menuScrollPane.setPreferredSize(new Dimension(100,100));
                  //
-                
-                jPanel3 = new JPanel();
                 listaRecetas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-                jPanel3 = new JPanel();
-                area = new JTextArea();                
-                areaScrollPane = new JScrollPane(area);
-                areaScrollPane.setPreferredSize(new Dimension(100,100));
 
                 //Para saber la cantidad de recetas almacenadas        
                 int cantidad = recetario.verCantidadRecetas();
@@ -71,15 +59,12 @@ public class GuiBorrarReceta extends JFrame implements ActionListener{
 
                 jPanel2.add(bBorrar);
 
-                jPanel3.add(areaScrollPane);
-
                 this.add(jPanel1);
                 //para la barra
                 this.add(menuScrollPane);
                 this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
                 //
                 this.add(jPanel2);
-                this.add(jPanel3);
                 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 setSize(700, 200);

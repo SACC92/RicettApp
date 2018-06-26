@@ -120,6 +120,7 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
            recetario.recetas.get(i).rankear();
             String saltoLinea = System.getProperty("line.separator");
             area.setText("Los datos de la receta son:"+saltoLinea+ recetario.recetas.get(i).toString());
+            area.setEditable(false);
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista");
         }
