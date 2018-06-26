@@ -33,7 +33,7 @@ public class GestorJSON {
 
     }
 
-    public static void saveFile(JSONObject obj) { //VER SI SOBREESCRIBE O ACTUALIZA
+    public static void saveFile(JSONObject obj) {
 
         try (FileWriter file = new FileWriter("recetario.json")) {
 

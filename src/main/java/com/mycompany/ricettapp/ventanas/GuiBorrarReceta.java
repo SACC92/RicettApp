@@ -8,91 +8,94 @@ import com.mycompany.ricettapp.funciones.Recetario;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 
-public class GuiBorrarReceta extends JFrame implements ActionListener{
+public class GuiBorrarReceta extends JFrame implements ActionListener {
 
-            private JScrollPane menuScrollPane;
-            protected JList listaRecetas;
+    private JScrollPane menuScrollPane;
+    protected JList listaRecetas;
+
+    protected JPanel counterP;
+    protected JLabel recetasLB;
+    protected JLabel counterLB;
+
+    protected JPanel borrarP;
+    protected JButton borrarB;
+
+    GuiBorrarReceta(String title) {
+
+        super(title);
+
+        FlowLayout layout = new FlowLayout();
+        this.setLayout(layout);
+
+        counterP = new JPanel();
+        borrarB = new JButton("Borrar Receta");
+        borrarP = new JPanel();
+        recetasLB = new JLabel("Recetas:");
+
+        //para el JList y barra
+        Recetario recetario = new Recetario();
+        DefaultListModel listModel = new DefaultListModel();
         
-            protected JLabel jLabel1;
-            protected JLabel jLabel2;
-            protected JPanel jPanel1;
+        for (int x = 0; x < recetario.recetas.size(); x++) {
+            
+            listModel.addElement(recetario.recetas.get(x).getNombre());
+        
+        }
+        
+        listaRecetas = new JList();
+        listaRecetas.setModel(listModel);
+        listaRecetas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+        menuScrollPane = new JScrollPane(listaRecetas);
+        menuScrollPane.setPreferredSize(new Dimension(100, 100));
+        
+        //Para saber la cantidad de recetas almacenadas        
+        counterLB = new JLabel(String.valueOf(recetario.verCantidadRecetas()));
 
-            protected JPanel jPanel2;
-            protected JButton bBorrar;
+        //agregar los comportamientos a los obejtos de loa ventana
+        borrarB.addActionListener(this);
 
-        public GuiBorrarReceta(String title) {
-                super(title);
-                
-		FlowLayout layout = new FlowLayout();                
-		this.setLayout(layout);
-                
-                jPanel1 = new JPanel();
-                bBorrar = new JButton("Borrar Receta");
-                jPanel2 = new JPanel();
-                jLabel1 = new JLabel("Recetas:");
-                
-                 //para el JList y barra
-                    Recetario recetario = new Recetario();
-                     DefaultListModel listModel = new DefaultListModel();
-                        for (int x = 0; x < recetario.recetas.size(); x++) {
-                            listModel.addElement(recetario.recetas.get(x).getNombre());
-                                 }
-                            listaRecetas = new JList();
-                            listaRecetas.setModel(listModel);
-                            
-		menuScrollPane = new JScrollPane(listaRecetas);
-                menuScrollPane.setPreferredSize(new Dimension(100,100));
-                 //
-                listaRecetas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        // agregar objetos a la ventana uso de paneles para ordenar la distribucion de objetos en la ventana
+        counterP.add(recetasLB);
+        counterP.add(counterLB);
 
-                //Para saber la cantidad de recetas almacenadas        
-                int cantidad = recetario.verCantidadRecetas();
-                jLabel2 = new JLabel(String.valueOf(cantidad));
+        borrarP.add(borrarB);
 
-                //agregar los comportamientos a los obejtos de loa ventana
-                bBorrar.addActionListener(this);
+        this.add(counterP);
+        //para la barra
+        this.add(menuScrollPane);
+        this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        this.add(borrarP);
 
-                // agregar objetos a la ventana
-                // uso de paneles para ordenar la distribucion de objetos en la ventana
-                jPanel1.add(jLabel1);
-                jPanel1.add(jLabel2);
+        //Configuracion Ventana
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(700, 200);
+        setLocationRelativeTo(null);
+        setResizable(false);
 
-                jPanel2.add(bBorrar);
-
-                this.add(jPanel1);
-                //para la barra
-                this.add(menuScrollPane);
-                this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-                //
-                this.add(jPanel2);
-                
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                setSize(700, 200);
-                setLocationRelativeTo(null);
-                setResizable(false);
-                
-                this.setVisible(true);
+        this.setVisible(true);
     }
-         @Override
-        public void actionPerformed(ActionEvent e) {
-        
-        if (e.getSource() == bBorrar) {          
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == borrarB) {
             int i = listaRecetas.getSelectedIndex();
-            borrar(i); 
+            borrar(i);
         }
     }
-	
-	void borrar(int i){         
-        try{
-        Recetario recetario = new Recetario();
-        
-        recetario.recetas.remove(i);
-        
-        JOptionPane.showMessageDialog(null, "Receta borrada exitosamente");
-        
-         }
-        catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista");
-            } 
+
+    void borrar(int i) {
+        try {
+
+            Recetario recetario = new Recetario();
+
+            recetario.recetas.remove(i);
+
+            JOptionPane.showMessageDialog(null, "Receta borrada exitosamente");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista");
+        }
     }
 }
