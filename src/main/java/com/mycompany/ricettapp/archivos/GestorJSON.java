@@ -16,9 +16,10 @@ import org.json.simple.parser.ParseException;
 
 public class GestorJSON {
 
-    static JSONArray ingredientes = new JSONArray();
-    static JSONArray instrucciones = new JSONArray();
+    public static JSONArray ingredientes = new JSONArray();
+    public static JSONArray instrucciones = new JSONArray();
 
+    /*
     public static void main(String[] args) {
 
         Ingrediente agua = new Ingrediente();
@@ -42,17 +43,18 @@ public class GestorJSON {
         System.out.println("nombre: " + nombre);
         System.out.println("ranking: " + ranking);
         System.out.println("ingredientes: ");
-        for(int i=0; i<decode().getIngredientes().size(); i++){
-            System.out.println("Ingrediente"+i+ ": " + decode().getIngredientes().get(i).getNombre());
+        for (int i = 0; i < decode().getIngredientes().size(); i++) {
+            System.out.println("Ingrediente" + i + ": " + decode().getIngredientes().get(i).getNombre());
         }
-        
+
         System.out.println("instrucciones: ");
-        for(int i=0; i<decode().getInstrucciones().size(); i++){
-            System.out.println("Instruccion"+i+ ": " + decode().getInstrucciones().get(i).getPaso());
-        
+        for (int i = 0; i < decode().getInstrucciones().size(); i++) {
+            System.out.println("Instruccion" + i + ": " + decode().getInstrucciones().get(i).getPaso());
+
         }
 
     }
+    */
 
     public static void llenarJSONArray(JSONArray array, Object obj) {
 
@@ -71,7 +73,7 @@ public class GestorJSON {
 
     }
 
-    public static void saveFile(JSONObject obj) {
+    public static void saveFile(JSONObject obj) { //VER SI SOBREESCRIBE O ACTUALIZA
 
         try (FileWriter file = new FileWriter("recetario.json")) {
 
@@ -81,8 +83,6 @@ public class GestorJSON {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        System.out.print(obj);
 
     }
 
@@ -99,39 +99,14 @@ public class GestorJSON {
             Object obj = parser.parse(new FileReader("recetario.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
-            //System.out.println(jsonObject);
-
             String nombre = (String) jsonObject.get("nombre");
-            r.setNombre(nombre);
-            //System.out.println(nombre);
-
             String ranking = ((String) jsonObject.get("ranking"));
+
+            r.setNombre(nombre);
             r.setRanking(ranking);
-            //System.out.println(ranking);
 
-            JSONArray ingredientesJA = (JSONArray) jsonObject.get("ingredientes");
-            Iterator<String> iteratorING = ingredientesJA.iterator();
-
-            while (iteratorING.hasNext()) {
-                Ingrediente ing = new Ingrediente();
-                ing.setNombre(iteratorING.next());
-                ingredientesAL.add(ing);
-                //System.out.println(iteratorING.next());
-            }
-
-            r.setIngredientes(ingredientesAL);
-
-            JSONArray instruccionesJA = (JSONArray) jsonObject.get("instrucciones");
-            Iterator<String> iteratorINS = instruccionesJA.iterator();
-
-            while (iteratorINS.hasNext()) {
-                Instruccion ins = new Instruccion();
-                ins.setPaso(iteratorINS.next());
-                instruccionesAL.add(ins);
-                //System.out.println(iteratorINS.next());
-            }
-
-            r.setInstrucciones(instruccionesAL);
+            ingredientes(jsonObject, ingredientesAL, r);
+            instrucciones(jsonObject, instruccionesAL, r);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -142,6 +117,37 @@ public class GestorJSON {
         }
 
         return r;
+
+    }
+
+    //Metodos de Auxiliares de Deserialización.
+    public static void ingredientes(JSONObject jsonObject, ArrayList ingredientesAL, Receta r) {
+
+        JSONArray ingredientesJA = (JSONArray) jsonObject.get("ingredientes");
+        Iterator<String> iteratorING = ingredientesJA.iterator();
+
+        while (iteratorING.hasNext()) {
+            Ingrediente ing = new Ingrediente();
+            ing.setNombre(iteratorING.next());
+            ingredientesAL.add(ing);
+        }
+
+        r.setIngredientes(ingredientesAL);
+
+    }
+
+    public static void instrucciones(JSONObject jsonObject, ArrayList instruccionesAL, Receta r) {
+
+        JSONArray instruccionesJA = (JSONArray) jsonObject.get("instrucciones");
+        Iterator<String> iteratorINS = instruccionesJA.iterator();
+
+        while (iteratorINS.hasNext()) {
+            Instruccion ins = new Instruccion();
+            ins.setPaso(iteratorINS.next());
+            instruccionesAL.add(ins);
+        }
+
+        r.setInstrucciones(instruccionesAL);
 
     }
 

@@ -1,15 +1,13 @@
 package com.mycompany.ricettapp.ventanas;
 
 import com.mycompany.ricettapp.archivos.Gestor;
+import com.mycompany.ricettapp.archivos.GestorJSON;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Dialog;
 import javax.swing.*;
-import com.mycompany.ricettapp.funciones.Receta;
-import com.mycompany.ricettapp.funciones.Ingrediente;
-import com.mycompany.ricettapp.funciones.Instruccion;
-import com.mycompany.ricettapp.funciones.Recetario;
+import com.mycompany.ricettapp.funciones.*;
+
 
 public class GuiAdd extends JFrame implements ActionListener{
    
@@ -99,15 +97,20 @@ public class GuiAdd extends JFrame implements ActionListener{
 
             if (nombreTF.getText().isEmpty() || receta.ingredientes.isEmpty() || receta.instrucciones.isEmpty()) {
 
-                //PopUp de error por campos vacios.
+                JOptionPane.showMessageDialog(null, "Uno o mas campos vacíos");
                 
             } else {
 
-                Recetario recetario = new Recetario();
-
-                receta.setNombre(nombreTF.getText());
-                //recetario.recetas.add(receta);
-                gestor.addReceta(receta);
+                for (int i = 0; i < receta.getIngredientes().size(); i++) {
+                    GestorJSON.llenarJSONArray(GestorJSON.ingredientes, receta.getIngredientes().get(i).getNombre());
+                }
+                
+                for (int i = 0; i < receta.getInstrucciones().size(); i++) {
+                    GestorJSON.llenarJSONArray(GestorJSON.instrucciones, receta.getInstrucciones().get(i).getPaso());
+                }
+                
+                GestorJSON.saveFile(GestorJSON.encode(receta.nombre, Integer.parseInt(receta.ranking), GestorJSON.ingredientes, GestorJSON.instrucciones));
+                
                 setVisible(false);
 
             }
