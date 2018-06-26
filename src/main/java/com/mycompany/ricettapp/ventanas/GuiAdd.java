@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import com.mycompany.ricettapp.funciones.*;
+import org.json.simple.JSONArray;
 
 
 public class GuiAdd extends JFrame implements ActionListener{
@@ -78,7 +79,6 @@ public class GuiAdd extends JFrame implements ActionListener{
         ingredienteB.addActionListener(this);
        
         receta = new Receta();
-        gestor = new Gestor();
 
         //Operaciones por defecto
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -101,15 +101,18 @@ public class GuiAdd extends JFrame implements ActionListener{
                 
             } else {
 
+                JSONArray ingredientes = new JSONArray();
+                JSONArray instrucciones = new JSONArray();
+                
                 for (int i = 0; i < receta.getIngredientes().size(); i++) {
-                    GestorJSON.llenarJSONArray(GestorJSON.ingredientes, receta.getIngredientes().get(i).getNombre());
+                    GestorJSON.llenarJSONArray(ingredientes, receta.getIngredientes().get(i).getNombre());
                 }
                 
                 for (int i = 0; i < receta.getInstrucciones().size(); i++) {
-                    GestorJSON.llenarJSONArray(GestorJSON.instrucciones, receta.getInstrucciones().get(i).getPaso());
+                    GestorJSON.llenarJSONArray(instrucciones, receta.getInstrucciones().get(i).getPaso());
                 }
                 
-                GestorJSON.saveFile(GestorJSON.encode(receta.nombre, Integer.parseInt(receta.ranking), GestorJSON.ingredientes, GestorJSON.instrucciones));
+                GestorJSON.saveFile(GestorJSON.encode(receta.nombre, Integer.parseInt(receta.ranking), ingredientes, instrucciones));
                 
                 setVisible(false);
 

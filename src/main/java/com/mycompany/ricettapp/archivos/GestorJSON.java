@@ -16,9 +16,6 @@ import org.json.simple.parser.ParseException;
 
 public class GestorJSON {
 
-    public static JSONArray ingredientes = new JSONArray();
-    public static JSONArray instrucciones = new JSONArray();
-
     public static void llenarJSONArray(JSONArray array, Object obj) {
 
         array.add(obj);
