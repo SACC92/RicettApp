@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -120,8 +121,7 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
             String saltoLinea = System.getProperty("line.separator");
             area.setText("Los datos de la receta son:"+saltoLinea+ recetario.recetas.get(i).toString());
         } else {
-            area.setText("Seleccione una receta de la lista"
-                    + "\npara poder realizar esta acción");
+            JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista");
         }
     }
 }

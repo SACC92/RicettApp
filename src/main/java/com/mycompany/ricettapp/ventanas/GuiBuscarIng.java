@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -78,9 +79,16 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
         Recetario recetario = new Recetario();
 
         if (e.getSource() == bBuscar) {
-            String ing = this.tBuscar.getText();
-            //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y BUSCAR EL INGREDIENTE, RETORNANDO RECETAS QUE LO CONTENGAN.
-            area.setText(recetario.buscarIngrediente(ing));
+            if(this.tBuscar.getText().toString().isEmpty()){
+            
+                JOptionPane.showMessageDialog(null, "Ingrese un ingrediente para realizar la busqueda");
+            
+            }
+            else{
+                String ing = this.tBuscar.getText();
+                //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y BUSCAR EL INGREDIENTE, RETORNANDO RECETAS QUE LO CONTENGAN.
+                area.setText(recetario.buscarIngrediente(ing));
+            }
         }
     }
 }
