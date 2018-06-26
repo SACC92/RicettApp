@@ -103,13 +103,11 @@ public class GuiBorrarReceta extends JFrame implements ActionListener{
         
         recetario.recetas.remove(i);
         
-        area.setText("Receta borrada"+ 
-                          "\nexitosamente");
+        JOptionPane.showMessageDialog(null, "Receta borrada exitosamente");
         
          }
         catch(Exception e){
-             area.setText("Seleccione una receta de la lista"+ 
-                          "\npara poder realizar esta acción");
+             JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista");
             } 
     }
 }

@@ -19,43 +19,6 @@ public class GestorJSON {
     public static JSONArray ingredientes = new JSONArray();
     public static JSONArray instrucciones = new JSONArray();
 
-    /*
-    public static void main(String[] args) {
-
-        Ingrediente agua = new Ingrediente();
-        Ingrediente fideos = new Ingrediente();
-        Instruccion sacar = new Instruccion();
-        Instruccion echar = new Instruccion();
-
-        agua.setNombre("agua");
-        fideos.setNombre("fideos");
-        sacar.setPaso("sacar de la bolsa");
-        echar.setPaso("echar a la olla");
-
-        llenarJSONArray(ingredientes, agua.getNombre());
-        llenarJSONArray(ingredientes, fideos.getNombre());
-        llenarJSONArray(instrucciones, sacar.getPaso());
-        llenarJSONArray(instrucciones, echar.getPaso());
-
-        saveFile(encode("tallarines", 9, ingredientes, instrucciones));
-        String nombre = decode().getNombre();
-        String ranking = decode().getRanking();
-        System.out.println("nombre: " + nombre);
-        System.out.println("ranking: " + ranking);
-        System.out.println("ingredientes: ");
-        for (int i = 0; i < decode().getIngredientes().size(); i++) {
-            System.out.println("Ingrediente" + i + ": " + decode().getIngredientes().get(i).getNombre());
-        }
-
-        System.out.println("instrucciones: ");
-        for (int i = 0; i < decode().getInstrucciones().size(); i++) {
-            System.out.println("Instruccion" + i + ": " + decode().getInstrucciones().get(i).getPaso());
-
-        }
-
-    }
-    */
-
     public static void llenarJSONArray(JSONArray array, Object obj) {
 
         array.add(obj);
