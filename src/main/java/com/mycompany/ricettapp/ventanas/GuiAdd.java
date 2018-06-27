@@ -90,7 +90,7 @@ public class GuiAdd extends JFrame implements ActionListener {
 
         if (e.getSource() == guardarB) {
 
-            if (nombreTF.getText().isEmpty() || receta.ingredientes.isEmpty() || receta.instrucciones.isEmpty()) {
+            if (nombreTF.getText().isEmpty() || receta.getIngredientes().isEmpty() || receta.getInstrucciones().isEmpty()) {
 
                 JOptionPane.showMessageDialog(null, "Uno o mas campos vacíos");
 
@@ -107,7 +107,7 @@ public class GuiAdd extends JFrame implements ActionListener {
                     GestorJSON.llenarJSONArray(instrucciones, receta.getInstrucciones().get(i).getPaso());
                 }
 
-                GestorJSON.saveFile(GestorJSON.encode(receta.nombre, Integer.parseInt(receta.ranking), ingredientes, instrucciones));
+                GestorJSON.saveFile(GestorJSON.encode(receta.getNombre(), Integer.parseInt(receta.getRanking()), ingredientes, instrucciones));
 
                 setVisible(false);
 

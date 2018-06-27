@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Receta  {
 
-    public static ArrayList<Ingrediente> ingredientes;
-    public static ArrayList<Instruccion> instrucciones;
-    public String nombre;
-    public String ranking;
+    private ArrayList<Ingrediente> ingredientes;
+    private ArrayList<Instruccion> instrucciones;
+    private String nombre;
+    private String ranking;
 
     public Receta() {
         this.nombre = " ";
@@ -28,7 +28,7 @@ public class Receta  {
         return "Nombre: "+nombre+saltoLinea+"Ranking: "+ranking+saltoLinea+"Ingredientes: "+ ings()+saltoLinea+"Instrucciones:"+inst();
     }
     
-    private static String ings(){
+    private  String ings(){
         String ings = "";
         String saltoLinea = System.getProperty("line.separator");
         for(int x=0;x<ingredientes.size();x++){
@@ -37,7 +37,7 @@ public class Receta  {
         return ings;
     }   
     
-    private static String inst(){
+    private  String inst(){
         String inst = "";
         String saltoLinea = System.getProperty("line.separator");
         for(int x=0;x<instrucciones.size();x++){

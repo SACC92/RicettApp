@@ -15,6 +15,50 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class GestorJSON {
+    
+    public static void main(String[] args){
+        /*
+        JSONArray ingredientes =new JSONArray();
+        JSONArray instrucciones =new JSONArray();
+        
+        Ingrediente agua = new Ingrediente();
+        Ingrediente fideos = new Ingrediente();
+        Instruccion sacar = new Instruccion();
+        Instruccion echar = new Instruccion();
+
+        agua.setNombre("agua");
+        fideos.setNombre("fideos");
+        sacar.setPaso("sacar de la bolsa");
+        echar.setPaso("echar a la olla");
+
+        llenarJSONArray(ingredientes, agua.getNombre());
+        llenarJSONArray(ingredientes, fideos.getNombre());
+        llenarJSONArray(instrucciones, sacar.getPaso());
+        llenarJSONArray(instrucciones, echar.getPaso());
+
+        saveFile(encode("tallarines", 9, ingredientes, instrucciones));
+        String nombre = decode().getNombre();
+        String ranking = String.valueOf(decode().getRanking());
+        ArrayList<Ingrediente>ings = new ArrayList<Ingrediente>();
+        
+        for(int i=0; i<decode().getIngredientes().size(); i++){
+            ings.add(decode().getIngredientes().get(i));
+        }        
+        
+        ArrayList<Instruccion>inst = new ArrayList<Instruccion>();
+        
+        for(int i=0; i<decode().getIngredientes().size(); i++){
+            inst.add(decode().getInstrucciones().get(i));
+        } 
+        
+        Receta receta = new Receta(nombre,"2",ings,inst);
+        */
+        //System.out.println(receta.toString());        
+        
+        //decode().toString();
+
+        System.out.println(decode().toString());
+    }
 
     public static void llenarJSONArray(JSONArray array, Object obj) {
 

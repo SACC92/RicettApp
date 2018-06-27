@@ -99,7 +99,7 @@ public class Gestor {
         String instrucciones = instrucciones(receta);
 
         String textoRecetaNueva = "@" + num + "\n"
-                + codRec + " ," + "\t" + receta.getNombre() + " ," + "\t" + receta.ranking + " ," + "\t" + receta.ingredientes.size() + " ," + "\t" + receta.instrucciones.size() + "\n"
+                + codRec + " ," + "\t" + receta.getNombre() + " ," + "\t" + receta.getRanking() + " ," + "\t" + receta.getIngredientes().size() + " ," + "\t" + receta.getInstrucciones().size() + "\n"
                 + ingredientes + "\n"
                 + instrucciones;
 

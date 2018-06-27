@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Recetario {
 
-    public static ArrayList<Receta> recetas = new ArrayList<Receta>();
+    public static ArrayList<Receta> recetas =new ArrayList<Receta>();
 
     public String buscarIngrediente(String ing) {
         String resultado = "";
