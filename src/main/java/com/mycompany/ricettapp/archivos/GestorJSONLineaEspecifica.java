@@ -51,12 +51,8 @@ public class GestorJSONLineaEspecifica {
         recetasArchivo.add(decode(lineas,1)); 
         recetasArchivo.add(decode(lineas,2));
         
-        //Abajo se imprime el contenido de recetasArchivo, que son los decode(lineas, ?) agregados, 
-        //y el programa pierde la cabeza ._.
-        //Se queda con los ingredientes e instrucciones del último "objeto decode" agregado
-        //probar lo dicho en la linea anterio alterando el orden en que agregan
-        //los objetos a la lista recetasArchivo
-       
+        //Abajo se imprime el contenido de recetasArchivo, que son los decode(lineas, ?) agregados
+        
         for(int x=0;x<recetasArchivo.size();x++){
             System.out.println(recetasArchivo.get(x).toString());
             System.out.println("");
@@ -159,9 +155,7 @@ public class GestorJSONLineaEspecifica {
         }   
         return datos;
     }
-    /* Cuando se corrija el error, se podra hacer uso de esto para
-        iniciar al programa con recetas ya existentes
-    
+    /* Método debe ser mejorado    
     private static void generarRecetario(ArrayList<String> lineas){
         Recetario recetario = new Recetario();
             
