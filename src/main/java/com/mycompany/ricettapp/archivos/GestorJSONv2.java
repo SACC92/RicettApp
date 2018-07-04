@@ -17,7 +17,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class GestorJSONLineaEspecifica {
+public class GestorJSONv2 {
     
     public static void main(String[] args) throws IOException{
                 

@@ -1,12 +1,12 @@
 package com.mycompany.ricettapp.ventanas;
 
-import com.mycompany.ricettapp.archivos.Gestor;
-import com.mycompany.ricettapp.archivos.GestorJSON;
+import com.mycompany.ricettapp.archivos.GestorJSONv2;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import com.mycompany.ricettapp.funciones.*;
+import java.io.IOException;
 import org.json.simple.JSONArray;
 
 public class GuiAdd extends JFrame implements ActionListener {
@@ -29,7 +29,6 @@ public class GuiAdd extends JFrame implements ActionListener {
     protected JButton guardarB;
 
     protected Receta receta;
-    protected Gestor gestor;
 
     public GuiAdd(String titulo) {
 
@@ -95,21 +94,11 @@ public class GuiAdd extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Uno o mas campos vacíos");
 
             } else {
-
-                JSONArray ingredientes = new JSONArray();
-                JSONArray instrucciones = new JSONArray();
-
-                for (int i = 0; i < receta.getIngredientes().size(); i++) {
-                    GestorJSON.llenarJSONArray(ingredientes, receta.getIngredientes().get(i).getNombre());
+                try {
+                    receta.setNombre(nombreTF.getText().toString());
+                    GestorJSONv2.agregarRecetaArchivo(this.receta);
+                } catch (IOException exc) {
                 }
-
-                for (int i = 0; i < receta.getInstrucciones().size(); i++) {
-                    GestorJSON.llenarJSONArray(instrucciones, receta.getInstrucciones().get(i).getPaso());
-                }
-
-                GestorJSON.saveFile(GestorJSON.encode(receta.getNombre(), receta.getRanking(), ingredientes, instrucciones));
-
-                setVisible(false);
 
             }
 
