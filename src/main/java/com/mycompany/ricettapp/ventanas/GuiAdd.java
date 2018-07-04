@@ -107,7 +107,7 @@ public class GuiAdd extends JFrame implements ActionListener {
                     GestorJSON.llenarJSONArray(instrucciones, receta.getInstrucciones().get(i).getPaso());
                 }
 
-                GestorJSON.saveFile(GestorJSON.encode(receta.getNombre(), Integer.parseInt(receta.getRanking()), ingredientes, instrucciones));
+                GestorJSON.saveFile(GestorJSON.encode(receta.getNombre(), receta.getRanking(), ingredientes, instrucciones));
 
                 setVisible(false);
 
