@@ -19,46 +19,43 @@ import org.json.simple.parser.ParseException;
 
 public class GestorJSONLineaEspecifica {
     
-    private static ArrayList<Receta> recetasArchivo = new ArrayList<Receta>();
-    
     public static void main(String[] args) throws IOException{
+                
+        ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+        ArrayList<Instruccion> instrucciones = new ArrayList<Instruccion>();
         
-        //Se crea un array de lineas que son cada linea del archivo actualemente
-        //vectorLineas(); obtiene las lineas del archivo recetario.json
-        ArrayList<String> lineas= vectorLineas();  
-        /* ver contenido de lineas
-        for(int x =0; x<lineas.size();x++){
-            System.out.println(lineas.get(x));
-        }
-        */
+        Ingrediente agua = new Ingrediente();
+        Ingrediente fideos = new Ingrediente();
+        Instruccion sacar = new Instruccion();
+        Instruccion echar = new Instruccion();
+
+        agua.setNombre("Saludar1");
+        fideos.setNombre("1");
         
-        //Se prueba el decode de cada linea del array
+        ingredientes.add(agua);
+        ingredientes.add(fideos);
+        
+        sacar.setPaso("Despedirse2");
+        echar.setPaso("2");
+        
+        instrucciones.add(sacar);
+        instrucciones.add(echar);
+        
+        Receta receta = new Receta("HOLA",3,ingredientes,instrucciones);
+         
+        agregarRecetaArchivo(receta);    
+        
+        
         /*
-        System.out.println(decode(lineas,0).toString());  
-        System.out.println("");
-        System.out.println(decode(lineas,1).toString());   
-        System.out.println("");
-        System.out.println(decode(lineas,2).toString());
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        */
-        
-        //al ver que funciona,
-        //Se agregan a recetasArchivo(ArrayList de prueba EN ESTA CLASE)     
-               
-        recetasArchivo.add(decode(lineas,0));     
-        recetasArchivo.add(decode(lineas,1)); 
-        recetasArchivo.add(decode(lineas,2));
-        
-        //Abajo se imprime el contenido de recetasArchivo, que son los decode(lineas, ?) agregados
-        
-        for(int x=0;x<recetasArchivo.size();x++){
-            System.out.println(recetasArchivo.get(x).toString());
+       ArrayList<String> lineas= vectorLineas();          
+       generarRecetario(lineas);       
+       Recetario recetario = new Recetario();       
+        for(int x=0;x<recetario.recetas.size();x++){
+            System.out.println(recetario.recetas.get(x).toString());
             System.out.println("");
-        }
-        
-    }
+        }       
+        */
+    }    
 
     public static void llenarJSONArray(JSONArray array, Object obj) {
 
@@ -66,22 +63,34 @@ public class GestorJSONLineaEspecifica {
 
     }
 
-    public static JSONObject encode(String nombre, int ranking, JSONArray ingredientes, JSONArray instrucciones) {
+    public static JSONObject encode(String nombre, String ranking, JSONArray ingredientes, JSONArray instrucciones) {
 
         JSONObject obj = new JSONObject();
         obj.put("nombre", nombre);
-        obj.put("ranking", String.valueOf(ranking));
+        obj.put("ranking", ranking);
         obj.put("ingredientes", ingredientes);
         obj.put("instrucciones", instrucciones);
         return obj;
 
     }
-
-    public static void saveFile(JSONObject obj) {
-
+    
+    //Modificado
+    public static void saveFile(JSONObject obj) throws IOException {
+        
+        //Los salto de linea los hago de esta forma para que funcionen bien en cualquier
+        //tipo de archivo o sistema operativo
+        String saltoLinea= System.getProperty("line.separator");
+        
+        ArrayList<String> lineas= vectorLineas();        
+        String textoViejo="";
+        
+        for(int x=0;x<lineas.size();x++){
+            textoViejo += lineas.get(x)+saltoLinea;
+        }
+        
         try (FileWriter file = new FileWriter("recetario.json")) {
 
-            file.write(obj.toJSONString());
+            file.write(textoViejo + obj.toJSONString());
             file.flush();
 
         } catch (IOException e) {
@@ -89,7 +98,7 @@ public class GestorJSONLineaEspecifica {
         }
 
     }
-    //Nuevo
+    //Modificado
     public static Receta decode(ArrayList<String> lineas, int n) {        
 
         ArrayList<Ingrediente> ingredientesAL = new ArrayList();
@@ -107,7 +116,7 @@ public class GestorJSONLineaEspecifica {
             String ranking = ((String) jsonObject.get("ranking"));
 
             r.setNombre(nombre);
-            r.setRanking(ranking);
+            r.setRanking(Integer.parseInt(ranking));
 
             ingredientes(jsonObject, ingredientesAL, r);
             instrucciones(jsonObject, instruccionesAL, r);
@@ -155,15 +164,35 @@ public class GestorJSONLineaEspecifica {
         }   
         return datos;
     }
-    /* Método debe ser mejorado    
+    
+    //Método para generar recetario con el contenido del archivo
     private static void generarRecetario(ArrayList<String> lineas){
-        Recetario recetario = new Recetario();
-            
+        
+        Recetario recetario = new Recetario();            
         for(int x=0;x<lineas.size();x++){            
             recetario.recetas.add(decode(lineas,x));
         }
     }
-    */
+    //Nuevo
+    public static void agregarRecetaArchivo(Receta receta) throws IOException{
+        
+        JSONArray ingredientes =new JSONArray();
+        JSONArray instrucciones =new JSONArray();
+        
+        String nombre = receta.getNombre();
+        
+        String ranking = String.valueOf(receta.getRanking());
+                
+        for(int x=0;x<receta.getIngredientes().size();x++){
+        llenarJSONArray(ingredientes, receta.getIngredientes().get(x).getNombre());
+        }
+        
+        for(int x=0;x<receta.getInstrucciones().size();x++){
+        llenarJSONArray(instrucciones, receta.getInstrucciones().get(x).getPaso());
+        }   
+        
+        saveFile(encode(nombre,ranking,ingredientes,instrucciones));
+    }
     
     //Metodos de Auxiliares de Deserialización.
     public static void ingredientes(JSONObject jsonObject, ArrayList ingredientesAL, Receta r) {

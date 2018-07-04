@@ -7,16 +7,16 @@ public class Receta  {
     private ArrayList<Ingrediente> ingredientes;
     private ArrayList<Instruccion> instrucciones;
     private String nombre;
-    private String ranking;
+    private int ranking;
 
     public Receta() {
         this.nombre = " ";
         this.ingredientes = new ArrayList<Ingrediente>();
         this.instrucciones = new ArrayList<Instruccion>();
-        this.ranking="0";
+        this.ranking = 0;
     }
 
-    public Receta(String nombre, String ranking, ArrayList<Ingrediente> ingredientes, ArrayList<Instruccion> instrucciones) {
+    public Receta(String nombre, int ranking, ArrayList<Ingrediente> ingredientes, ArrayList<Instruccion> instrucciones) {
         this.ingredientes = ingredientes;
         this.instrucciones = instrucciones;
         this.nombre = nombre;
@@ -51,11 +51,11 @@ public class Receta  {
     }
     
     //Getters y Setters
-    public String getRanking(){
+    public int getRanking(){
         return ranking;
     }
     
-    public void setRanking(String ranking){
+    public void setRanking(int ranking){
         this.ranking=ranking;
     }
     
