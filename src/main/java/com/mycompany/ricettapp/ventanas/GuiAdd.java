@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import com.mycompany.ricettapp.funciones.*;
 import java.io.IOException;
-import org.json.simple.JSONArray;
 
 public class GuiAdd extends JFrame implements ActionListener {
 
@@ -95,9 +94,13 @@ public class GuiAdd extends JFrame implements ActionListener {
 
             } else {
                 try {
+                    
                     receta.setNombre(nombreTF.getText().toString());
                     GestorJSONv2.agregarRecetaArchivo(this.receta);
+                    setVisible(false);
+                    
                 } catch (IOException exc) {
+                    
                 }
 
             }
@@ -116,6 +119,7 @@ public class GuiAdd extends JFrame implements ActionListener {
 
                 ingrediente.setNombre(ingredienteTF.getText());
                 receta.getIngredientes().add(ingrediente);
+                ingredienteTF.setText("");
 
             }
 
@@ -133,6 +137,7 @@ public class GuiAdd extends JFrame implements ActionListener {
 
                 instruccion.setPaso(instruccionTF.getText());
                 receta.getInstrucciones().add(instruccion);
+                instruccionTF.setText("");
 
             }
 
