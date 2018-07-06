@@ -90,7 +90,7 @@ public class GuiAdd extends JFrame implements ActionListener {
 
             if (nombreTF.getText().isEmpty() || receta.getIngredientes().isEmpty() || receta.getInstrucciones().isEmpty()) {
 
-                JOptionPane.showMessageDialog(null, "Uno o mas campos vacíos");
+                JOptionPane.showMessageDialog(null, "Uno o mas campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
 
             } else {
                 try {
@@ -111,7 +111,7 @@ public class GuiAdd extends JFrame implements ActionListener {
 
             if (ingredienteTF.getText().isEmpty()) {
 
-                JOptionPane.showMessageDialog(null, "Ingrese al menos un ingrediente y presione Añadir Ingrediente");
+                JOptionPane.showMessageDialog(null, "Ingrese al menos un ingrediente y presione Añadir Ingrediente", "Error", JOptionPane.ERROR_MESSAGE);
 
             } else {
 
@@ -129,7 +129,7 @@ public class GuiAdd extends JFrame implements ActionListener {
 
             if (instruccionTF.getText().isEmpty()) {
 
-                JOptionPane.showMessageDialog(null, "Ingrese al menos una instrucción y presione Añadir Instrucción");
+                JOptionPane.showMessageDialog(null, "Ingrese al menos una instrucción y presione Añadir Instrucción", "Error", JOptionPane.ERROR_MESSAGE);
 
             } else {
 

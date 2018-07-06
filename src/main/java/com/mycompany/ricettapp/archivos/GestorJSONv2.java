@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.simple.JSONArray;
@@ -20,7 +22,7 @@ import org.json.simple.parser.ParseException;
 public class GestorJSONv2 {
     
     public static void main(String[] args) throws IOException{
-                
+        
         ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
         ArrayList<Instruccion> instrucciones = new ArrayList<Instruccion>();
         
@@ -43,7 +45,9 @@ public class GestorJSONv2 {
         
         Receta receta = new Receta("HOLA",3,ingredientes,instrucciones);
          
-        agregarRecetaArchivo(receta);    
+        agregarRecetaArchivo(receta);  
+        agregarRecetaArchivo(receta); 
+        
         
         
         /*
@@ -62,6 +66,22 @@ public class GestorJSONv2 {
         array.add(obj);
 
     }
+    
+    public static void rebootRecetario(){
+        
+        try{
+            
+            Files.write(Paths.get("recetario.json"), new String().getBytes());
+            System.out.println("Se creo un recetario limpio");
+            
+        }
+        catch(IOException e) {
+            
+            System.out.println("No se pudo inicializar Recetario");
+        
+        }
+    }
+    
 
     public static JSONObject encode(String nombre, String ranking, JSONArray ingredientes, JSONArray instrucciones) {
 
