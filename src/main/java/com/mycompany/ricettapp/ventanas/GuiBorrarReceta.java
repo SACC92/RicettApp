@@ -90,6 +90,7 @@ public class GuiBorrarReceta extends JFrame implements ActionListener {
     }
 
     void borrar(int i) {
+
         try {
 
             Recetario recetario = new Recetario();

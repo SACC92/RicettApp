@@ -1,11 +1,13 @@
 package com.mycompany.ricettapp.ventanas;
 
+import com.mycompany.ricettapp.archivos.GestorJSONv2;
 import com.mycompany.ricettapp.funciones.Recetario;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.DefaultListModel;
 
 import javax.swing.JButton;
@@ -34,8 +36,8 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
 
     protected JPanel areaP;
     protected JTextArea area;
-
-    public GuiVerRecetas(String title) {
+    
+    public GuiVerRecetas(String title) throws IOException {
 
         super(title);
         FlowLayout layout = new FlowLayout();
@@ -47,7 +49,7 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
         recetasLB = new JLabel("Recetas:");
 
         //para el JList y barra
-        Recetario recetario = new Recetario();
+        Recetario recetario = GestorJSONv2.generarRecetario(GestorJSONv2.vectorLineas());
         DefaultListModel listModel = new DefaultListModel();
 
         for (int x = 0; x < recetario.recetas.size(); x++) {

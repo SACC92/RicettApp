@@ -44,6 +44,7 @@ public class GuiMain extends JFrame implements ActionListener {
         setSize(700, 200);
         setLocationRelativeTo(null);
         setResizable(false);
+
     }
 
     @Override

@@ -93,20 +93,20 @@ public class GuiAdd extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Uno o mas campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
 
             } else {
+
                 try {
-                    
+
                     receta.setNombre(nombreTF.getText().toString());
                     GestorJSONv2.agregarRecetaArchivo(this.receta);
                     setVisible(false);
-                    
+
                 } catch (IOException exc) {
-                    
+
                 }
 
             }
 
         }
-
         if (e.getSource() == ingredienteB) {
 
             if (ingredienteTF.getText().isEmpty()) {
@@ -124,7 +124,6 @@ public class GuiAdd extends JFrame implements ActionListener {
             }
 
         }
-
         if (e.getSource() == instruccionB) {
 
             if (instruccionTF.getText().isEmpty()) {
