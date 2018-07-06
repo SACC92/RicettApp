@@ -75,14 +75,9 @@ public class GestorJSONv2 {
             try{
             
                 Files.write(Paths.get("recetario.json"), new String().getBytes());
-                System.out.println("Se creo un recetario limpio");
             
             }   
-            catch(IOException e) {
-            
-                System.out.println("No se pudo inicializar Recetario");
-        
-            }
+            catch(IOException e) {}
         
         }
     }
