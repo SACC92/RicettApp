@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import javax.swing.DefaultListModel;
 
@@ -56,8 +58,14 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
         DefaultListModel listModel = new DefaultListModel();
 
         for (int x = 0; x < recetario.recetas.size(); x++) {
-
-            listModel.addElement(recetario.recetas.get(x).getNombre());
+            
+            if(listModel.contains(recetario.recetas.get(x).getNombre())){}
+            
+            else{
+                
+                listModel.addElement(recetario.recetas.get(x).getNombre());
+                
+            }
 
         }
 
@@ -97,11 +105,19 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
         this.add(areaP);
 
         //Configuracion ventana
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setSize(700, 200);
         setLocationRelativeTo(null);
         setResizable(false);
         this.setVisible(true);
+        
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                recetario.recetas.clear();
+                setVisible(false);
+            }
+        });
+        
 
     }
 
@@ -115,6 +131,7 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
     }
 
     void mostrar(int i) {
+        
         if (i > -1) {
 
             Recetario recetario = new Recetario();

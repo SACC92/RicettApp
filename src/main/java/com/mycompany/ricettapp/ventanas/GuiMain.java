@@ -3,6 +3,7 @@ package com.mycompany.ricettapp.ventanas;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.*;
 
 public class GuiMain extends JFrame implements ActionListener {
@@ -51,8 +52,13 @@ public class GuiMain extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == verRecetasB) {
-            GuiVerRecetas ventRecet = new GuiVerRecetas("Ver Recetas");
-            ventRecet.setVisible(true);
+            
+            try{
+                
+                GuiVerRecetas ventRecet = new GuiVerRecetas("Ver Recetas");
+                ventRecet.setVisible(true);
+                
+            }catch(IOException ioe){}
         }
         if (e.getSource() == agregarRecetaB) {
             GuiAdd ventana = new GuiAdd("Agregar Receta");

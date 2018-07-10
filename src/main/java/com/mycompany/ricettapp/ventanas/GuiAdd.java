@@ -83,6 +83,8 @@ public class GuiAdd extends JFrame implements ActionListener {
 
     }
 
+    
+    //Hacer comprobaciones si la receta existe.
     @Override
     public void actionPerformed(ActionEvent e) {
 
