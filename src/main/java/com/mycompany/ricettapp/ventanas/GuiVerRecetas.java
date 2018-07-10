@@ -22,6 +22,9 @@ import javax.swing.ListSelectionModel;
 
 public class GuiVerRecetas extends JFrame implements ActionListener {
 
+    
+    //EN EL CUADRO DE TEXTO QUE MUESTRA LAS RECETAS PERMITE ESCIRTURA.
+    
     protected JScrollPane menuScrollPane;
     protected JScrollPane areaScrollPane;
 
@@ -70,7 +73,7 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
         areaP = new JPanel();
         area = new JTextArea();
         areaScrollPane = new JScrollPane(area);
-        areaScrollPane.setPreferredSize(new Dimension(100, 100));
+        areaScrollPane.setPreferredSize(new Dimension(200, 150));
 
         //Para saber la cantidad de recetas almacenadas        
         counterLB = new JLabel(String.valueOf(recetario.verCantidadRecetas()));
