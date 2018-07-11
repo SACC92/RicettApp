@@ -11,7 +11,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import javax.swing.DefaultListModel;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,13 +18,9 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
-public class GuiVerRecetas extends JFrame implements ActionListener {
-
-    
-    //EN EL CUADRO DE TEXTO QUE MUESTRA LAS RECETAS PERMITE ESCIRTURA.
+ public class GuiBorrarRecetas extends JFrame implements ActionListener {
     
     protected JScrollPane menuScrollPane;
 
@@ -35,22 +30,18 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
     protected JLabel counterLB;
     protected JPanel recetasP;
 
-    protected JPanel verP;
-    protected JButton verB;
-
-    protected JPanel areaP;
-    protected JTextArea area;
-    protected JScrollPane areaScrollPane;
+    protected JPanel borrarP;
+    protected JButton borrarB;
     
-    public GuiVerRecetas(String title) throws IOException {
+    public GuiBorrarRecetas(String title) throws IOException {
 
         super(title);
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
 
         recetasP = new JPanel();
-        verB = new JButton("Ver receta");
-        verP = new JPanel();
+        borrarB = new JButton("Borrar Receta");
+        borrarP = new JPanel();
         recetasLB = new JLabel("Recetas:");
 
         //para el JList y barra
@@ -75,34 +66,25 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
         menuScrollPane = new JScrollPane(listaRecetas);
         menuScrollPane.setPreferredSize(new Dimension(100, 100));
 
-        areaP = new JPanel();
         listaRecetas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        areaP = new JPanel();
-        area = new JTextArea();
-        areaScrollPane = new JScrollPane(area);
-        areaScrollPane.setPreferredSize(new Dimension(200, 150));
 
         //Para saber la cantidad de recetas almacenadas        
         counterLB = new JLabel(String.valueOf(recetario.verCantidadRecetas()));
 
         //agregar los comportamientos a los obejtos de loa ventana
-        verB.addActionListener(this);
+        borrarB.addActionListener(this);
 
         // agregar objetos a la ventana
         recetasP.add(recetasLB);
         recetasP.add(counterLB);
 
-        verP.add(verB);
-
-        areaP.add(areaScrollPane);
+        borrarP.add(borrarB);
 
         this.add(recetasP);
         //para la barra
         this.add(menuScrollPane);
         this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        this.add(verP);
-        this.add(areaP);
+        this.add(borrarP);
 
         //Configuracion ventana
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -124,21 +106,29 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == verB) {
-            int i = listaRecetas.getSelectedIndex();
-            mostrar(i);
+        if (e.getSource() == borrarB) {
+            
+            try{
+                
+                int i = listaRecetas.getSelectedIndex();
+                borrar(i);
+                
+            }
+            catch(IOException exc){}
         }
     }
 
-    void mostrar(int i) {
+    void borrar(int i) throws IOException {
         
         if (i > -1) {
 
-            Recetario recetario = new Recetario();
-            recetario.recetas.get(i).rankear();
-            String saltoLinea = System.getProperty("line.separator");
-            area.setText("Los datos de la receta son:" + saltoLinea + recetario.recetas.get(i).toString());
-            area.setEditable(false);
+            try{
+                Recetario recetario = new Recetario();
+                recetario.recetas.remove(i);
+                GestorJSONv2.borrarRecetaArchivo(listaRecetas.getName());
+                JOptionPane.showMessageDialog(null, "Receta borrada exitosamente");
+            }
+                catch(IOException e){}
 
         } else {
 

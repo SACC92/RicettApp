@@ -5,6 +5,7 @@ import com.mycompany.ricettapp.funciones.Instruccion;
 import com.mycompany.ricettapp.funciones.Receta;
 import com.mycompany.ricettapp.funciones.Recetario;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,52 +21,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class GestorJSONv2 {
-
-    /*
-    public static void main(String[] args) throws IOException {
-
-        ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
-        ArrayList<Instruccion> instrucciones = new ArrayList<Instruccion>();
-
-        Ingrediente agua = new Ingrediente();
-        Ingrediente fideos = new Ingrediente();
-        Instruccion sacar = new Instruccion();
-        Instruccion echar = new Instruccion();
-
-        agua.setNombre("Saludar1");
-        fideos.setNombre("1");
-
-        ingredientes.add(agua);
-        ingredientes.add(fideos);
-
-        sacar.setPaso("Despedirse2");
-        echar.setPaso("2");
-
-        instrucciones.add(sacar);
-        instrucciones.add(echar);
-
-        Receta receta = new Receta("HOLA", 3, ingredientes, instrucciones);
-
-        agregarRecetaArchivo(receta);
-        agregarRecetaArchivo(receta);
-
-        
-       ArrayList<String> lineas= vectorLineas();          
-       generarRecetario(lineas);       
-       Recetario recetario = new Recetario();       
-           
-         
-    }
-    
-    public static void mostrarRecetario(Recetario recetario){
-        
-        for(int x=0;x<recetario.recetas.size();x++){
-            System.out.println(recetario.recetas.get(x).toString());
-            System.out.println("");
-        }    
-    
-    }
-    */
     
     public static void crearRecetarioVacio(){
         
@@ -226,7 +181,44 @@ public class GestorJSONv2 {
 
         saveFile(encode(nombre, ranking, ingredientes, instrucciones));
     }
+    
+    //REVISAR
+    public static void borrarRecetaArchivo(String nombre) throws IOException{
+    
+        ArrayList<Receta> recetario = generarRecetario(vectorLineas()).recetas; 
+        
+        for(int i=0; i<recetario.size(); i++){
+            
+            if(recetario.get(i).getNombre().equals(nombre)){
+                
+                recetario.remove(i);
+            
+            }
+            
+        }
+        
+        vaciarRecetario("recetario.json");
+        
+        for(int i=0; i<recetario.size(); i++){
+            
+            agregarRecetaArchivo(recetario.get(i));
+            
+        }
+    
+    
+    }
 
+    //FUNCIONAL
+    public static void vaciarRecetario(String dir){
+    
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(dir));
+            bw.write("");
+            bw.close();
+        }catch(IOException e){}
+        
+    }
+    
     //Metodos de Auxiliares de Deserialización.
     public static void ingredientes(JSONObject jsonObject, ArrayList ingredientesAL, Receta r) {
 

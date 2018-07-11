@@ -77,7 +77,7 @@ public class GuiAdd extends JFrame implements ActionListener {
 
         //Operaciones por defecto
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(700, 150);
+        setSize(700, 200);
         setLocationRelativeTo(null);
         setResizable(false);
 
