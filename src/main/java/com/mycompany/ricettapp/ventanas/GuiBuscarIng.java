@@ -16,8 +16,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class GuiBuscarIng extends JFrame implements ActionListener {
-
-    //EN EL CUADRO DE TEXTO QUE MUESTRA LAS RECETAS PERMITE ESCIRTURA.
     
     protected JButton buscarB;
     protected JPanel btBuscarP;
@@ -49,6 +47,7 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
         resultadoLB = new JLabel("Resultado:");
 
         area = new JTextArea();
+        area.setEditable(false);
         areaScrollPane = new JScrollPane(area);
         areaScrollPane.setPreferredSize(new Dimension(100, 100));
 
@@ -92,7 +91,6 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
                 String ing = this.busquedaTF.getText();
                 //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y BUSCAR EL INGREDIENTE, RETORNANDO RECETAS QUE LO CONTENGAN.
                 area.setText(recetario.buscarIngrediente(ing));
-                area.setEditable(false);
 
             }
         }

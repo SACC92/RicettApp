@@ -24,9 +24,6 @@ import javax.swing.ListSelectionModel;
 
 public class GuiVerRecetas extends JFrame implements ActionListener {
 
-    
-    //EN EL CUADRO DE TEXTO QUE MUESTRA LAS RECETAS PERMITE ESCIRTURA.
-    
     protected JScrollPane menuScrollPane;
 
     protected JList listaRecetas;
@@ -80,6 +77,7 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
 
         areaP = new JPanel();
         area = new JTextArea();
+        area.setEditable(false);
         areaScrollPane = new JScrollPane(area);
         areaScrollPane.setPreferredSize(new Dimension(200, 150));
 
@@ -138,7 +136,6 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
             recetario.recetas.get(i).rankear();
             String saltoLinea = System.getProperty("line.separator");
             area.setText("Los datos de la receta son:" + saltoLinea + recetario.recetas.get(i).toString());
-            area.setEditable(false);
 
         } else {
 
