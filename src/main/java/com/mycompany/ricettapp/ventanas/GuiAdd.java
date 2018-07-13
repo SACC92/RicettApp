@@ -84,7 +84,6 @@ public class GuiAdd extends JFrame implements ActionListener {
     }
 
     
-    //Hacer comprobaciones si la receta existe.
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -95,20 +94,46 @@ public class GuiAdd extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Uno o mas campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
 
             } else {
-
-                try {
-
+                
+                try{
+                    
                     receta.setNombre(nombreTF.getText().toString());
-                    GestorJSONv2.agregarRecetaArchivo(this.receta);
-                    setVisible(false);
+                    Recetario recetario = GestorJSONv2.generarRecetario(GestorJSONv2.vectorLineas());
+                    boolean existe = false;
+                
+                    for(int i=0; i<recetario.recetas.size();i++){
+                        
+                        if(receta.getNombre().equals(recetario.recetas.get(i).getNombre())){
+                           
+                            JOptionPane.showMessageDialog(null, "La receta ya existe en el inventario", "Error", JOptionPane.WARNING_MESSAGE);
+                            existe = true;
+                            
+                        }
+                        
+                    }
+                
+                    if(existe == true){
+                
+                        setVisible(false);
+                    
+                    }
+                    else{
+                
+                        try {
+                    
+                            GestorJSONv2.agregarRecetaArchivo(this.receta);
+                            setVisible(false);
 
-                } catch (IOException exc) {
-
-                }
+                        } catch (IOException e2) {}
+                
+                    }
+                    
+                }catch(IOException e1){}
 
             }
 
         }
+        
         if (e.getSource() == ingredienteB) {
 
             if (ingredienteTF.getText().isEmpty()) {
