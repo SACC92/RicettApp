@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.*;
 
-public class GuiMain extends JFrame implements ActionListener {
+public class GuiPrincipal extends JFrame implements ActionListener {
 
     protected JButton verRecetasB;
     protected JButton agregarRecetaB;
@@ -14,7 +14,7 @@ public class GuiMain extends JFrame implements ActionListener {
     protected JButton ingredientesB;
     protected JPanel botoneraP;
 
-    GuiMain(String title) {
+    GuiPrincipal(String title) {
 
         super(title);
         this.setLayout(new FlowLayout());
@@ -45,7 +45,7 @@ public class GuiMain extends JFrame implements ActionListener {
         setSize(700, 200);
         setLocationRelativeTo(null);
         setResizable(false);
-
+        
     }
 
     @Override

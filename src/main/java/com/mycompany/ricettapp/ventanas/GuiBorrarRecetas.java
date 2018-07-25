@@ -112,7 +112,7 @@ import javax.swing.ListSelectionModel;
                 
                 int i = listaRecetas.getSelectedIndex();
                 borrar(i);
-                
+
             }
             catch(IOException exc){}
         }
@@ -123,10 +123,14 @@ import javax.swing.ListSelectionModel;
         if (i > -1) {
 
             try{
+                
                 Recetario recetario = new Recetario();
                 recetario.recetas.remove(i);
                 GestorJSONv2.borrarRecetaArchivo(listaRecetas.getName());
                 JOptionPane.showMessageDialog(null, "Receta borrada exitosamente");
+                ((DefaultListModel) listaRecetas.getModel()).remove(i);
+                counterLB.setText(String.valueOf(recetario.verCantidadRecetas()));
+                
             }
                 catch(IOException e){}
 

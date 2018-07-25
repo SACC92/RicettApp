@@ -151,6 +151,8 @@ public class GestorJSONv2 {
 
         Recetario recetario = new Recetario();
         
+        recetario.recetas.clear();
+        
         for (int x = 0; x < lineas.size(); x++) {
             
             recetario.recetas.add(decode(lineas, x));
@@ -185,7 +187,7 @@ public class GestorJSONv2 {
     //REVISAR
     public static void borrarRecetaArchivo(String nombre) throws IOException{
     
-        ArrayList<Receta> recetario = generarRecetario(vectorLineas()).recetas; 
+        ArrayList<Receta> recetario = Recetario.recetas; 
         
         for(int i=0; i<recetario.size(); i++){
             
@@ -204,7 +206,6 @@ public class GestorJSONv2 {
             agregarRecetaArchivo(recetario.get(i));
             
         }
-    
     
     }
 

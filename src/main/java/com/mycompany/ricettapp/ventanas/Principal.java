@@ -1,13 +1,14 @@
 package com.mycompany.ricettapp.ventanas;
 
 import com.mycompany.ricettapp.archivos.GestorJSONv2;
+import java.io.IOException;
 
 public class Principal {
     
-    public static void main (String[]args){
+    public static void main (String[]args) throws IOException{
         
         GestorJSONv2.crearRecetarioVacio();
-        GuiMain ventana = new GuiMain("Menu"); 
+        GuiPrincipal ventana = new GuiPrincipal("Menu"); 
         ventana.setVisible(true);
         
     }    

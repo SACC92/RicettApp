@@ -139,7 +139,7 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
 
         } else {
 
-            JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista");
+            JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista","Error", JOptionPane.ERROR_MESSAGE);
 
         }
 
