@@ -1,6 +1,6 @@
 package com.mycompany.ricettapp.ventanas;
 
-import com.mycompany.ricettapp.archivos.GestorJSONv2;
+import com.mycompany.ricettapp.archivos.GestorJSON;
 import com.mycompany.ricettapp.funciones.Receta;
 import com.mycompany.ricettapp.funciones.Recetario;
 import java.awt.FlowLayout;
@@ -67,8 +67,8 @@ public class GuiRankear extends JFrame implements ActionListener {
             recetario.recetas.get(indice).rankear(valor);
             try {                
                 Receta receta = recetario.recetas.get(indice);
-                GestorJSONv2.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
-                GestorJSONv2.agregarRecetaArchivo(receta);
+                GestorJSON.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
+                GestorJSON.agregarRecetaArchivo(receta);
                  
             } catch (IOException ex) {
                 //error
@@ -81,8 +81,8 @@ public class GuiRankear extends JFrame implements ActionListener {
             recetario.recetas.get(indice).rankear(valor);
              try {                
                 Receta receta = recetario.recetas.get(indice);
-                GestorJSONv2.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
-                GestorJSONv2.agregarRecetaArchivo(receta);
+                GestorJSON.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
+                GestorJSON.agregarRecetaArchivo(receta);
                  
             } catch (IOException ex) {
                 //error
@@ -95,8 +95,8 @@ public class GuiRankear extends JFrame implements ActionListener {
             recetario.recetas.get(indice).rankear(valor);
              try {                
                 Receta receta = recetario.recetas.get(indice);
-                GestorJSONv2.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
-                GestorJSONv2.agregarRecetaArchivo(receta);
+                GestorJSON.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
+                GestorJSON.agregarRecetaArchivo(receta);
                  
             } catch (IOException ex) {
                 //error
@@ -109,8 +109,8 @@ public class GuiRankear extends JFrame implements ActionListener {
             recetario.recetas.get(indice).rankear(valor);
              try {                
                 Receta receta = recetario.recetas.get(indice);
-                GestorJSONv2.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
-                GestorJSONv2.agregarRecetaArchivo(receta);
+                GestorJSON.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
+                GestorJSON.agregarRecetaArchivo(receta);
                  
             } catch (IOException ex) {
                 //error
@@ -123,8 +123,8 @@ public class GuiRankear extends JFrame implements ActionListener {
             recetario.recetas.get(indice).rankear(valor);
              try {                
                 Receta receta = recetario.recetas.get(indice);
-                GestorJSONv2.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
-                GestorJSONv2.agregarRecetaArchivo(receta);
+                GestorJSON.borrarRecetaArchivo(recetario.recetas.get(indice).getNombre());
+                GestorJSON.agregarRecetaArchivo(receta);
                  
             } catch (IOException ex) {
                 //error

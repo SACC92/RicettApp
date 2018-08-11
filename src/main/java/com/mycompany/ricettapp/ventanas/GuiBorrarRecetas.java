@@ -1,6 +1,6 @@
 package com.mycompany.ricettapp.ventanas;
 
-import com.mycompany.ricettapp.archivos.GestorJSONv2;
+import com.mycompany.ricettapp.archivos.GestorJSON;
 import com.mycompany.ricettapp.funciones.Recetario;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
@@ -45,7 +45,7 @@ import javax.swing.ListSelectionModel;
         recetasLB = new JLabel("Recetas:");
 
         //para el JList y barra
-        Recetario recetario = GestorJSONv2.generarRecetario(GestorJSONv2.vectorLineas());
+        Recetario recetario = GestorJSON.generarRecetario(GestorJSON.vectorLineas());
         DefaultListModel listModel = new DefaultListModel();
 
         for (int x = 0; x < recetario.recetas.size(); x++) {
@@ -126,7 +126,7 @@ import javax.swing.ListSelectionModel;
                 
                 Recetario recetario = new Recetario();
                 recetario.recetas.remove(i);
-                GestorJSONv2.borrarRecetaArchivo(listaRecetas.getName());
+                GestorJSON.borrarRecetaArchivo(listaRecetas.getName());
                 JOptionPane.showMessageDialog(null, "Receta borrada exitosamente");
                 ((DefaultListModel) listaRecetas.getModel()).remove(i);
                 counterLB.setText(String.valueOf(recetario.verCantidadRecetas()));
