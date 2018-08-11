@@ -1,6 +1,6 @@
 package com.mycompany.ricettapp.ventanas;
 
-import com.mycompany.ricettapp.archivos.GestorJSON;
+import com.mycompany.ricettapp.archivos.GestorJSONv2;
 import com.mycompany.ricettapp.funciones.Recetario;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
@@ -95,7 +95,7 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
                 
                 String ing = this.busquedaTF.getText();                
                 //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y BUSCAR EL INGREDIENTE, RETORNANDO RECETAS QUE LO CONTENGAN.
-                GestorJSON gestor = new GestorJSON();
+                GestorJSONv2 gestor = new GestorJSONv2();
                  ArrayList<String>lineas;
                 try {
                    lineas = gestor.vectorLineas();

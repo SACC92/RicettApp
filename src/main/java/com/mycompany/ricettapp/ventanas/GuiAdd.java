@@ -1,6 +1,6 @@
 package com.mycompany.ricettapp.ventanas;
 
-import com.mycompany.ricettapp.archivos.GestorJSON;
+import com.mycompany.ricettapp.archivos.GestorJSONv2;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -98,7 +98,7 @@ public class GuiAdd extends JFrame implements ActionListener {
                 try{
                     
                     receta.setNombre(nombreTF.getText().toString());
-                    Recetario recetario = GestorJSON.generarRecetario(GestorJSON.vectorLineas());
+                    Recetario recetario = GestorJSONv2.generarRecetario(GestorJSONv2.vectorLineas());
                     boolean existe = false;
                 
                     for(int i=0; i<recetario.recetas.size();i++){
@@ -120,8 +120,8 @@ public class GuiAdd extends JFrame implements ActionListener {
                     else{
                 
                         try {
-
-                            GestorJSON.agregarRecetaArchivo(this.receta);
+                    
+                            GestorJSONv2.agregarRecetaArchivo(this.receta);
                             setVisible(false);
 
                         } catch (IOException e2) {}
