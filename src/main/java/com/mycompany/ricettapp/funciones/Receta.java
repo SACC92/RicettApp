@@ -2,18 +2,22 @@ package com.mycompany.ricettapp.funciones;
 
 import java.util.ArrayList;
 
-public class Receta  {
+public class Receta {
 
     private ArrayList<Ingrediente> ingredientes;
     private ArrayList<Instruccion> instrucciones;
     private String nombre;
-    private int ranking;
+    private double ranking;
+    private double votos;
 
+    /*Método rankear debe ser modificado para recicibir un valor,
+    y luego para mostrar el ranking, se divide la variable ranking por numVotos*/
     public Receta() {
         this.nombre = " ";
         this.ingredientes = new ArrayList<Ingrediente>();
         this.instrucciones = new ArrayList<Instruccion>();
         this.ranking = 0;
+        this.votos = 0;
     }
 
     public Receta(String nombre, int ranking, ArrayList<Ingrediente> ingredientes, ArrayList<Instruccion> instrucciones) {
@@ -22,44 +26,54 @@ public class Receta  {
         this.nombre = nombre;
         this.ranking = ranking;
     }
-    
-    public String toString(){
+
+    public String toString() {
         String saltoLinea = System.getProperty("line.separator");
-        return "Nombre: "+nombre+saltoLinea+"Ranking: "+ranking+saltoLinea+"Ingredientes: "+ ings()+saltoLinea+"Instrucciones:"+inst();
+        return "Nombre: " + nombre + saltoLinea + "Ranking: " + mostrarRanking() + saltoLinea + "Ingredientes: " + ings() + saltoLinea + "Instrucciones:" + inst();
     }
-    
-    private  String ings(){
+    private String mostrarRanking(){
+        String valoracion="";
+        if(this.votos!=0){
+            valoracion=String.valueOf(ranking/votos);
+        }else{
+            valoracion= "Receta sin valorar";
+        }
+        return String.valueOf(valoracion);
+    }
+
+    private String ings() {
         String ings = "";
         String saltoLinea = System.getProperty("line.separator");
-        for(int x=0;x<ingredientes.size();x++){
-            ings+= saltoLinea + ingredientes.get(x).getNombre();
-        }        
+        for (int x = 0; x < ingredientes.size(); x++) {
+            ings += saltoLinea + ingredientes.get(x).getNombre();
+        }
         return ings;
-    }   
-    
-    private  String inst(){
+    }
+
+    private String inst() {
         String inst = "";
         String saltoLinea = System.getProperty("line.separator");
-        for(int x=0;x<instrucciones.size();x++){
-            inst+= saltoLinea + instrucciones.get(x).getPaso();
-        }        
+        for (int x = 0; x < instrucciones.size(); x++) {
+            inst += saltoLinea + instrucciones.get(x).getPaso();
+        }
         return inst;
     }
-    
-    public void rankear(){
-        this.ranking += 1;
+
+    public void rankear(double valoracion) {
+        this.votos += 1;
+        this.ranking = ranking + valoracion;
     }
-    
+
     //Getters y Setters
-    public int getRanking(){
+    public double getRanking() {
         return ranking;
     }
-    
-    public void setRanking(int ranking){
-        this.ranking=ranking;
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
     }
-    
-    public String getNombre(){
+
+    public String getNombre() {
         return nombre;
     }
 
@@ -81,5 +95,18 @@ public class Receta  {
 
     public void setInstrucciones(ArrayList<Instruccion> instrucciones) {
         this.instrucciones = instrucciones;
-    }       
+    }
+
+    public double getVotos() {
+        return votos;
+    }
+
+    public void setRanking(double ranking) {
+        this.ranking = ranking;
+    }
+
+    public void setVotos(double votos) {
+        this.votos = votos;
+    }
+
 }

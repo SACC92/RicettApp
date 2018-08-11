@@ -39,6 +39,9 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
     protected JTextArea area;
     protected JScrollPane areaScrollPane;
     
+    protected JPanel rankP;
+    protected JButton rankB;
+    
     public GuiVerRecetas(String title) throws IOException {
 
         super(title);
@@ -83,9 +86,14 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
 
         //Para saber la cantidad de recetas almacenadas        
         counterLB = new JLabel(String.valueOf(recetario.verCantidadRecetas()));
-
+        
+        //ranking
+        this.rankP= new JPanel();
+        this.rankB= new JButton("Rankear Receta");
+        
         //agregar los comportamientos a los obejtos de loa ventana
         verB.addActionListener(this);
+        rankB.addActionListener(this);
 
         // agregar objetos a la ventana
         recetasP.add(recetasLB);
@@ -94,6 +102,8 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
         verP.add(verB);
 
         areaP.add(areaScrollPane);
+        
+        rankP.add(rankB);
 
         this.add(recetasP);
         //para la barra
@@ -101,6 +111,7 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
         this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         this.add(verP);
         this.add(areaP);
+        this.add(rankP);
 
         //Configuracion ventana
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -126,14 +137,25 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
             int i = listaRecetas.getSelectedIndex();
             mostrar(i);
         }
+        
+        if(e.getSource()==rankB){
+            int indice = listaRecetas.getSelectedIndex();
+            if (indice > -1) {
+            GuiRankear rankear = new GuiRankear("Rankear Receta",indice);
+            rankear.setVisible(true);
+            setVisible(false);
+            }else{
+            JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista","Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
-    void mostrar(int i) {
+    private void mostrar(int i) {
         
         if (i > -1) {
 
             Recetario recetario = new Recetario();
-            recetario.recetas.get(i).rankear();
+            //recetario.recetas.get(i).rankear();
             String saltoLinea = System.getProperty("line.separator");
             area.setText("Los datos de la receta son:" + saltoLinea + recetario.recetas.get(i).toString());
 

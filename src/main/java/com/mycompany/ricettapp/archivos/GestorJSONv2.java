@@ -43,13 +43,14 @@ public class GestorJSONv2 {
 
     }
 
-    public static JSONObject encode(String nombre, String ranking, JSONArray ingredientes, JSONArray instrucciones) {
+    public static JSONObject encode(String nombre, String ranking,String votos, JSONArray ingredientes, JSONArray instrucciones) {
 
         JSONObject obj = new JSONObject();
         obj.put("nombre", nombre);
         obj.put("ranking", ranking);
         obj.put("ingredientes", ingredientes);
         obj.put("instrucciones", instrucciones);
+        obj.put("votos", votos);
         return obj;
 
     }
@@ -95,9 +96,11 @@ public class GestorJSONv2 {
             JSONObject jsonObject = (JSONObject) obj;
             String nombre = (String) jsonObject.get("nombre");
             String ranking = ((String) jsonObject.get("ranking"));
+            String votos = ((String) jsonObject.get("votos"));
 
             r.setNombre(nombre);
-            r.setRanking(Integer.parseInt(ranking));
+            r.setRanking(Double.parseDouble(ranking));
+            r.setVotos(Double.parseDouble(votos));
 
             ingredientes(jsonObject, ingredientesAL, r);
             instrucciones(jsonObject, instruccionesAL, r);
@@ -172,6 +175,7 @@ public class GestorJSONv2 {
         String nombre = receta.getNombre();
 
         String ranking = String.valueOf(receta.getRanking());
+        String votos = String.valueOf(receta.getVotos());
 
         for (int x = 0; x < receta.getIngredientes().size(); x++) {
             llenarJSONArray(ingredientes, receta.getIngredientes().get(x).getNombre());
@@ -181,7 +185,7 @@ public class GestorJSONv2 {
             llenarJSONArray(instrucciones, receta.getInstrucciones().get(x).getPaso());
         }
 
-        saveFile(encode(nombre, ranking, ingredientes, instrucciones));
+        saveFile(encode(nombre, ranking,votos, ingredientes, instrucciones));
     }
     
     //REVISAR

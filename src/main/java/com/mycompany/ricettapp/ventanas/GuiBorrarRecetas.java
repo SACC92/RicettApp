@@ -118,7 +118,7 @@ import javax.swing.ListSelectionModel;
         }
     }
 
-    void borrar(int i) throws IOException {
+    private void borrar(int i) throws IOException {
         
         if (i > -1) {
 

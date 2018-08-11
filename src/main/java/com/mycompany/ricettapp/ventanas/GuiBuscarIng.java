@@ -1,11 +1,16 @@
 package com.mycompany.ricettapp.ventanas;
 
+import com.mycompany.ricettapp.archivos.GestorJSONv2;
 import com.mycompany.ricettapp.funciones.Recetario;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -86,10 +91,18 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Ingrese un ingrediente para realizar la busqueda");
 
-            } else {
+            } else {                
                 
-                String ing = this.busquedaTF.getText();
+                String ing = this.busquedaTF.getText();                
                 //EN ESTA PARTE SE DEBE ACCEDER AL ARCHIVO Y BUSCAR EL INGREDIENTE, RETORNANDO RECETAS QUE LO CONTENGAN.
+                GestorJSONv2 gestor = new GestorJSONv2();
+                 ArrayList<String>lineas;
+                try {
+                   lineas = gestor.vectorLineas();
+                   gestor.generarRecetario(lineas); 
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Error en la busqueda","Error", JOptionPane.ERROR_MESSAGE);
+                } 
                 area.setText(recetario.buscarIngrediente(ing));
 
             }
