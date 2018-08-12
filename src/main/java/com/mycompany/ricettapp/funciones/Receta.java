@@ -9,9 +9,7 @@ public class Receta {
     private String nombre;
     private double ranking;
     private double votos;
-
-    /*Método rankear debe ser modificado para recicibir un valor,
-    y luego para mostrar el ranking, se divide la variable ranking por numVotos*/
+	
     public Receta() {
         this.nombre = " ";
         this.ingredientes = new ArrayList<Ingrediente>();
@@ -31,7 +29,7 @@ public class Receta {
         String saltoLinea = System.getProperty("line.separator");
         return "Nombre: " + nombre + saltoLinea + "Ranking: " + mostrarRanking() + saltoLinea + "Ingredientes: " + ings() + saltoLinea + "Instrucciones:" + inst();
     }
-    private String mostrarRanking(){
+    public String mostrarRanking(){
         String valoracion="";
         if(this.votos!=0){
             valoracion=String.valueOf(ranking/votos);
