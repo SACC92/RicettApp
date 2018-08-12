@@ -14,7 +14,7 @@ public class GuiPrincipal extends JFrame implements ActionListener {
     protected JButton ingredientesB;
     protected JPanel botoneraP;
 
-    GuiPrincipal(String title) {
+    public GuiPrincipal(String title) {
 
         super(title);
         this.setLayout(new FlowLayout());

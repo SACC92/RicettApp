@@ -7,7 +7,6 @@ public class Instruccion {
     public Instruccion() {
         this.paso = " ";
     }
-    //Metodos get y set
 
     public String getPaso() {
         return paso;

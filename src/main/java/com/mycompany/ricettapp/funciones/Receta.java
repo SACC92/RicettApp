@@ -25,10 +25,19 @@ public class Receta {
         this.ranking = ranking;
     }
 
+    /**
+     * Encargado de entregar la información completa de una receta.
+     */
+
     public String toString() {
         String saltoLinea = System.getProperty("line.separator");
         return "Nombre: " + nombre + saltoLinea + "Ranking: " + mostrarRanking() + saltoLinea + "Ingredientes: " + ings() + saltoLinea + "Instrucciones:" + inst();
     }
+
+    /**
+     * Entrega el ranking de una receta, informa si no ha sido rankeada.
+     */
+
     public String mostrarRanking(){
         String valoracion="";
         if(this.votos!=0){
@@ -39,6 +48,10 @@ public class Receta {
         return String.valueOf(valoracion);
     }
 
+    /**
+     * Entrega en String la lista de ingredientes de una receta.
+     */
+
     private String ings() {
         String ings = "";
         String saltoLinea = System.getProperty("line.separator");
@@ -47,6 +60,10 @@ public class Receta {
         }
         return ings;
     }
+
+    /**
+     * Entrega en String la lista de instrucciones de una receta.
+     */
 
     private String inst() {
         String inst = "";
@@ -57,12 +74,15 @@ public class Receta {
         return inst;
     }
 
+    /**
+     * Encargado de actualizar el ranking de una receta.
+     */
+
     public void rankear(double valoracion) {
         this.votos += 1;
         this.ranking = ranking + valoracion;
     }
 
-    //Getters y Setters
     public double getRanking() {
         return ranking;
     }

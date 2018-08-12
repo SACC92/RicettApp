@@ -21,9 +21,13 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class GestorJSONv2 {
-    
+
+    /**
+     * Verifica si recetario.json existe, de no existir lo crea.
+     */
+
     public static void crearRecetarioVacio(){
-        
+
         if(new File("recetario.json").exists()){}
         else{
             
@@ -36,12 +40,20 @@ public class GestorJSONv2 {
         
         }
     }
-    
+
+    /**
+     * Añade ingredientes o instrucciones a un JSONArray.
+     */
+
     public static void llenarJSONArray(JSONArray array, Object obj) {
 
         array.add(obj);
 
     }
+
+    /**
+     * Serializa una receta a formato JSONObject.
+     */
 
     public static JSONObject encode(String nombre, String ranking,String votos, JSONArray ingredientes, JSONArray instrucciones) {
 
@@ -55,7 +67,10 @@ public class GestorJSONv2 {
 
     }
 
-    //Modificado
+    /**
+     * Agrega el texto almacenado en el JSONObject en un archivo .json y lo guarda.
+     */
+
     public static void saveFile(JSONObject obj) throws IOException {
 
         //Los salto de linea los hago de esta forma para que funcionen bien en cualquier
@@ -80,7 +95,10 @@ public class GestorJSONv2 {
 
     }
 
-    //Modificado
+    /**
+     * Deserializa las lineas obtenidas de un .json y genera una Receta.
+     */
+
     public static Receta decode(ArrayList<String> lineas, int n) {
 
         ArrayList<Ingrediente> ingredientesAL = new ArrayList();
@@ -113,7 +131,10 @@ public class GestorJSONv2 {
 
     }
 
-    //Nuevo
+    /**
+     * Cuenta la cantidad de lineas dentro del archivo .json.
+     */
+
     public static int contarLineas() throws FileNotFoundException, IOException {
         int numLineas = 0;
         String fichero = new File("").getAbsolutePath() + File.separator + "recetario.json";
@@ -127,7 +148,10 @@ public class GestorJSONv2 {
         return numLineas;
     }
 
-    //Nuevo
+    /**
+     * Convierte el .json en texto plano.
+     */
+
     public static ArrayList<String> vectorLineas() throws FileNotFoundException, IOException {
 
         int numLineas = 0;
@@ -149,7 +173,10 @@ public class GestorJSONv2 {
         return datos;
     }
 
-    //Método para generar recetario con el contenido del archivo
+    /**
+     * Genera Recetario con el contenido del archivo .json.
+     */
+
     public static Recetario generarRecetario(ArrayList<String> lineas) {
 
         Recetario recetario = new Recetario();
@@ -167,7 +194,10 @@ public class GestorJSONv2 {
         
     }
 
-    //Nuevo
+    /**
+     * Añande una receta al archivo .json.
+     */
+
     public static void agregarRecetaArchivo(Receta receta) throws IOException {
 
         JSONArray ingredientes = new JSONArray();
@@ -188,8 +218,11 @@ public class GestorJSONv2 {
 
         saveFile(encode(nombre, ranking,votos, ingredientes, instrucciones));
     }
-    
-    //REVISAR
+
+    /**
+     * Elimina una receta del .json, pero no afecta a las demás recetas.
+     */
+
     public static void borrarRecetaArchivo(String nombre) throws IOException{
     
         ArrayList<Receta> recetario = Recetario.recetas; 
@@ -214,7 +247,10 @@ public class GestorJSONv2 {
     
     }
 
-    //FUNCIONAL
+    /**
+     * Elimina completamente el contenido del .json.
+     */
+
     public static void vaciarRecetario(String dir){
     
         try{
@@ -224,8 +260,11 @@ public class GestorJSONv2 {
         }catch(IOException e){}
         
     }
-    
-    //Metodos de Auxiliares de Deserialización.
+
+    /**
+     * Encargado de llenar el ArrayList ingredientes de una Receta desde un JSONObject.
+     */
+
     public static void ingredientes(JSONObject jsonObject, ArrayList ingredientesAL, Receta r) {
 
         JSONArray ingredientesJA = (JSONArray) jsonObject.get("ingredientes");
@@ -240,6 +279,10 @@ public class GestorJSONv2 {
         r.setIngredientes(ingredientesAL);
 
     }
+
+    /**
+     * Encargado de llenar el ArrayList instrucciones de una Receta desde un JSONObject.
+     */
 
     public static void instrucciones(JSONObject jsonObject, ArrayList instruccionesAL, Receta r) {
 

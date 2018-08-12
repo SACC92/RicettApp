@@ -35,7 +35,7 @@ public class GuiBuscarIng extends JFrame implements ActionListener {
     protected JScrollPane areaScrollPane;
     protected JTextArea area;
 
-    GuiBuscarIng(String title) {
+    public GuiBuscarIng(String title) {
 
         super(title);
         this.setLayout(new FlowLayout());

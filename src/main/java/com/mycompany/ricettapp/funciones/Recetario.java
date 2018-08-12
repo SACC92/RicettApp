@@ -6,6 +6,10 @@ public class Recetario {
 
     public static ArrayList<Receta> recetas = new ArrayList<Receta>();
 
+    /**
+     * Busca un ingrediente en las recetas guardadas en this.recetas.
+     */
+
     public String buscarIngrediente(String ing) {
         String resultado = "";
         String saltoLinea = System.getProperty("line.separator");
@@ -22,7 +26,10 @@ public class Recetario {
         return resultado;
     }
 
-    //Método para hacer un vector para realizar un ordenamiento de la burbuja
+    /**
+     * Encargado de hacer un vector para realizar un ordenamiento de la burbuja.
+     */
+
     public void ordenarRecetas() {
         int total = recetas.size();
         Receta[] receta = new Receta[total];
@@ -32,13 +39,16 @@ public class Recetario {
         burbuja(receta);
     }
 
-    //Método de la burbuja para ordenar luchadores por las velocidades
+    /**
+     * Ordena las recetas por metodo de la burbuja, considerando que las recetas sin votos quedarán al final de la lista.
+     */
+
     private void burbuja(Receta[] receta) {
 
         for (int i = 0; i < receta.length - 1; i++) {
             for (int j = 0; j < receta.length - 1; j++) {
 
-                if (receta[j].getVotos() == 0) {//Recetas sin votos terminaran al final de la lista
+                if (receta[j].getVotos() == 0) {
                     Receta tmp = receta[j + 1];
                     receta[j + 1] = null;
                     receta[j + 1] = receta[j];
@@ -59,6 +69,10 @@ public class Recetario {
         colocarRecetasOrdenadas(receta);
     }
 
+    /**
+     * Limpia this.recetas y lo llena con las recetas ordenadas.
+     */
+
     private void colocarRecetasOrdenadas(Receta[] receta) {
         int largoRecetario = recetas.size();
         recetas.clear();
@@ -69,9 +83,17 @@ public class Recetario {
 
     }
 
+    /**
+     * Informa de la cantidad de recetas en this.recetas.
+     */
+
     public int verCantidadRecetas() {
         return this.recetas.size();
     }
+
+    /**
+     * Elimina una receta.
+     */
 
     public void borrarRecetas(String nombre) {
         for (int x = 0; x < this.recetas.size(); x++) {
