@@ -6,8 +6,15 @@ public class Recetario {
 
     public static ArrayList<Receta> recetas = new ArrayList<Receta>();
 
+    public Recetario() {
+    }
+
     /**
      * Busca un ingrediente en las recetas guardadas en this.recetas.
+     *
+     * @param ing nombre del ingrediente a buscar.
+     * @return String nombre de la recetas que contengan a ing.
+     *
      */
 
     public String buscarIngrediente(String ing) {
@@ -41,50 +48,59 @@ public class Recetario {
 
     /**
      * Ordena las recetas por metodo de la burbuja, considerando que las recetas sin votos quedarán al final de la lista.
+     *
+     * @param recetas listado de recetas para ser ordenadas.
+     *
      */
 
-    private void burbuja(Receta[] receta) {
+    private void burbuja(Receta[] recetas) {
 
-        for (int i = 0; i < receta.length - 1; i++) {
-            for (int j = 0; j < receta.length - 1; j++) {
+        for (int i = 0; i < recetas.length - 1; i++) {
+            for (int j = 0; j < recetas.length - 1; j++) {
 
-                if (receta[j].getVotos() == 0) {
-                    Receta tmp = receta[j + 1];
-                    receta[j + 1] = null;
-                    receta[j + 1] = receta[j];
-                    receta[j] = null;
-                    receta[j] = tmp;
+                if (recetas[j].getVotos() == 0) {
+                    Receta tmp = recetas[j + 1];
+                    recetas[j + 1] = null;
+                    recetas[j + 1] = recetas[j];
+                    recetas[j] = null;
+                    recetas[j] = tmp;
 
                 } else {
-                    if (receta[j].getRanking() / receta[j].getVotos() < receta[j + 1].getRanking() / receta[j + 1].getVotos()) {
-                        Receta tmp = receta[j + 1];
-                        receta[j + 1] = null;
-                        receta[j + 1] = receta[j];
-                        receta[j] = null;
-                        receta[j] = tmp;
+                    if (recetas[j].getRanking() / recetas[j].getVotos() < recetas[j + 1].getRanking() / recetas[j + 1].getVotos()) {
+                        Receta tmp = recetas[j + 1];
+                        recetas[j + 1] = null;
+                        recetas[j + 1] = recetas[j];
+                        recetas[j] = null;
+                        recetas[j] = tmp;
                     }
                 }
             }
         }
-        colocarRecetasOrdenadas(receta);
+        colocarRecetasOrdenadas(recetas);
     }
 
     /**
      * Limpia this.recetas y lo llena con las recetas ordenadas.
+     *
+     * @param recetas listado de recetas ordenadas para reemplazar a las de this.recetas.
+     *
      */
 
-    private void colocarRecetasOrdenadas(Receta[] receta) {
-        int largoRecetario = recetas.size();
-        recetas.clear();
+    private void colocarRecetasOrdenadas(Receta[] recetas) {
+        int largoRecetario = this.recetas.size();
+        this.recetas.clear();
 
         for (int x = 0; x < largoRecetario; x++) {
-            recetas.add(receta[x]);
+            this.recetas.add(recetas[x]);
         }
 
     }
 
     /**
      * Informa de la cantidad de recetas en this.recetas.
+     *
+     * @return int cantidad de recetas.
+     *
      */
 
     public int verCantidadRecetas() {
@@ -93,6 +109,9 @@ public class Recetario {
 
     /**
      * Elimina una receta.
+     *
+     * @param nombre nombre de la receta a eliminar.
+     *
      */
 
     public void borrarRecetas(String nombre) {

@@ -4,6 +4,14 @@ import java.util.ArrayList;
 
 public class Receta {
 
+    /**
+     *
+     * Clase Receta
+     *
+     * @autor Lucas Sandoval Jorge Echeverria Sebastian Contreras
+     * @version 4.0
+     */
+
     private ArrayList<Ingrediente> ingredientes;
     private ArrayList<Instruccion> instrucciones;
     private String nombre;
@@ -27,6 +35,9 @@ public class Receta {
 
     /**
      * Encargado de entregar la información completa de una receta.
+     *
+     * @return String información completa de la Receta.
+     *
      */
 
     public String toString() {
@@ -36,6 +47,9 @@ public class Receta {
 
     /**
      * Entrega el ranking de una receta, informa si no ha sido rankeada.
+     *
+     * @return String valoración de la receta.
+     *
      */
 
     public String mostrarRanking(){
@@ -50,6 +64,9 @@ public class Receta {
 
     /**
      * Entrega en String la lista de ingredientes de una receta.
+     *
+     * @return String ingredientes de la receta.
+     *
      */
 
     private String ings() {
@@ -63,6 +80,9 @@ public class Receta {
 
     /**
      * Entrega en String la lista de instrucciones de una receta.
+     *
+     * @return String instrucciones de la receta.
+     *
      */
 
     private String inst() {
@@ -76,6 +96,9 @@ public class Receta {
 
     /**
      * Encargado de actualizar el ranking de una receta.
+     *
+     * @param valoracion cantidad de estrellas ingresadas por el usuario.
+     *
      */
 
     public void rankear(double valoracion) {

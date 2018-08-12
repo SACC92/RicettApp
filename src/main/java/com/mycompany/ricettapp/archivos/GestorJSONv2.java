@@ -20,6 +20,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+/**
+ *
+ * Clase de Gestión de Archivos
+ *
+ * @autor Lucas Sandoval Jorge Echeverria Sebastian Contreras
+ * @version 2.0
+ */
+
 public class GestorJSONv2 {
 
     /**
@@ -43,6 +51,9 @@ public class GestorJSONv2 {
 
     /**
      * Añade ingredientes o instrucciones a un JSONArray.
+     *
+     * @param array contiene ingredientes o instrucciones.
+     * @param obj ingrediente o instruccion.
      */
 
     public static void llenarJSONArray(JSONArray array, Object obj) {
@@ -53,6 +64,13 @@ public class GestorJSONv2 {
 
     /**
      * Serializa una receta a formato JSONObject.
+     *
+     * @param nombre nombre de receta.
+     * @param ranking valoración hecha por los usuarios.
+     * @param votos cantidad de veces que se rankeo la receta.
+     * @param ingredientes listado de ingredientes en formato JSON.
+     * @param instrucciones listado de pasos en formato JSON.
+     * @return JSONObject receta en formato JSON.
      */
 
     public static JSONObject encode(String nombre, String ranking,String votos, JSONArray ingredientes, JSONArray instrucciones) {
@@ -69,6 +87,8 @@ public class GestorJSONv2 {
 
     /**
      * Agrega el texto almacenado en el JSONObject en un archivo .json y lo guarda.
+     *
+     * @param obj receta en formato JSON.
      */
 
     public static void saveFile(JSONObject obj) throws IOException {
@@ -97,6 +117,10 @@ public class GestorJSONv2 {
 
     /**
      * Deserializa las lineas obtenidas de un .json y genera una Receta.
+     *
+     * @param lineas recetas en formato String.
+     * @param n cantidad de lineas del .json.
+     * @return Receta receta como objeto de la clase del mismo nombre.
      */
 
     public static Receta decode(ArrayList<String> lineas, int n) {
@@ -133,6 +157,8 @@ public class GestorJSONv2 {
 
     /**
      * Cuenta la cantidad de lineas dentro del archivo .json.
+     *
+     * @return int cantidad de lineas del archivo .json.
      */
 
     public static int contarLineas() throws FileNotFoundException, IOException {
@@ -150,6 +176,9 @@ public class GestorJSONv2 {
 
     /**
      * Convierte el .json en texto plano.
+     *
+     * @return  ArrayList contiene el contenido del .json, de manera que cada linea es un String en el ArrayList.
+     *
      */
 
     public static ArrayList<String> vectorLineas() throws FileNotFoundException, IOException {
@@ -175,6 +204,10 @@ public class GestorJSONv2 {
 
     /**
      * Genera Recetario con el contenido del archivo .json.
+     *
+     * @param lineas contiene el contenido del .json, de manera que cada linea es un String en el ArrayList.
+     * @return Recetario recetario que contiene todas las recetas del .json.
+     *
      */
 
     public static Recetario generarRecetario(ArrayList<String> lineas) {
@@ -196,6 +229,9 @@ public class GestorJSONv2 {
 
     /**
      * Añande una receta al archivo .json.
+     *
+     * @param receta receta para ser agregada al .json.
+     *
      */
 
     public static void agregarRecetaArchivo(Receta receta) throws IOException {
@@ -221,6 +257,9 @@ public class GestorJSONv2 {
 
     /**
      * Elimina una receta del .json, pero no afecta a las demás recetas.
+     *
+     * @param nombre nombre de la receta a eliminar.
+     *
      */
 
     public static void borrarRecetaArchivo(String nombre) throws IOException{
@@ -249,6 +288,9 @@ public class GestorJSONv2 {
 
     /**
      * Elimina completamente el contenido del .json.
+     *
+     * @param dir ruta del archivo .json.
+     *
      */
 
     public static void vaciarRecetario(String dir){
@@ -263,6 +305,11 @@ public class GestorJSONv2 {
 
     /**
      * Encargado de llenar el ArrayList ingredientes de una Receta desde un JSONObject.
+     *
+     * @param jsonObject contiene los ingredientes en formato JSON.
+     * @param ingredientesAL contiene los ingredientes en formato Ingrediente.
+     * @param r receta que posee como atributo a ingredientesAL.
+     *
      */
 
     public static void ingredientes(JSONObject jsonObject, ArrayList ingredientesAL, Receta r) {
@@ -282,6 +329,11 @@ public class GestorJSONv2 {
 
     /**
      * Encargado de llenar el ArrayList instrucciones de una Receta desde un JSONObject.
+     *
+     * @param jsonObject contiene los instrucciones en formato JSON.
+     * @param instruccionesAL contiene las instrucciones en formato Instruccion.
+     * @param r receta que posee como atributo a instruccionesAL.
+     *
      */
 
     public static void instrucciones(JSONObject jsonObject, ArrayList instruccionesAL, Receta r) {
