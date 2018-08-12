@@ -49,4 +49,40 @@ public class RecetarioTest {
 
         assertEquals(resultadoEsperado, resultadoFinal);
     }
+    
+    //Método que ordena las recetas
+    @Test
+    public void ordenarRecetasTest(){
+        
+        String resultadoEsperado= "receta4";
+        
+        Recetario recetario = new Recetario();
+        
+        Receta receta1= new Receta();
+        receta1.setNombre("receta1");
+        receta1.setVotos(1);
+        
+        Receta receta2= new Receta();
+        receta2.setNombre("receta2");
+        receta2.setVotos(0);
+        
+        Receta receta3= new Receta();
+        receta3.setNombre("receta3");
+        receta3.setVotos(3);
+        
+        Receta receta4= new Receta();
+        receta4.setNombre("receta4");
+        receta4.setVotos(3);
+        receta4.setRanking(15);
+        
+        recetario.recetas.add(receta1);
+        recetario.recetas.add(receta2);
+        recetario.recetas.add(receta3);
+        recetario.recetas.add(receta4);
+        
+        recetario.ordenarRecetas();
+        
+        
+         assertEquals(resultadoEsperado, recetario.recetas.get(0).getNombre());
+    }
 }

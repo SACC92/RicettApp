@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Recetario {
 
-    public static ArrayList<Receta> recetas =new ArrayList<Receta>();
+    public static ArrayList<Receta> recetas = new ArrayList<Receta>();
 
     public String buscarIngrediente(String ing) {
         String resultado = "";
@@ -20,6 +20,53 @@ public class Recetario {
             }
         }
         return resultado;
+    }
+
+    //Método para hacer un vector para realizar un ordenamiento de la burbuja
+    public void ordenarRecetas() {
+        int total = recetas.size();
+        Receta[] receta = new Receta[total];
+        for (int i = 0; i < receta.length; i++) {
+            receta[i] = recetas.get(i);
+        }
+        burbuja(receta);
+    }
+
+    //Método de la burbuja para ordenar luchadores por las velocidades
+    private void burbuja(Receta[] receta) {
+
+        for (int i = 0; i < receta.length - 1; i++) {
+            for (int j = 0; j < receta.length - 1; j++) {
+
+                if (receta[j].getVotos() == 0) {//Recetas sin votos terminaran al final de la lista
+                    Receta tmp = receta[j + 1];
+                    receta[j + 1] = null;
+                    receta[j + 1] = receta[j];
+                    receta[j] = null;
+                    receta[j] = tmp;
+
+                } else {
+                    if (receta[j].getRanking() / receta[j].getVotos() < receta[j + 1].getRanking() / receta[j + 1].getVotos()) {
+                        Receta tmp = receta[j + 1];
+                        receta[j + 1] = null;
+                        receta[j + 1] = receta[j];
+                        receta[j] = null;
+                        receta[j] = tmp;
+                    }
+                }
+            }
+        }
+        colocarRecetasOrdenadas(receta);
+    }
+
+    private void colocarRecetasOrdenadas(Receta[] receta) {
+        int largoRecetario = recetas.size();
+        recetas.clear();
+
+        for (int x = 0; x < largoRecetario; x++) {
+            recetas.add(receta[x]);
+        }
+
     }
 
     public int verCantidadRecetas() {

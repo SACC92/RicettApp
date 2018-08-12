@@ -161,6 +161,7 @@ public class GestorJSONv2 {
             recetario.recetas.add(decode(lineas, x));
             
         }
+        recetario.ordenarRecetas();
         
         return recetario;
         
