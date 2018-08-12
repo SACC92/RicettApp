@@ -12,8 +12,8 @@ public class Recetario {
     /**
      * Busca un ingrediente en las recetas guardadas en this.recetas.
      *
-     * @param ing nombre del ingrediente a buscar.
-     * @return String nombre de la recetas que contengan a ing.
+     * @param ing Nombre del ingrediente a buscar.
+     * @return String Nombre de la recetas que contengan a ing.
      *
      */
 
@@ -49,7 +49,7 @@ public class Recetario {
     /**
      * Ordena las recetas por metodo de la burbuja, considerando que las recetas sin votos quedarán al final de la lista.
      *
-     * @param recetas listado de recetas para ser ordenadas.
+     * @param recetas Listado de recetas para ser ordenadas.
      *
      */
 
@@ -82,7 +82,7 @@ public class Recetario {
     /**
      * Limpia this.recetas y lo llena con las recetas ordenadas.
      *
-     * @param recetas listado de recetas ordenadas para reemplazar a las de this.recetas.
+     * @param recetas Listado de recetas ordenadas para reemplazar a las de this.recetas.
      *
      */
 
@@ -99,7 +99,7 @@ public class Recetario {
     /**
      * Informa de la cantidad de recetas en this.recetas.
      *
-     * @return int cantidad de recetas.
+     * @return int Cantidad de recetas.
      *
      */
 
@@ -110,7 +110,7 @@ public class Recetario {
     /**
      * Elimina una receta.
      *
-     * @param nombre nombre de la receta a eliminar.
+     * @param nombre Nombre de la receta a eliminar.
      *
      */
 

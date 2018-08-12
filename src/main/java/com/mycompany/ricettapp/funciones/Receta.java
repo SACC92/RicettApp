@@ -36,7 +36,7 @@ public class Receta {
     /**
      * Encargado de entregar la información completa de una receta.
      *
-     * @return String información completa de la Receta.
+     * @return String Información completa de la Receta.
      *
      */
 
@@ -48,7 +48,7 @@ public class Receta {
     /**
      * Entrega el ranking de una receta, informa si no ha sido rankeada.
      *
-     * @return String valoración de la receta.
+     * @return String Valoración de la receta.
      *
      */
 
@@ -65,7 +65,7 @@ public class Receta {
     /**
      * Entrega en String la lista de ingredientes de una receta.
      *
-     * @return String ingredientes de la receta.
+     * @return String Ingredientes de la receta.
      *
      */
 
@@ -81,7 +81,7 @@ public class Receta {
     /**
      * Entrega en String la lista de instrucciones de una receta.
      *
-     * @return String instrucciones de la receta.
+     * @return String Instrucciones de la receta.
      *
      */
 
@@ -97,7 +97,7 @@ public class Receta {
     /**
      * Encargado de actualizar el ranking de una receta.
      *
-     * @param valoracion cantidad de estrellas ingresadas por el usuario.
+     * @param valoracion Cantidad de estrellas ingresadas por el usuario.
      *
      */
 
