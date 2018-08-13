@@ -1,5 +1,3 @@
-package com.mycompany.ricettapp.test;
-
 import com.mycompany.ricettapp.funciones.Ingrediente;
 import com.mycompany.ricettapp.funciones.Instruccion;
 import com.mycompany.ricettapp.funciones.Receta;
