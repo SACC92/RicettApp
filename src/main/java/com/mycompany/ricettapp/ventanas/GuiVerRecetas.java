@@ -152,14 +152,14 @@ public class GuiVerRecetas extends JFrame implements ActionListener {
 
     private void mostrar(int i) {
         
-        if (i > -1) {
+        try{
 
             Recetario recetario = new Recetario();
             //recetario.recetas.get(i).rankear();
             String saltoLinea = System.getProperty("line.separator");
             area.setText("Los datos de la receta son:" + saltoLinea + recetario.recetas.get(i).toString());
 
-        } else {
+        } catch(Exception e) {
 
             JOptionPane.showMessageDialog(null, "Seleccione una receta de la lista","Error", JOptionPane.ERROR_MESSAGE);
 
