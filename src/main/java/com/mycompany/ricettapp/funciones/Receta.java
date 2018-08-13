@@ -15,8 +15,8 @@ public class Receta {
     private ArrayList<Ingrediente> ingredientes;
     private ArrayList<Instruccion> instrucciones;
     private String nombre;
-    private double ranking;
-    private double votos;
+    private int ranking;
+    private int votos;
 	
     public Receta() {
         this.nombre = " ";
@@ -55,7 +55,7 @@ public class Receta {
     public String mostrarRanking(){
         String valoracion="";
         if(this.votos!=0){
-            valoracion=String.valueOf(ranking/votos);
+            valoracion=String.valueOf(ranking*1.0/votos*1.0);
         }else{
             valoracion= "Receta sin valorar";
         }
@@ -101,12 +101,12 @@ public class Receta {
      *
      */
 
-    public void rankear(double valoracion) {
+    public void rankear(int valoracion) {
         this.votos += 1;
         this.ranking = ranking + valoracion;
     }
 
-    public double getRanking() {
+    public int getRanking() {
         return ranking;
     }
 
@@ -138,15 +138,11 @@ public class Receta {
         this.instrucciones = instrucciones;
     }
 
-    public double getVotos() {
+    public int getVotos() {
         return votos;
     }
 
-    public void setRanking(double ranking) {
-        this.ranking = ranking;
-    }
-
-    public void setVotos(double votos) {
+    public void setVotos(int votos) {
         this.votos = votos;
     }
 

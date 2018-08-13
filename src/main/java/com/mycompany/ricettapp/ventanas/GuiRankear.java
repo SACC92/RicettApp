@@ -63,7 +63,7 @@ public class GuiRankear extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == oneStar) {
             Recetario recetario = new Recetario();
-            double valor = 1;
+            int valor = 1;
             recetario.recetas.get(indice).rankear(valor);
             try {                
                 Receta receta = recetario.recetas.get(indice);
@@ -76,7 +76,7 @@ public class GuiRankear extends JFrame implements ActionListener {
             setVisible(false);
         }
         if (e.getSource() == twoStar) {
-            double valor = 2;
+            int valor = 2;
             Recetario recetario = new Recetario();
             recetario.recetas.get(indice).rankear(valor);
              try {                
@@ -90,7 +90,7 @@ public class GuiRankear extends JFrame implements ActionListener {
             setVisible(false);
         }
         if (e.getSource() == threeStar) {
-            double valor = 3;
+            int valor = 3;
             Recetario recetario = new Recetario();
             recetario.recetas.get(indice).rankear(valor);
              try {                
@@ -104,7 +104,7 @@ public class GuiRankear extends JFrame implements ActionListener {
             setVisible(false);
         }
         if (e.getSource() == fourStar) {
-            double valor = 4;
+            int valor = 4;
             Recetario recetario = new Recetario();
             recetario.recetas.get(indice).rankear(valor);
              try {                
@@ -118,7 +118,7 @@ public class GuiRankear extends JFrame implements ActionListener {
             setVisible(false);
         }
         if (e.getSource() == fiveStar) {
-            double valor = 5;
+            int valor = 5;
             Recetario recetario = new Recetario();
             recetario.recetas.get(indice).rankear(valor);
              try {                

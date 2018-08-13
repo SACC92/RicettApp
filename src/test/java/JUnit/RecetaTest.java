@@ -33,9 +33,9 @@ public class RecetaTest {
     @Test
     public void testRankeo(){
         
-        double resultadoEsperado=17;
+        int resultadoEsperado=17;
         this.receta.rankear(5);
-        double resultadoFinal=this.receta.getRanking();
+        int resultadoFinal=this.receta.getRanking();
         assertEquals(resultadoEsperado,resultadoFinal,0.000001);  
     }
     @Test
@@ -48,7 +48,7 @@ public class RecetaTest {
     }
     @Test
     public void testVotos(){
-        double resultadoEsperado = 3;
+        int resultadoEsperado = 3;
         assertEquals(resultadoEsperado,receta.getVotos(),0.00000000001);//0.00000000001 es margen de error
     }
     
