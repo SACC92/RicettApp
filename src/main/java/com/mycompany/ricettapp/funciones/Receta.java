@@ -55,7 +55,7 @@ public class Receta {
     public String mostrarRanking(){
         String valoracion="";
         if(this.votos!=0){
-            valoracion=String.valueOf(ranking/votos);
+            valoracion=String.valueOf((int) Math.round(ranking/votos));
         }else{
             valoracion= "Receta sin valorar";
         }
