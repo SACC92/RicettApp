@@ -55,7 +55,11 @@ public class Receta {
     public String mostrarRanking(){
         String valoracion="";
         if(this.votos!=0){
-            valoracion=String.valueOf((int) Math.round(ranking/votos));
+            valoracion=String.valueOf((ranking/votos));
+            char[] numeros= valoracion.toCharArray();
+            valoracion= String.valueOf(numeros[0])+String.valueOf(numeros[1]+String.valueOf(numeros[2]));
+            //numeros[1] es la coma/punto
+            
         }else{
             valoracion= "Receta sin valorar";
         }
