@@ -66,7 +66,7 @@ public class Recetario {
                     recetas[j] = tmp;
 
                 } else {
-                    if (recetas[j].getRanking() *1.0/ recetas[j].getVotos()*1.0 < recetas[j + 1].getRanking()*1.0 / recetas[j + 1].getVotos()*1.0) {
+                    if (recetas[j].getRanking() / recetas[j].getVotos() < recetas[j + 1].getRanking() / recetas[j + 1].getVotos()) {
                         Receta tmp = recetas[j + 1];
                         recetas[j + 1] = null;
                         recetas[j + 1] = recetas[j];

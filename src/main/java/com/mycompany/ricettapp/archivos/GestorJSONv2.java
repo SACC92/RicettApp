@@ -141,8 +141,8 @@ public class GestorJSONv2 {
             String votos = ((String) jsonObject.get("votos"));
 
             r.setNombre(nombre);
-            r.setRanking(Integer.parseInt(ranking));
-            r.setVotos(Integer.parseInt(votos));
+            r.setRanking(Double.parseDouble(ranking));
+            r.setVotos(Double.parseDouble(votos));
 
             ingredientes(jsonObject, ingredientesAL, r);
             instrucciones(jsonObject, instruccionesAL, r);
