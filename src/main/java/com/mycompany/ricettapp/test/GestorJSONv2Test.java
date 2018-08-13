@@ -1,4 +1,4 @@
-
+package com.mycompany.ricettapp.test;
 
 import org.junit.*;
 import com.mycompany.ricettapp.archivos.GestorJSONv2;
@@ -56,7 +56,7 @@ public class GestorJSONv2Test {
     }
 
     @After
-    public void testBorrarRecetaArchivo() {
+    public void testBorrarRecetaArchivo() { //Hacer de nuevo
 
         ArrayList<String> listaRecetas;
 

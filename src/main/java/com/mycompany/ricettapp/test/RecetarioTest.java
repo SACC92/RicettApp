@@ -1,3 +1,5 @@
+package com.mycompany.ricettapp.test;
+
 import org.junit.Before;
 import org.junit.Test;
 import com.mycompany.ricettapp.funciones.*;
