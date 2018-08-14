@@ -96,7 +96,8 @@ public class GuiAdd extends JFrame implements ActionListener {
             } else {
                 
                 try{
-                    
+
+                    caracteresPermitidos(nombreTF.getText());
                     receta.setNombre(nombreTF.getText().toString());
                     Recetario recetario = GestorJSONv2.generarRecetario(GestorJSONv2.vectorLineas());
                     boolean existe = false;
@@ -128,7 +129,11 @@ public class GuiAdd extends JFrame implements ActionListener {
                 
                     }
                     
-                }catch(IOException e1){}
+                }catch(IOException e1){
+
+                    JOptionPane.showMessageDialog(null, "Caracteres inválidos", "Error", JOptionPane.ERROR_MESSAGE);
+
+                }
 
             }
 
@@ -141,12 +146,17 @@ public class GuiAdd extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Ingrese al menos un ingrediente y presione Añadir Ingrediente", "Error", JOptionPane.ERROR_MESSAGE);
 
             } else {
+                try {
+                    caracteresPermitidos(ingredienteTF.getText());
+                    Ingrediente ingrediente = new Ingrediente();
 
-                Ingrediente ingrediente = new Ingrediente();
+                    ingrediente.setNombre(ingredienteTF.getText());
+                    receta.getIngredientes().add(ingrediente);
+                    ingredienteTF.setText("");
+                }catch(IOException e2){
 
-                ingrediente.setNombre(ingredienteTF.getText());
-                receta.getIngredientes().add(ingrediente);
-                ingredienteTF.setText("");
+                    JOptionPane.showMessageDialog(null, "Caracteres inválidos", "Error", JOptionPane.ERROR_MESSAGE);
+                }
 
             }
 
@@ -170,4 +180,12 @@ public class GuiAdd extends JFrame implements ActionListener {
         }
 
     }
+
+    public static void caracteresPermitidos(String string) throws IOException{
+
+        if (!string.matches("[a-zA-Z\\s]+$")){
+            throw new IOException();
+        }
+    }
+
 }
